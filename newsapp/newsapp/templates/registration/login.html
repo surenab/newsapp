@@ -1,25 +1,25 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="utf-8">
-	<title>News App - Sign In</title>
+	<title>News App - Sign In</title> -->
 
 	<!-- Google Fonts -->
-	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+	<!-- <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href='{% static "login/css/animate.css" %}'>
 	<!-- Custom Stylesheet -->
-	<link rel="stylesheet" href='{% static "login/css/style.css" %}'>
+	<!-- <link rel="stylesheet" href='{% static "login/css/style.css" %}'>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
 	<div class="container">
-		<div class="top">
-			<h1 id="title" class="hidden"><span id="logo">News <span>App</span></span></h1>
+		<div class="top"> -->
+			<!-- <h1 id="title" class="hidden"><span id="logo">News <span>App</span></span></h1>
 		</div>
 		<div class="login-box animated fadeInUp">
 			<div class="box-header">
@@ -33,8 +33,8 @@
 			<br/>
 			<input type="password" id="password">
 			<br/>
-			<button type="submit">Sign In</button>
-			<br/>
+			<button type="submit">Sign In</button> -->
+			<!-- <br/>
 			<a href="#"><p class="small">Forgot your password?</p></a>
 		</div>
 	</div>
@@ -59,4 +59,52 @@
 	});
 </script>
 
-</html>
+</html> --> -->
+
+
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href='{% static "register/register.css" %}'>
+
+
+<html lang="en">
+<head>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+
+<body>
+  
+<div id="form">
+  <div class="container">
+    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
+      <div id="userform">
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+          <li class="active"><a href="#signup"  role="tab" data-toggle="tab">LOG IN</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade active in" id="signup">
+            <h2 class="text-uppercase text-center"> News App</h2>
+            <form id="signup" method = "POST">
+                {% csrf_token %}
+                {{form | crispy}}
+
+
+                <button type="submit" class="btn btn-larger btn-block"/>
+                Log In
+                </button>
+              <!-- </div> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container --> 
+</div>
+<!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+</body>
