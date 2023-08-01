@@ -134,3 +134,8 @@ LOGOUT_REDIRECT_URL = reverse_lazy("home2")
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
