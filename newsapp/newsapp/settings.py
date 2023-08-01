@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'newsapp',
     'login',
-    'crispy_forms',
-    'crispy_bootstrap4',
+    # 'crispy_forms',
+    # 'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +133,7 @@ LOGIN_REDIRECT_URL = reverse_lazy("home")
 LOGOUT_REDIRECT_URL = reverse_lazy("home2")
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+# CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
