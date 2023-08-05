@@ -13,7 +13,7 @@ class News(models.Model):
         ("4","National"),
         ("5","Lifestyle"),
         ("6", "Sport"),
-        ("7", "Entertainment"),
+        ("7", "Cultural"),
         ("8", "Crime")
     )
 
@@ -22,7 +22,7 @@ class News(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     news_type = models.CharField(choices=NEWS_TYPES, default="4", max_length=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="media")
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.title}"

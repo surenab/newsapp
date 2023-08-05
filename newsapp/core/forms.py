@@ -1,7 +1,7 @@
 from django import forms
 from .models import News
 
-class NewsForm(forms.Form):
+class NewsForm(forms.ModelForm):
     NEWS_TYPES = (
         ("1", "Political"),
         ("2", "Business"),
@@ -9,7 +9,7 @@ class NewsForm(forms.Form):
         ("4","National"),
         ("5","Lifestyle"),
         ("6", "Sport"),
-        ("7", "Entertainment"),
+        ("7", "Cultural"),
         ("8", "Crime")
     )
 
