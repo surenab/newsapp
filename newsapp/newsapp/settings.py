@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'login',
     'crispy_forms',
     'crispy_bootstrap4',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_REDIRECT_URL = reverse_lazy("home")
-LOGOUT_REDIRECT_URL = reverse_lazy("home2")
+LOGOUT_REDIRECT_URL = reverse_lazy("home")
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
