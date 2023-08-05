@@ -19,7 +19,7 @@ class News(models.Model):
 
     title = models.CharField(max_length=150)
     description = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now=True)
     news_type = models.CharField(choices=NEWS_TYPES, default="4", max_length=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
