@@ -17,4 +17,4 @@ class NewsForm(forms.ModelForm):
     
     class Meta:
         model = News
-        fields = ["title", "description", "news_type"]
+        fields = ["title", "description", "news_type", 'image']
