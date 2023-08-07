@@ -7,12 +7,12 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>ZenBlog</h1>
+        <h1>NewsBlog</h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Blog</a></li>
+          <li><a href="index.html"></a></li>
           <li><a href="single-post.html">Single Post</a></li>
           <li class="dropdown"><a href="category.html"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
@@ -71,11 +71,11 @@
               <div class="post-meta mt-4">About us</div>
               <h2 class="mb-4 display-4">Company History</h2>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
-              <p>Fugit eaque illum blanditiis, quo exercitationem maiores autem laudantium unde excepturi dolores quasi eos vero harum ipsa quam laborum illo aut facere voluptates aliquam adipisci sapiente beatae ullam. Tempora culpa iusto illum accusantium cum hic quisquam dolor placeat officiis eligendi.</p>
+              <p>
+                In 2023, fueled by a collective passion for truth and storytelling, we embarked on a remarkable journey – creating our very first project, a NewsBlog. As a cohesive team, we harnessed our diverse skills, unwavering determination, and a shared vision to establish a platform that would disseminate accurate and compelling news. With every article, we celebrated the synergy of our collaboration, transforming challenges into opportunities. Our NewsBlog quickly gained traction, becoming a trusted source for a growing readership. This inaugural endeavor not only ignited our entrepreneurial spirit but also solidified the significance of teamwork in achieving meaningful goals. Rooted in the lessons learned and triumphs earned, our NewsBlog's legacy continues to inspire our business ventures.</p>
+              
             </div>
           </div>
-
           <div class="d-md-flex post-entry-2 half mt-5">
             <a href="#" class="me-4 thumbnail order-2">
               <img src="{% static 'assets/img/post-landscape-1.jpg' %}" alt="" class="img-fluid">
@@ -84,8 +84,7 @@
               <div class="post-meta mt-4">Mission &amp; Vision</div>
               <h2 class="mb-4 display-4">Mission &amp; Vision</h2>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
-              <p>Fugit eaque illum blanditiis, quo exercitationem maiores autem laudantium unde excepturi dolores quasi eos vero harum ipsa quam laborum illo aut facere voluptates aliquam adipisci sapiente beatae ullam. Tempora culpa iusto illum accusantium cum hic quisquam dolor placeat officiis eligendi.</p>
+              <p>Our mission is to empower and inspire individuals with accurate, insightful, and timely information, fostering a well-informed and connected global community. We envision becoming a leading and trusted source of news and stories, driving positive change and shaping a brighter future for our readers and society as a whole.</p>
             </div>
           </div>
 
@@ -124,17 +123,21 @@
             <div class="row justify-content-center">
               <div class="col-lg-6">
                 <h2 class="display-4">Our Team</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sint sed, fugit distinctio ad eius itaque deserunt doloribus harum excepturi laudantium sit officiis et eaque blanditiis. Dolore natus excepturi recusandae.</p>
+                <p>Teamwork is the fuel that allows common people to attain uncommon results</p>
               </div>
             </div>
           </div>
+          {% for member in team %}
           <div class="col-lg-4 text-center mb-5">
+          
             <img src="{% static 'assets/img/person-1.jpg' %}" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Cameron Williamson</h4>
-            <span class="d-block mb-3 text-uppercase">Founder &amp; CEO</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+            <h4>{{member.team_member}}</h4>
+            <span class="d-block mb-3 text-uppercase">{{member.position}} </span>
+            <p>{{member.description}}</p>
+          
           </div>
-          <div class="col-lg-4 text-center mb-5">
+          {% endfor %}
+          <!-- <div class="col-lg-4 text-center mb-5">
             <img src="{% static 'assets/img/person-2.jpg' %}" alt="" class="img-fluid rounded-circle w-50 mb-4">
             <h4>Wade Warren</h4>
             <span class="d-block mb-3 text-uppercase">Founder, VP</span>
@@ -145,8 +148,8 @@
             <h4>Jane Cooper</h4>
             <span class="d-block mb-3 text-uppercase">Editor Staff</span>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
-          </div>
-          <div class="col-lg-4 text-center mb-5">
+          </div> -->
+          <!-- <div class="col-lg-4 text-center mb-5">
             <img src="{% static 'assets/img/person-4.jpg' %}" alt="" class="img-fluid rounded-circle w-50 mb-4">
             <h4>Cameron Williamson</h4>
             <span class="d-block mb-3 text-uppercase">Editor Staff</span>
@@ -163,7 +166,7 @@
             <h4>Cameron Williamson</h4>
             <span class="d-block mb-3 text-uppercase">Editor Staff</span>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
