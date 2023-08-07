@@ -81,7 +81,7 @@
             <h3 class="footer-heading">Recent News</h3>
 
             <ul class="footer-links footer-blog-entry list-unstyled">
-              {% for new in news|slice:"-3:" %}
+              {% for new in news|slice:"6:" %}
                 <li>
                     <a href="single-post.html" class="d-flex align-items-center">
                       <img src="{{new.image.url}}" alt="" class="img-fluid me-3">
