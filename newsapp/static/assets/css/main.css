@@ -344,7 +344,7 @@ section {
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    background: var(--color-white);
+    background: #968952;
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     transition: 0.3s;
     border-radius: 4px;
@@ -1329,8 +1329,8 @@ section {
 }
 
 .footer .footer-legal {
-  background: #FFF;
-  padding: 40px 0;
+  background: #141303;
+  padding: 20px 0;
 }
 
 .footer .footer-legal .social-links a {
