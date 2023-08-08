@@ -27,8 +27,43 @@ a {
 
 a:hover {
   color: var(--color-links-hover);
-  text-decoration: none;
+  text-decoration: none;fa
 }
+
+.button-74 {
+  background-color: #968952;
+  border: 1.5px solid #1c1e21;
+  border-radius: 30px;
+  box-shadow: #422800 3px 3px 0 0;
+  color: #1c1e21;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 5px 5px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #655d3d;
+}
+
+.button-74:active {
+  box-shadow: #fff 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+
 
 h1,
 h2,
@@ -131,7 +166,7 @@ section {
   height: 90px;
   transition: all 0.5s;
   z-index: 997;
-  background: #f2f2f2;
+  background: #968952;
 }
 
 .header.sticked {
@@ -146,7 +181,7 @@ section {
 .header .logo h1 {
   font-size: 30px;
   font-weight: 700;
-  color: var(--color-default);
+  color: #fff;
   font-family: var(--font-primary);
 }
 
@@ -234,11 +269,11 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0 10px 30px;
+    padding: 10px 30px 10px 30px;
     font-family: var(--font-default);
     font-size: 16px;
     font-weight: 500;
-    color: rgba(var(--color-default-rgb), 1);
+    color: #fff;
     white-space: nowrap;
     transition: 0.3s;
   }
@@ -250,7 +285,7 @@ section {
     font-family: var(--font-default);
     font-size: 16px;
     font-weight: 500;
-    color: rgba(var(--color-default-rgb), 1);
+    color: #fff;
     white-space: nowrap;
     transition: 0.3s;
   }
@@ -309,7 +344,7 @@ section {
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    background: var(--color-white);
+    background: #968952;
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     transition: 0.3s;
     border-radius: 4px;
@@ -427,6 +462,7 @@ section {
     z-index: 99;
     padding: 10px 0;
     margin: 10px 20px;
+    
     background: var(--color-white);
     transition: all 0.5s ease-in-out;
     box-shadow: 0px 0px 30px rgba(var(--color-black-rgb), 0.1);
@@ -1222,9 +1258,9 @@ section {
 --------------------------------------------------------------*/
 .footer {
   overflow: hidden;
-  background: rgba(var(--color-black-rgb), 0.9);
+  background: #968952;
   font-size: 16px;
-  color: rgba(var(--color-white-rgb), 0.7);
+  color: #FFF;
 }
 
 .footer .footer-content {
@@ -1232,7 +1268,7 @@ section {
 }
 
 .footer a.footer-link-more {
-  color: rgba(var(--color-white-rgb), 0.7);
+  color: #FFF;
   display: inline-block;
   position: relative;
 }
@@ -1244,15 +1280,15 @@ section {
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--color-white);
+  background: #FFF;
 }
 
 .footer a.footer-link-more:hover {
-  color: rgba(var(--color-white-rgb), 1);
+  color: #FFF;
 }
 
 .footer .footer-heading {
-  color: var(--color-white);
+  color: #FFF;
   margin-bottom: 20px;
   padding-bottom: 10px;
   font-size: 18px;
@@ -1269,7 +1305,7 @@ section {
   text-transform: uppercase;
   font-weight: 400;
   font-family: var(--font-secondary);
-  color: rgba(var(--color-white-rgb), 0.4);
+  color: #FFF;
   margin-bottom: 0px;
 }
 
@@ -1283,17 +1319,18 @@ section {
 }
 
 .footer .footer-links li a {
-  color: rgba(var(--color-white-rgb), 0.7);
+  color: #FFF;
 }
+
 
 .footer .footer-links li a:hover,
 .footer .footer-links li a:focus {
-  color: rgba(var(--color-white-rgb), 1);
+  color: #FFF;
 }
 
 .footer .footer-legal {
-  background: var(--color-black);
-  padding: 40px 0;
+  background: #141303;
+  padding: 20px 0;
 }
 
 .footer .footer-legal .social-links a {

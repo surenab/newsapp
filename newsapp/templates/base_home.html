@@ -60,8 +60,8 @@
           <div class="col-6 col-lg-2">
             <h3 class="footer-heading">Navigation</h3>
             <ul class="footer-links list-unstyled">
-              <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="index.html"><i class="bi bi-chevron-right"></i> News</a></li>
+              <li><a href="/"><i class="bi bi-chevron-right"></i> Home</a></li>
+              <li><a href="/"><i class="bi bi-chevron-right"></i> News</a></li>
               <li><a href="category.html"><i class="bi bi-chevron-right"></i> Categories</a></li>
               <li><a href="single-post.html"><i class="bi bi-chevron-right"></i> Single Post</a></li>
               <li><a href="about.html"><i class="bi bi-chevron-right"></i> About us</a></li>
@@ -71,33 +71,28 @@
           <div class="col-6 col-lg-2">
             <h3 class="footer-heading">Categories</h3>
             <ul class="footer-links list-unstyled">
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Political</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> International</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> National</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Lifestyle</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Entertainment</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Crime</a></li>
-
+              {% for new in news %}
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> {{new.get_news_type_display}}</a></li>
+              {% endfor %}
             </ul>
           </div>
 
           <div class="col-lg-4">
-            <h3 class="footer-heading">Recent Posts</h3>
+            <h3 class="footer-heading">Recent News</h3>
 
             <ul class="footer-links footer-blog-entry list-unstyled">
-              <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="{% static 'assets/img/post-sq-1.jpg' %}" alt="" class="img-fluid me-3">
-                  <div>
-                    <div class="post-meta d-block"><span class="date">National</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <span>5 Great Startup Tips for Female Founders</span>
-                  </div>
-                </a>
-              </li>
-
-              <li>
+              {% for new in news|slice:"6:" %}
+                <li>
+                    <a href="single-post.html" class="d-flex align-items-center">
+                      <img src="{{new.image.url}}" alt="" class="img-fluid me-3">
+                      <div>
+                        <div class="post-meta d-block"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span></div>
+                        <span>{{new.title}}</span>
+                      </div>
+                    </a>
+                </li>
+              {% endfor %}
+              <!-- <li>
                 <a href="single-post.html" class="d-flex align-items-center">
                   <img src="{% static 'assets/img/post-sq-2.jpg' %}" alt="" class="img-fluid me-3">
                   <div>
@@ -125,7 +120,7 @@
                     <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
                   </div>
                 </a>
-              </li>
+              </li> -->
 
             </ul>
 
@@ -147,11 +142,10 @@
 
           <div class="col-md-6">
             <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://twitter.com/NEWSamSport" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
+              <a href="https://www.facebook.com/newsamarm" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/news.am/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/new-info-033b32179/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
             </div>
 
           </div>
