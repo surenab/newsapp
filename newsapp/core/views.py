@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import News
+from .models import *
 from django.views.generic import CreateView
 from .forms import NewsForm
 from django.urls import reverse_lazy
@@ -19,3 +19,10 @@ class CreateNews(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+def about(request):
+    team = Team.objects.all()
+    return render(request=request, template_name="about.html", context={"team": team}) 
+
+

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
+from django.urls import reverse
 # Create your models here.
 User = get_user_model()
 
@@ -26,3 +26,19 @@ class News(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+
+class Team(models.Model):
+    team_member=models.CharField(max_length=30)
+    position=models.CharField(max_length=30)
+    description=models.TextField(max_length=300)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.team_member}" 
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_id': self.pk})
+    
+
+
