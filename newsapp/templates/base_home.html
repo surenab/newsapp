@@ -6,6 +6,16 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/33cd771fbc.js" crossorigin="anonymous"></script>
 
   <title>NewsApp</title>
   <meta content="" name="description">
@@ -41,10 +51,86 @@
 </head>
 
 <body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>NewsApp</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">News</a></li>
+          <li><a href="single-post.html">Single Post</a></li>
+          <li class="dropdown"><a href="category.html"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="search-result.html">Search Result</a></li>
+              <li><a href="#">Political</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">International</a></li>
+              <li><a href="#">National</a></li>
+              <li><a href="#">Lifestyle</a></li>
+              <li><a href="#">Sport</a></li>
+              <li><a href="#">Cultural</a></li>
+              <li><a href="#">Crime</a></li>
+            </ul>
+          </li>
+
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a class="button-74" href="{% url 'my_news' %}">My News</a></li>
+          <li><p>User logged by</p><p>{{request.user.email}} email</p></li>
+          <li><a type="button" class="button-74" href="{% url 'create_news' %}">Create News</a></li>
+          <li><a href="login/logout">Logout</a></li>
+          {% else %}
+          <li><a href="login/login">Log In</a></li>
+          <li><a href="register/register">Register</a></li>
+          {% endif %}
+        </ul>
+        
+      </nav>
+
+      <div class="position-relative">
+        <a href="https://www.facebook.com/newsamarm" class="mx-2"  target="_blank"><span class="bi-facebook"></span></a>
+        <a href="https://twitter.com/NEWSamSport" class="mx-2" target="_blank"><span class="bi-twitter"></span></a>
+        <a href="https://www.instagram.com/news.am/" class="mx-2" target="_blank"><span class="bi-instagram"></span></a>
+        <a href="https://www.linkedin.com/in/new-info-033b32179/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+
+        <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+
+        <!-- ======= Search Form ======= -->
+        <div class="search-form-wrap js-search-form-wrap">
+          <form action="search-result.html" class="search-form">
+            <span class="icon bi-search"></span>
+            <input type="text" placeholder="Search" class="form-control">
+            <button class="btn js-search-close"><span class="bi-x"></span></button>
+          </form>
+        </div><!-- End Search Form -->
+
+      </div>
+
+    </div>
+
+  </header><!-- End Header -->
+
+  <main id="main">
+    {% for message in messages %}
+    <div class="alert {{message.tags}} alert-dismissible fade show" role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
 
   {% block bodycontent %}
   {% endblock %}
-
+</main><!-- End #main -->
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
@@ -71,9 +157,14 @@
           <div class="col-6 col-lg-2">
             <h3 class="footer-heading">Categories</h3>
             <ul class="footer-links list-unstyled">
-              {% for new in news %}
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> {{new.get_news_type_display}}</a></li>
-              {% endfor %}
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Political</a></li>
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> International</a></li>
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> National</a></li>
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Lifestyle</a></li>
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Cultural</a></li>
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Crime</a></li>
             </ul>
           </div>
 
@@ -81,18 +172,16 @@
             <h3 class="footer-heading">Recent News</h3>
 
             <ul class="footer-links footer-blog-entry list-unstyled">
-              {% for new in news|slice:"6:" %}
                 <li>
                     <a href="single-post.html" class="d-flex align-items-center">
-                      <img src="{{new.image.url}}" alt="" class="img-fluid me-3">
+                      <img src="{% static 'assets/img/Arayik.jpg' %}" alt="" class="img-fluid me-3">
                       <div>
-                        <div class="post-meta d-block"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span></div>
-                        <span>{{new.title}}</span>
+                        <div class="post-meta d-block"><span class="date">Political</span> <span class="mx-1">&bullet;</span> <span>09.08.2023</span></div>
+                        <span>President sends urgent appeal to international community to take immediate action to prevent genocide of NKR people</span>
                       </div>
                     </a>
                 </li>
-              {% endfor %}
-              <!-- <li>
+              <li>
                 <a href="single-post.html" class="d-flex align-items-center">
                   <img src="{% static 'assets/img/post-sq-2.jpg' %}" alt="" class="img-fluid me-3">
                   <div>
@@ -120,7 +209,7 @@
                     <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
                   </div>
                 </a>
-              </li> -->
+              </li>
 
             </ul>
 
