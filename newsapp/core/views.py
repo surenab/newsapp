@@ -31,14 +31,14 @@ def about(request):
     return render(request=request, template_name="about.html", context={"team": team}) 
 
 
-class MyNews(ListView):
-    model = News
-    context_object_name = "news"
+# class MyNews(ListView):
+#     model = News
+#     context_object_name = "news"
 
-    def get_queryset(self) -> QuerySet[Any]:
-        queryset = super(MyNews, self).get_queryset()
-        queryset = queryset.filter(user=self.request.user)
-        return queryset
+#     def get_queryset(self) -> QuerySet[Any]:
+#         queryset = super(MyNews, self).get_queryset()
+#         queryset = queryset.filter(user=self.request.user)
+#         return queryset
 
 
 # class MyNewsDetail(LoginRequiredMixin, DetailView):
@@ -67,16 +67,16 @@ class MyNews(ListView):
 #         return super().form_valid(form)
 
 
-# class MyNewsDelete(LoginRequiredMixin, DeleteView):
-#     model = News
-#     context_object_name = "news"
-#     success_url = reverse_lazy("my_news")
+class MyNewsDelete(LoginRequiredMixin, DeleteView):
+    model = News
+    context_object_name = "news"
+    success_url = reverse_lazy("my_news")
 
-#     def get_queryset(self):
-#         queryset = super(MyNewsDelete, self).get_queryset()
-#         queryset = queryset.filter(user=self.request.user)
-#         return queryset
+    def get_queryset(self):
+        queryset = super(MyNewsDelete, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
 
-#     def form_valid(self, form):
-#         messages.info(self.request, "News instance is deleted!")
-#         return super().form_valid(form)
+    def form_valid(self, form):
+        messages.info(self.request, "News instance is deleted!")
+        return super().form_valid(form)
