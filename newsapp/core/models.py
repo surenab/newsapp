@@ -22,7 +22,7 @@ class News(models.Model):
     date = models.DateTimeField(auto_now=True)
     news_type = models.CharField(choices=NEWS_TYPES, default="4", max_length=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    image = models.ImageField(upload_to='images/', default=None, null=True, blank=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -39,6 +39,3 @@ class Team(models.Model):
 
     def get_absolute_url(self):
         return reverse('post', kwargs={'post_id': self.pk})
-    
-
-

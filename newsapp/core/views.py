@@ -31,24 +31,24 @@ def about(request):
     return render(request=request, template_name="about.html", context={"team": team}) 
 
 
-class MyNews(ListView):
-    model = News
-    context_object_name = "news"
-
-    def get_queryset(self) -> QuerySet[Any]:
-        queryset = super(MyNews, self).get_queryset()
-        queryset = queryset.filter(user=self.request.user)
-        return queryset
-
-
-# class MyNewsDetail(LoginRequiredMixin, DetailView):
+# class MyNews(ListView):
 #     model = News
 #     context_object_name = "news"
 
-#     def get_queryset(self):
-#         queryset = super(MyNewsDetail, self).get_queryset()
+#     def get_queryset(self) -> QuerySet[Any]:
+#         queryset = super(MyNews, self).get_queryset()
 #         queryset = queryset.filter(user=self.request.user)
 #         return queryset
+
+
+class MyNewsDetail(LoginRequiredMixin, DetailView):
+    model = News
+    context_object_name = "news"
+
+    def get_queryset(self):
+        queryset = super(MyNewsDetail, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
 
 
 # class MyNewsUpdate(LoginRequiredMixin, UpdateView):

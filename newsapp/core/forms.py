@@ -14,7 +14,7 @@ class NewsForm(forms.ModelForm):
     )
 
     news_type = forms.ChoiceField(choices=NEWS_TYPES)
-    
+    image = forms.ImageField(label="")
     class Meta:
         model = News
 
