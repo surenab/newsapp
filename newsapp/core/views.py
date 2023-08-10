@@ -41,30 +41,30 @@ def about(request):
 #         return queryset
 
 
-class MyNewsDetail(LoginRequiredMixin, DetailView):
-    model = News
-    context_object_name = "news"
-
-    def get_queryset(self):
-        queryset = super(MyNewsDetail, self).get_queryset()
-        queryset = queryset.filter(user=self.request.user)
-        return queryset
-
-
-# class MyNewsUpdate(LoginRequiredMixin, UpdateView):
+# class MyNewsDetail(LoginRequiredMixin, DetailView):
 #     model = News
 #     context_object_name = "news"
-#     form_class = NewsForm
-#     success_url = reverse_lazy("my_news")
 
 #     def get_queryset(self):
-#         queryset = super(MyNewsUpdate, self).get_queryset()
+#         queryset = super(MyNewsDetail, self).get_queryset()
 #         queryset = queryset.filter(user=self.request.user)
 #         return queryset
 
-#     def form_valid(self, form):
-#         messages.success(self.request, "News instance is updated!")
-#         return super().form_valid(form)
+
+class MyNewsUpdate(LoginRequiredMixin, UpdateView):
+    model = News
+    context_object_name = "news"
+    form_class = NewsForm
+    success_url = reverse_lazy("my_news")
+
+    def get_queryset(self):
+        queryset = super(MyNewsUpdate, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
+
+    def form_valid(self, form):
+        messages.success(self.request, "News instance is updated!")
+        return super().form_valid(form)
 
 
 # class MyNewsDelete(LoginRequiredMixin, DeleteView):
