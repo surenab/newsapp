@@ -82,9 +82,9 @@
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="contact.html">Contact</a></li>
           {% if request.user.is_authenticated %}
-          <li><a class="button-74" href="{% url 'my_news' %}">My News</a></li>
-          <li><p>User logged by</p><p>{{request.user.email}} email</p></li>
+          <li><p>User logged by<br>{{request.user.email}} email</p></li>
           <li><a type="button" class="button-74" href="{% url 'create_news' %}">Create News</a></li>
+          <li><a type="button" class="button-74" href="{% url 'my_news' %}">My News</a></li>
           <li><a href="login/logout">Logout</a></li>
           {% else %}
           <li><a href="login/login">Log In</a></li>

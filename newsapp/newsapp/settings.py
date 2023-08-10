@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from django.urls import reverse_lazy
 import os
+from django.contrib.messages import constants
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -149,3 +150,11 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
+# Messages Tags
+MESSAGE_TAGS = {
+    constants.SUCCESS: 'alert-success',
+    constants.ERROR: 'alert-danger',
+    constants.INFO: 'alert-info',
+    constants.WARNING: 'alert-warning',
+    constants.DEBUG: 'alert-light',
+}
