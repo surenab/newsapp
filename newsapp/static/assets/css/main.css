@@ -1376,3 +1376,9 @@ section {
   text-align: center;
   color:#fff;
 }
+
+
+.img-details{
+  height: 300px;
+  width: 500px;
+}
