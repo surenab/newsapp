@@ -55,7 +55,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="" class="logo d-flex align-items-center">
+      <a href="/" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1>NewsApp</h1>
@@ -63,8 +63,6 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">News</a></li>
-          <li><a href="single-post.html">Single Post</a></li>
           <li class="dropdown"><a href="category.html"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="search-result.html">Search Result</a></li>
@@ -83,12 +81,11 @@
           <li><a href="contact.html">Contact</a></li>
           {% if request.user.is_authenticated %}
           <li><p>User logged by<br>{{request.user.email}} email</p></li>
-          <li><a type="button" class="button-74" href="{% url 'create_news' %}">Create News</a></li>
-          <li><a type="button" class="button-74" href="{% url 'my_news' %}">My News</a></li>
-          <li><a href="login/logout">Logout</a></li>
+          <li><a href="profile">My Profile</a></li>
+          <li><a href="accounts/logout">Logout</a></li>
           {% else %}
-          <li><a href="login/login">Log In</a></li>
-          <li><a href="register/register">Register</a></li>
+          <li><a href="accounts/login">Log In</a></li>
+          <li><a href="accounts/register">Register</a></li>
           {% endif %}
         </ul>
         
@@ -147,9 +144,7 @@
             <h3 class="footer-heading">Navigation</h3>
             <ul class="footer-links list-unstyled">
               <li><a href="/"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="/"><i class="bi bi-chevron-right"></i> News</a></li>
               <li><a href="category.html"><i class="bi bi-chevron-right"></i> Categories</a></li>
-              <li><a href="single-post.html"><i class="bi bi-chevron-right"></i> Single Post</a></li>
               <li><a href="about.html"><i class="bi bi-chevron-right"></i> About us</a></li>
               <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
             </ul>
