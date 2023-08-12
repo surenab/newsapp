@@ -15,9 +15,36 @@ def home(request):
     return render(request=request, template_name="index.html", context={"news": news})
 
 
-class CreateNews(CreateView):
+def profile(request):
+    news = News.objects.all()
+    return render(request=request, template_name="core/profile.html", context={"news": news})
+
+
+def about(request):
+    team = Team.objects.all()
+    return render(request=request, template_name="about.html", context={"team": team}) 
+
+
+class Base(LoginRequiredMixin):
+    def get_queryset(self):
+        queryset = super(Base, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
+
+
+class NewsBase(Base):
+    model = News
+    context_object_name = "news"
     form_class = NewsForm
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("my_news")
+    success_text = ""
+    
+    def form_valid(self, form):
+        messages.success(self.request, self.success_text)
+        return super().form_valid(form)
+
+
+class CreateNews(NewsBase, CreateView):
     template_name = "create_news.html"
 
     def form_valid(self, form):
@@ -26,45 +53,16 @@ class CreateNews(CreateView):
         return super().form_valid(form)
 
 
-def about(request):
-    team = Team.objects.all()
-    return render(request=request, template_name="about.html", context={"team": team}) 
+class MyNews(NewsBase, ListView):
+    template_name = "core/news_list.html"
 
 
-class MyNews(ListView):
-    model = News
-    context_object_name = "news"
-
-    def get_queryset(self) -> QuerySet[Any]:
-        queryset = super(MyNews, self).get_queryset()
-        queryset = queryset.filter(user=self.request.user)
-        return queryset
+class MyNewsDetail(NewsBase, DetailView):
+    pass
 
 
-class MyNewsDetail(LoginRequiredMixin, DetailView):
-    model = News
-    context_object_name = "news"
-
-    def get_queryset(self):
-        queryset = super(MyNewsDetail, self).get_queryset()
-        queryset = queryset.filter(user=self.request.user)
-        return queryset
-
-
-class MyNewsUpdate(LoginRequiredMixin, UpdateView):
-    model = News
-    context_object_name = "news"
-    form_class = NewsForm
-    success_url = reverse_lazy("my_news")
-
-    def get_queryset(self):
-        queryset = super(MyNewsUpdate, self).get_queryset()
-        queryset = queryset.filter(user=self.request.user)
-        return queryset
-
-    def form_valid(self, form):
-        messages.success(self.request, "News instance is updated!")
-        return super().form_valid(form)
+class MyNewsUpdate(NewsBase, UpdateView):
+    success_text = "News instance is updated!"
 
 
 class MyNewsDelete(LoginRequiredMixin, DeleteView):
