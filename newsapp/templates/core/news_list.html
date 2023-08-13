@@ -4,35 +4,34 @@
 <section id="posts" class="posts">
     <div class="container" data-aos="fade-up">
 
-        
         <div class="col-lg-8">
           <div class="row g-5">
             <div class="post-entry-1 lg">
               {% for new in news %}
-              <div class="post-entry-1">
-                
-                <a href="single-post.html">
-                    {% if new.image %}
-                        <img src="{{new.image.url}}" alt="" class="img-details">
-                    {% endif %}
-                </a>
-                <div class="post-meta">
-                    <span class="date">{{new.get_news_type_display}}</span> 
-                    <span class="mx-1">&bullet;</span> 
-                    <span>{{new.date}}</span>
-                </div>
-                <h2><a href="single-post.html">{{new.title}}</a></h2>
-                <span><a type="button" class="btn btn-primary" href="{% url 'my_news_details' new.id %}"><i
-                  class="far fa-eye"></i></a>
-                <a type="button" class="btn btn-success" href="{% url 'my_news_update' new.id %}"><i
-                  class="fas fa-edit"></i></a>
-                <a type="button" class="btn btn-danger" href="{% url 'my_news_delete' new.id %}"><i
-                  class="far fa-trash-alt"></i></a></span>
-              </div>
-              <hr>
+                  <div class="post-entry-1">
+                    {% if new %}
+                    <a href="single-post.html">
+                      <img src="{{new.image.url}}" alt="" class="img-details">
+                    </a>
+                    <div class="post-meta">
+                        <span class="date">{{new.get_news_type_display}}</span> 
+                        <span class="mx-1">&bullet;</span> 
+                        <span>{{new.date}}</span>
+                    </div>
+                    <h2><a href="single-post.html">{{new.title}}</a></h2>
+                    <span><a type="button" class="btn btn-primary" href="{% url 'my_news_details' new.id %}"><i
+                      class="far fa-eye"></i></a>
+                    <a type="button" class="btn btn-success" href="{% url 'my_news_update' new.id %}"><i
+                      class="fas fa-edit"></i></a>
+                    <a type="button" class="btn btn-danger" href="{% url 'my_news_delete' new.id %}"><i
+                      class="far fa-trash-alt"></i></a></span>
+                  </div>
+                  <hr>
+                  {% else %}
+                  <h3>You have no posts yet.</h3>
+                  {% endif %}
               {% endfor %}
             </div>
-
           </div>
         </div>
 
