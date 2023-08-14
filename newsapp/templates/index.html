@@ -1,6 +1,6 @@
 {% extends 'base_home.html' %} {% load static %}
 {% block bodycontent %}
-
+{% load pagination_tags %}
 
     <!-- ======= Hero Slider Section ======= -->
     <section id="hero-slider" class="hero-slider">
@@ -12,7 +12,7 @@
                  
                 {% for new in news %}
                 <div class="swiper-slide">
-                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('https://www.rea.ru/ru/org/cathedries/gppkaf/PublishingImages/news/News1.jpg');">
+                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url({{new.image.url}})">
                     <div class="img-bg-inner">
                       <h2>{{ new.title }}</h2>
                       <p>{{ new.description|slice:":20" }}...</p>
@@ -35,7 +35,7 @@
         </div>
       </div>
     </section><!-- End Hero Slider Section -->
-
+    
     <!-- ======= Post Grid Section ======= -->
     <section id="posts" class="posts">
       <div class="container" data-aos="fade-up">
