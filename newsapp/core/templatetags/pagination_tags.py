@@ -9,3 +9,4 @@ def url_replace(request, field, value):
     dict_[field] = value
 
     return dict_.urlencode()
+
