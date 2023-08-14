@@ -35,7 +35,7 @@ a:hover {
   border: 1.5px solid #1c1e21;
   border-radius: 30px;
   box-shadow: #422800 3px 3px 0 0;
-  color: #1c1e21;
+  color: #fbfcfd;
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
@@ -54,6 +54,68 @@ a:hover {
 }
 
 .button-74:active {
+  box-shadow: #fff 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+.button-75 {
+  background-color: #968952;
+  border: 1.5px solid #1c1e21;
+  border-radius: 30px;
+  box-shadow: #422800 3px 3px 0 0;
+  color: #fbfcfd;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 5px 5px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding-left: 28px;
+  padding-right: 28px;
+  margin-left: 8%;
+}
+
+.button-75:hover {
+  background-color: #655d3d;
+}
+
+.button-75:active {
+  box-shadow: #fff 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+.button-76 {
+  background-color: #968952;
+  border: 1.5px solid #1c1e21;
+  border-radius: 30px;
+  box-shadow: #422800 3px 3px 0 0;
+  color: #fbfcfd;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 5px 5px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding-left: 28px;
+  padding-right: 28px;
+  margin-left: 17%;
+}
+
+.button-76:hover {
+  background-color: #655d3d;
+}
+
+.button-76:active {
   box-shadow: #fff 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
@@ -1381,4 +1443,68 @@ section {
 .img-details{
   height: 300px;
   width: 500px;
+}
+
+.background{
+  color: #fff;
+      background-attachment: scroll;
+      background: #1c1e21 url(https://www.rea.ru/ru/org/cathedries/gppkaf/PublishingImages/news/News1.jpg);
+      background-position: center center;
+      background-repeat: none;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+    min-height:100%;
+}
+
+
+.active-page {
+  background-color: #c2c3a0;
+  color: #fff;
+}
+
+.pagination-link {
+  color: #292a05; /* Change to the color you prefer */
+}
+
+.pagination-link:hover {
+  color: #9b9c72; /* Change to a different color for hover effect */
+}
+
+/* Apply styles to the filter form */
+.filter-form {
+  display:list-item;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 30px;
+}
+
+/* Style the filter form fields */
+.filter-field {
+  flex: 1;
+  max-width: calc(10% - 5px); /* Adjust based on your design */
+}
+
+/* Style the date input field */
+.filter-field .form-control[type="date"] {
+  width: 70%;
+  padding: 6px;
+  font-size: 14px;
+}
+
+/* Style the submit button */
+.filter-submit {
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #292a05;
+  color: #c2c3a0;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-submit:hover {
+  background-color: #c2c3a0;
+  color: #292a05;
 }
