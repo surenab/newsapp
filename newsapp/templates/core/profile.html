@@ -1,0 +1,17 @@
+{% extends 'base_home.html' %} {% load static %}
+{% block bodycontent %}
+<div class="section-header d-flex justify-content-between align-items-center mb-5">
+    <h3>User logged by<br>{{request.user.email}} email</h3>
+</div>
+<div class="d-flex justify-content-center"></div>
+    <a type="button" class="button-74" href="{% url 'create_news' %}">Create News</a>
+    <br>
+    <a type="button" class="button-74" href="{% url 'my_news' %}">My News</a>
+    <br>
+    <a type="button" class="button-74" href="accounts/logout">Logout</a>
+    </ul>
+    <br><br>
+</div>
+<br>
+
+{% endblock %}

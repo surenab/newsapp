@@ -7,6 +7,8 @@ from .forms import NewsForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django_filters.views import FilterView
+from .filters import NewsFilters
 
 # Create your views here.
 
@@ -31,9 +33,11 @@ def about(request):
     return render(request=request, template_name="about.html", context={"team": team}) 
 
 
-class MyNews(ListView):
+class MyNews(FilterView,NewsFilters):
     model = News
     context_object_name = "news"
+    filterset_class = NewsFilters
+    template_name = "core/news_list.html"
 
     def get_queryset(self) -> QuerySet[Any]:
         queryset = super(MyNews, self).get_queryset()
