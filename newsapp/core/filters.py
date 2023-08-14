@@ -1,12 +1,12 @@
-import django_filters
-from django_filters import DateFilter
-from .models import News 
+from django_filters import FilterSet, DateFilter, NumberFilter
 from django import forms
+from .models import News
 
 
-class NewsFilters(django_filters.FilterSet):
-    date= DateFilter('date', widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+class NewsFilter(FilterSet):
+    date = DateFilter(field_name="date", widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
+
+
     class Meta:
         model = News
-        fields = ("title", "news_type", "date", "description")
-        
+        fields = ('date', 'news_type', 'user')
