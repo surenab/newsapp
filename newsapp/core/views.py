@@ -9,6 +9,10 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django_filters.views import FilterView
 from .filters import NewsFilter
+from django_filters.views import FilterView
+from .models import News
+
+
 
 # Create your views here.
 
@@ -58,7 +62,9 @@ class CreateNews(NewsBase, CreateView):
 class MyNews(NewsBase, FilterView):
     template_name = "core/news_list.html"
     filterset_class = NewsFilter
-    paginate_by = 1
+    template_name = "core/news_list.html"
+    paginate_by = 2
+
 
 class MyNewsDetail(NewsBase, DetailView):
     pass

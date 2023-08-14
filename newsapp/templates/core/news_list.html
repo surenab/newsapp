@@ -1,10 +1,22 @@
 {% extends 'base_home.html' %} {% load static %}
 {% block bodycontent %}
+{% load crispy_forms_tags %}
 {% load pagination_tags %}
-<form action="" method="get">
-  {{filter.form}}
-  <input type="submit" />
+
+<form class="filter-form" method="get">
+  <div class="filter-field">
+      {{ filter.form.date.label_tag }} {{ filter.form.date }}
+  </div>
+  <div class="filter-field">
+      {{ filter.form.news_type.label_tag }} {{ filter.form.news_type }}
+  </div>
+  <div class="filter-field">
+      {{ filter.form.user.label_tag }} {{ filter.form.user }}
+  </div>
+  <button type="submit" class="filter-submit">Apply Filters</button>
 </form>
+
+
 <section id="posts" class="posts">
     <div class="container" data-aos="fade-up">
 
@@ -42,7 +54,7 @@
 
     </div>
   </section> <!-- End Post Grid Section -->
-
+  
   {% if is_paginated %}
   <nav aria-label="Page navigation example" class="d-flex justify-content-center pt-3">
     <ul class="pagination">
