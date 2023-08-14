@@ -7,6 +7,8 @@ from .forms import NewsForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django_filters.views import FilterView
+from .filters import NewsFilter
 
 # Create your views here.
 
@@ -53,9 +55,10 @@ class CreateNews(NewsBase, CreateView):
         return super().form_valid(form)
 
 
-class MyNews(NewsBase, ListView):
+class MyNews(NewsBase, FilterView):
     template_name = "core/news_list.html"
-
+    filterset_class = NewsFilter
+    paginate_by = 1
 
 class MyNewsDetail(NewsBase, DetailView):
     pass
