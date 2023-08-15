@@ -1,1 +1,729 @@
-[{"model": "admin.logentry", "pk": 1, "fields": {"action_time": "2023-08-05T13:03:45.245Z", "user": 1, "content_type": 7, "object_id": "2", "object_repr": "bbb", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 2, "fields": {"action_time": "2023-08-05T13:03:57.958Z", "user": 1, "content_type": 7, "object_id": "1", "object_repr": "aaa", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 3, "fields": {"action_time": "2023-08-05T15:30:51.860Z", "user": 1, "content_type": 7, "object_id": "3", "object_repr": "as", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 4, "fields": {"action_time": "2023-08-05T15:30:57.728Z", "user": 1, "content_type": 7, "object_id": "2", "object_repr": "bbb", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 5, "fields": {"action_time": "2023-08-05T15:31:05.366Z", "user": 1, "content_type": 7, "object_id": "1", "object_repr": "aaa", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 6, "fields": {"action_time": "2023-08-05T15:59:58.964Z", "user": 1, "content_type": 7, "object_id": "3", "object_repr": "as", "action_flag": 2, "change_message": "[]"}}, {"model": "admin.logentry", "pk": 7, "fields": {"action_time": "2023-08-05T16:00:01.597Z", "user": 1, "content_type": 7, "object_id": "2", "object_repr": "bbb", "action_flag": 2, "change_message": "[]"}}, {"model": "admin.logentry", "pk": 8, "fields": {"action_time": "2023-08-05T16:00:03.865Z", "user": 1, "content_type": 7, "object_id": "1", "object_repr": "aaa", "action_flag": 2, "change_message": "[]"}}, {"model": "admin.logentry", "pk": 9, "fields": {"action_time": "2023-08-05T16:00:50.387Z", "user": 1, "content_type": 7, "object_id": "3", "object_repr": "as", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 10, "fields": {"action_time": "2023-08-05T16:00:56.032Z", "user": 1, "content_type": 7, "object_id": "2", "object_repr": "bbb", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 11, "fields": {"action_time": "2023-08-05T16:01:02.048Z", "user": 1, "content_type": 7, "object_id": "1", "object_repr": "aaa", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 12, "fields": {"action_time": "2023-08-05T17:27:42.357Z", "user": 1, "content_type": 7, "object_id": "3", "object_repr": "as", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 13, "fields": {"action_time": "2023-08-05T17:27:48.055Z", "user": 1, "content_type": 7, "object_id": "2", "object_repr": "bbb", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 14, "fields": {"action_time": "2023-08-05T17:27:53.050Z", "user": 1, "content_type": 7, "object_id": "1", "object_repr": "aaa", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 15, "fields": {"action_time": "2023-08-05T19:15:24.220Z", "user": 1, "content_type": 7, "object_id": "8", "object_repr": "frghj", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 16, "fields": {"action_time": "2023-08-05T19:15:30.782Z", "user": 1, "content_type": 7, "object_id": "7", "object_repr": "hjm,", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 17, "fields": {"action_time": "2023-08-05T19:15:38.016Z", "user": 1, "content_type": 7, "object_id": "6", "object_repr": "fgbh", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 18, "fields": {"action_time": "2023-08-05T19:15:45.000Z", "user": 1, "content_type": 7, "object_id": "5", "object_repr": "sdfghnm", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 19, "fields": {"action_time": "2023-08-05T19:15:50.415Z", "user": 1, "content_type": 7, "object_id": "4", "object_repr": "sdfghnm", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 20, "fields": {"action_time": "2023-08-05T19:24:31.797Z", "user": 1, "content_type": 7, "object_id": "8", "object_repr": "frghj", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"News type\", \"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 21, "fields": {"action_time": "2023-08-05T19:25:47.839Z", "user": 1, "content_type": 7, "object_id": "8", "object_repr": "æToday there is chance to prevent total ethnic cleansing of Nagorno Karabakh,Æ Ambassador-at-Large Edmon Marukyan", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"}}, {"model": "admin.logentry", "pk": 22, "fields": {"action_time": "2023-08-05T19:27:39.771Z", "user": 1, "content_type": 7, "object_id": "7", "object_repr": "Henrikh Mkhitaryan: Humanitarian access should be ensured across the Lachin corridor", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 23, "fields": {"action_time": "2023-08-05T19:30:56.944Z", "user": 1, "content_type": 7, "object_id": "6", "object_repr": "Bust of Legendary Gymnast Albert Azaryan Unveiled in Yerevan", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 24, "fields": {"action_time": "2023-08-05T19:33:20.285Z", "user": 1, "content_type": 7, "object_id": "5", "object_repr": "Armenian NGOs appeal to UNSC members with urgent call to action to address humanitarian crisis in Nagorno-Karabakh", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 25, "fields": {"action_time": "2023-08-05T19:35:40.800Z", "user": 1, "content_type": 7, "object_id": "4", "object_repr": "Garik Karapetyan: I dedicate my victory to Armenia and my people", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 26, "fields": {"action_time": "2023-08-05T19:38:09.733Z", "user": 1, "content_type": 7, "object_id": "3", "object_repr": "IDBank will issue dollar bonds", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 27, "fields": {"action_time": "2023-08-05T19:42:24.023Z", "user": 1, "content_type": 7, "object_id": "2", "object_repr": "Ukraine hits Russian oil tanker with sea drone hours after attacking naval base", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"}}, {"model": "admin.logentry", "pk": 28, "fields": {"action_time": "2023-08-05T19:46:19.296Z", "user": 1, "content_type": 7, "object_id": "1", "object_repr": "Armenian Deputy Education Minister Charged with Bribery", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"}}, {"model": "auth.permission", "pk": 1, "fields": {"name": "Can add log entry", "content_type": 1, "codename": "add_logentry"}}, {"model": "auth.permission", "pk": 2, "fields": {"name": "Can change log entry", "content_type": 1, "codename": "change_logentry"}}, {"model": "auth.permission", "pk": 3, "fields": {"name": "Can delete log entry", "content_type": 1, "codename": "delete_logentry"}}, {"model": "auth.permission", "pk": 4, "fields": {"name": "Can view log entry", "content_type": 1, "codename": "view_logentry"}}, {"model": "auth.permission", "pk": 5, "fields": {"name": "Can add permission", "content_type": 2, "codename": "add_permission"}}, {"model": "auth.permission", "pk": 6, "fields": {"name": "Can change permission", "content_type": 2, "codename": "change_permission"}}, {"model": "auth.permission", "pk": 7, "fields": {"name": "Can delete permission", "content_type": 2, "codename": "delete_permission"}}, {"model": "auth.permission", "pk": 8, "fields": {"name": "Can view permission", "content_type": 2, "codename": "view_permission"}}, {"model": "auth.permission", "pk": 9, "fields": {"name": "Can add group", "content_type": 3, "codename": "add_group"}}, {"model": "auth.permission", "pk": 10, "fields": {"name": "Can change group", "content_type": 3, "codename": "change_group"}}, {"model": "auth.permission", "pk": 11, "fields": {"name": "Can delete group", "content_type": 3, "codename": "delete_group"}}, {"model": "auth.permission", "pk": 12, "fields": {"name": "Can view group", "content_type": 3, "codename": "view_group"}}, {"model": "auth.permission", "pk": 13, "fields": {"name": "Can add user", "content_type": 4, "codename": "add_user"}}, {"model": "auth.permission", "pk": 14, "fields": {"name": "Can change user", "content_type": 4, "codename": "change_user"}}, {"model": "auth.permission", "pk": 15, "fields": {"name": "Can delete user", "content_type": 4, "codename": "delete_user"}}, {"model": "auth.permission", "pk": 16, "fields": {"name": "Can view user", "content_type": 4, "codename": "view_user"}}, {"model": "auth.permission", "pk": 17, "fields": {"name": "Can add content type", "content_type": 5, "codename": "add_contenttype"}}, {"model": "auth.permission", "pk": 18, "fields": {"name": "Can change content type", "content_type": 5, "codename": "change_contenttype"}}, {"model": "auth.permission", "pk": 19, "fields": {"name": "Can delete content type", "content_type": 5, "codename": "delete_contenttype"}}, {"model": "auth.permission", "pk": 20, "fields": {"name": "Can view content type", "content_type": 5, "codename": "view_contenttype"}}, {"model": "auth.permission", "pk": 21, "fields": {"name": "Can add session", "content_type": 6, "codename": "add_session"}}, {"model": "auth.permission", "pk": 22, "fields": {"name": "Can change session", "content_type": 6, "codename": "change_session"}}, {"model": "auth.permission", "pk": 23, "fields": {"name": "Can delete session", "content_type": 6, "codename": "delete_session"}}, {"model": "auth.permission", "pk": 24, "fields": {"name": "Can view session", "content_type": 6, "codename": "view_session"}}, {"model": "auth.permission", "pk": 25, "fields": {"name": "Can add news", "content_type": 7, "codename": "add_news"}}, {"model": "auth.permission", "pk": 26, "fields": {"name": "Can change news", "content_type": 7, "codename": "change_news"}}, {"model": "auth.permission", "pk": 27, "fields": {"name": "Can delete news", "content_type": 7, "codename": "delete_news"}}, {"model": "auth.permission", "pk": 28, "fields": {"name": "Can view news", "content_type": 7, "codename": "view_news"}}, {"model": "auth.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$600000$N3OFgiHqk3lCZFScRCFjJ7$jSkZJ7IC0GWHjkUBhEge4kxmjJvsmvpHjlBo4DyvXKo=", "last_login": "2023-08-05T16:17:50.489Z", "is_superuser": true, "username": "admin", "first_name": "", "last_name": "", "email": "avagyan.anie@gmail.com", "is_staff": true, "is_active": true, "date_joined": "2023-08-05T12:40:05.790Z", "groups": [], "user_permissions": []}}, {"model": "contenttypes.contenttype", "pk": 1, "fields": {"app_label": "admin", "model": "logentry"}}, {"model": "contenttypes.contenttype", "pk": 2, "fields": {"app_label": "auth", "model": "permission"}}, {"model": "contenttypes.contenttype", "pk": 3, "fields": {"app_label": "auth", "model": "group"}}, {"model": "contenttypes.contenttype", "pk": 4, "fields": {"app_label": "auth", "model": "user"}}, {"model": "contenttypes.contenttype", "pk": 5, "fields": {"app_label": "contenttypes", "model": "contenttype"}}, {"model": "contenttypes.contenttype", "pk": 6, "fields": {"app_label": "sessions", "model": "session"}}, {"model": "contenttypes.contenttype", "pk": 7, "fields": {"app_label": "core", "model": "news"}}, {"model": "sessions.session", "pk": "0bqq0n8nbkvvgu5p562tsyhep0f48119", "fields": {"session_data": ".eJxVjEsOAiEQBe_C2hAa-TQu3XsG0kArowaSYWZlvLtOMgvdvqp6LxFpXWpcB89xKuIkQBx-t0T5wW0D5U7t1mXubZmnJDdF7nTISy_8PO_u30GlUb-1MgbRFQ-JbUno-eiAAqL1qDNYQ1kzEgR1RUfMuRgDmlUGDiEkQvH-AM5TN7c:1qSJyQ:tScBPG_i9LMXsmKIhEqB8OGpV50TrW0W7QK5eZeCfd8", "expire_date": "2023-08-19T16:17:50.489Z"}}, {"model": "core.news", "pk": 1, "fields": {"title": "Armenian Deputy Education Minister Charged with Bribery", "description": "Armenian Deputy Minister of Education, Science, Culture and Sports Gevorg Lorestyan has been charged with largescale bribe taking.\r\n\r\nLoretsyanÆs chauffeur and a president of one of ArmeniaÆs football clubs were also charged with the same offence.\r\n\r\nAll three, arrested on December 4, will be detained.\r\n\r\nThe National Security Service claims that Loretsyan, via his chauffeur, received bribes from the football club president, who is also a supplier of sports gear, in return for a government sports clothing contract.", "date": "2023-08-05T19:46:19.296Z", "news_type": "8", "user": 1, "image": "images/loretsyan.jpg"}}, {"model": "core.news", "pk": 2, "fields": {"title": "Ukraine hits Russian oil tanker with sea drone hours after attacking naval base", "description": "Kyiv, Ukraine CNN  ù \r\n\r\nOne of RussiaÆs biggest oil tankers was struck by a maritime drone, the latest salvo in a Ukrainian military campaign employing unmanned vehicles to attack far-away Russian targets by air and by sea.\r\n\r\nThe Russian-flagged ship, the Sig, was hit by a drone carrying 450 kilograms (992 pounds) of TNT shortly before midnight, according to a Ukraine Security Service source. The strike created a hole in the vesselÆs engine room at the waterline on the starboard side, forcing the 11-strong crew to fight the water intake, Russian authorities said. The flooding eventually stopped.\r\n\r\nRussiaÆs Federal Agency for Marine and River Transport said no casualties were reported and that the Sig was not carrying oil when the drone crashed into ship. Ukrainian officials, however, said some crew were injured and that the tanker was carrying fuel for the Russian military.\r\n\r\nCNN has not been able to independently verify the claims.\r\n\r\nThe strike on the Sig came just hours after Ukrainian sea drones targeted a major naval base in Novorossiysk, a coastal city on the Black Sea that is home to RussiaÆs largest port by volume of cargo handled. An amphibious Russian landing ship was hit, leaving it tilting badly and sitting very low in the water.\r\n\r\nUkraine has stepped up its attacks using unmanned aerial vehicles in recent weeks, hitting targets well within Russian territory, including in Moscow. \r\n\r\n The new generation of powerful sea drones, however, could open up a new front for Kyiv in the 18-month conflict.\r\n\r\nThe weapons are fast, semi-submersible drones, and are proving very difficult to defend against. They can be easily launched at sea and at least some variants are capable of traveling several hundred miles to their targets.\r\n\r\nTheir payloads so far have proven capable of crippling large vessels.\r\n\r\n The two sea-based attacks Friday took place near the Kerch Strait, which connects the Crimean Peninsula to mainland Russia.\r\n\r\nAfter illegally annexing the peninsula in 2014, the Kremlin spent around $3.7 billion to both physically and symbolically connect Crimea to Russia by bridge. Russian President Vladimir Putin personally led a convoy over the 12-mile overpass û EuropeÆs longest û to celebrate its opening in 2018.\r\n\r\nThe Kerch Bridge has been targeted several times since Russia invaded Ukraine last year. An explosion in October killed three people and collapsed part of the roadway and Ukrainian forces attacked the bridge last month.\r\n\r\nFridayÆs assault, however, appeared to be one of the biggest to date. In addition to the attacks on the Sig and the naval base, Friday morning saw Ukrainian aerial drones target an oil storage facility in Feodosia, a town on the Crimean PeninsulaÆs south coast. Ten unmanned aerial vehicles in total were downed over Crimea, according to RussiaÆs Defense Ministry\r\n\r\nUkrainian authorities have vowed to continue targeting the bridge and ships navigating Ukrainian territorial waters, even if they are controlled by Russia. The head of the Ukrainian Security Service, Vasyl Maliuk, called such attacks ôabsolutely logical and effective.ö\r\n\r\nMaliuk said that if the Russians wanted such incidents to stop, ôthey have the only option to do so û to leave the territorial waters of Ukraine and our land.ö\r\n\r\nUkraineÆs State Hydrological Service also warned ships against using several Russian ports due to the war.\r\n\r\nUkrainian agencies, especially the Security Service, have been notably vocal about the use of these drones in the Black Sea after months of reticence.\r\n\r\nTheir use is both a moral boost and battlefield advantage, allowing Kyiv to exploit a new, domestically engineered technology at sea while its forces are are struggling to take ground in the counteroffensive on land.", "date": "2023-08-05T19:42:24.019Z", "news_type": "3", "user": 1, "image": "images/Untitled.jpg"}}, {"model": "core.news", "pk": 3, "fields": {"title": "IDBank will issue dollar bonds", "description": 
+[
+    {
+        "model": "admin.logentry",
+        "pk": 1,
+        "fields": {
+            "action_time": "2023-08-05T13:03:45.245Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "bbb",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 2,
+        "fields": {
+            "action_time": "2023-08-05T13:03:57.958Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "aaa",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 3,
+        "fields": {
+            "action_time": "2023-08-05T15:30:51.860Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "3",
+            "object_repr": "as",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 4,
+        "fields": {
+            "action_time": "2023-08-05T15:30:57.728Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "bbb",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 5,
+        "fields": {
+            "action_time": "2023-08-05T15:31:05.366Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "aaa",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 6,
+        "fields": {
+            "action_time": "2023-08-05T15:59:58.964Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "3",
+            "object_repr": "as",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 7,
+        "fields": {
+            "action_time": "2023-08-05T16:00:01.597Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "bbb",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 8,
+        "fields": {
+            "action_time": "2023-08-05T16:00:03.865Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "aaa",
+            "action_flag": 2,
+            "change_message": "[]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 9,
+        "fields": {
+            "action_time": "2023-08-05T16:00:50.387Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "3",
+            "object_repr": "as",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 10,
+        "fields": {
+            "action_time": "2023-08-05T16:00:56.032Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "bbb",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 11,
+        "fields": {
+            "action_time": "2023-08-05T16:01:02.048Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "aaa",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 12,
+        "fields": {
+            "action_time": "2023-08-05T17:27:42.357Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "3",
+            "object_repr": "as",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 13,
+        "fields": {
+            "action_time": "2023-08-05T17:27:48.055Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "bbb",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 14,
+        "fields": {
+            "action_time": "2023-08-05T17:27:53.050Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "aaa",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 15,
+        "fields": {
+            "action_time": "2023-08-05T19:15:24.220Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "8",
+            "object_repr": "frghj",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 16,
+        "fields": {
+            "action_time": "2023-08-05T19:15:30.782Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "7",
+            "object_repr": "hjm,",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 17,
+        "fields": {
+            "action_time": "2023-08-05T19:15:38.016Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "6",
+            "object_repr": "fgbh",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 18,
+        "fields": {
+            "action_time": "2023-08-05T19:15:45.000Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "5",
+            "object_repr": "sdfghnm",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 19,
+        "fields": {
+            "action_time": "2023-08-05T19:15:50.415Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "4",
+            "object_repr": "sdfghnm",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 20,
+        "fields": {
+            "action_time": "2023-08-05T19:24:31.797Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "8",
+            "object_repr": "frghj",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"News type\", \"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 21,
+        "fields": {
+            "action_time": "2023-08-05T19:25:47.839Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "8",
+            "object_repr": "æToday there is chance to prevent total ethnic cleansing of Nagorno Karabakh,Æ Ambassador-at-Large Edmon Marukyan",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 22,
+        "fields": {
+            "action_time": "2023-08-05T19:27:39.771Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "7",
+            "object_repr": "Henrikh Mkhitaryan: Humanitarian access should be ensured across the Lachin corridor",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 23,
+        "fields": {
+            "action_time": "2023-08-05T19:30:56.944Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "6",
+            "object_repr": "Bust of Legendary Gymnast Albert Azaryan Unveiled in Yerevan",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 24,
+        "fields": {
+            "action_time": "2023-08-05T19:33:20.285Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "5",
+            "object_repr": "Armenian NGOs appeal to UNSC members with urgent call to action to address humanitarian crisis in Nagorno-Karabakh",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 25,
+        "fields": {
+            "action_time": "2023-08-05T19:35:40.800Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "4",
+            "object_repr": "Garik Karapetyan: I dedicate my victory to Armenia and my people",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 26,
+        "fields": {
+            "action_time": "2023-08-05T19:38:09.733Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "3",
+            "object_repr": "IDBank will issue dollar bonds",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 27,
+        "fields": {
+            "action_time": "2023-08-05T19:42:24.023Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "2",
+            "object_repr": "Ukraine hits Russian oil tanker with sea drone hours after attacking naval base",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 28,
+        "fields": {
+            "action_time": "2023-08-05T19:46:19.296Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "Armenian Deputy Education Minister Charged with Bribery",
+            "action_flag": 2,
+            "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Description\", \"News type\", \"Image\"]}}]"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add user",
+            "content_type": 4,
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change user",
+            "content_type": 4,
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete user",
+            "content_type": 4,
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view user",
+            "content_type": 4,
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 5,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 5,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 5,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 5,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 6,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 6,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 6,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 6,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add news",
+            "content_type": 7,
+            "codename": "add_news"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change news",
+            "content_type": 7,
+            "codename": "change_news"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete news",
+            "content_type": 7,
+            "codename": "delete_news"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view news",
+            "content_type": 7,
+            "codename": "view_news"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$N3OFgiHqk3lCZFScRCFjJ7$jSkZJ7IC0GWHjkUBhEge4kxmjJvsmvpHjlBo4DyvXKo=",
+            "last_login": "2023-08-05T16:17:50.489Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "avagyan.anie@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2023-08-05T12:40:05.790Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "core",
+            "model": "news"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "0bqq0n8nbkvvgu5p562tsyhep0f48119",
+        "fields": {
+            "session_data": ".eJxVjEsOAiEQBe_C2hAa-TQu3XsG0kArowaSYWZlvLtOMgvdvqp6LxFpXWpcB89xKuIkQBx-t0T5wW0D5U7t1mXubZmnJDdF7nTISy_8PO_u30GlUb-1MgbRFQ-JbUno-eiAAqL1qDNYQ1kzEgR1RUfMuRgDmlUGDiEkQvH-AM5TN7c:1qSJyQ:tScBPG_i9LMXsmKIhEqB8OGpV50TrW0W7QK5eZeCfd8",
+            "expire_date": "2023-08-19T16:17:50.489Z"
+        }
+    },
+    {
+        "model": "core.news",
+        "pk": 1,
+        "fields": {
+            "title": "Armenian Deputy Education Minister Charged with Bribery",
+            "description": "Armenian Deputy Minister of Education, Science, Culture and Sports Gevorg Lorestyan has been charged with largescale bribe taking.\r\n\r\nLoretsyanÆs chauffeur and a president of one of ArmeniaÆs football clubs were also charged with the same offence.\r\n\r\nAll three, arrested on December 4, will be detained.\r\n\r\nThe National Security Service claims that Loretsyan, via his chauffeur, received bribes from the football club president, who is also a supplier of sports gear, in return for a government sports clothing contract.",
+            "date": "2023-08-05T19:46:19.296Z",
+            "news_type": "8",
+            "user": 1,
+            "image": "images/loretsyan.jpg"
+        }
+    },
+    {
+        "model": "core.news",
+        "pk": 2,
+        "fields": {
+            "title": "Ukraine hits Russian oil tanker with sea drone hours after attacking naval base",
+            "description": "Kyiv, Ukraine CNN  ù \r\n\r\nOne of RussiaÆs biggest oil tankers was struck by a maritime drone, the latest salvo in a Ukrainian military campaign employing unmanned vehicles to attack far-away Russian targets by air and by sea.\r\n\r\nThe Russian-flagged ship, the Sig, was hit by a drone carrying 450 kilograms (992 pounds) of TNT shortly before midnight, according to a Ukraine Security Service source. The strike created a hole in the vesselÆs engine room at the waterline on the starboard side, forcing the 11-strong crew to fight the water intake, Russian authorities said. The flooding eventually stopped.\r\n\r\nRussiaÆs Federal Agency for Marine and River Transport said no casualties were reported and that the Sig was not carrying oil when the drone crashed into ship. Ukrainian officials, however, said some crew were injured and that the tanker was carrying fuel for the Russian military.\r\n\r\nCNN has not been able to independently verify the claims.\r\n\r\nThe strike on the Sig came just hours after Ukrainian sea drones targeted a major naval base in Novorossiysk, a coastal city on the Black Sea that is home to RussiaÆs largest port by volume of cargo handled. An amphibious Russian landing ship was hit, leaving it tilting badly and sitting very low in the water.\r\n\r\nUkraine has stepped up its attacks using unmanned aerial vehicles in recent weeks, hitting targets well within Russian territory, including in Moscow. \r\n\r\n The new generation of powerful sea drones, however, could open up a new front for Kyiv in the 18-month conflict.\r\n\r\nThe weapons are fast, semi-submersible drones, and are proving very difficult to defend against. They can be easily launched at sea and at least some variants are capable of traveling several hundred miles to their targets.\r\n\r\nTheir payloads so far have proven capable of crippling large vessels.\r\n\r\n The two sea-based attacks Friday took place near the Kerch Strait, which connects the Crimean Peninsula to mainland Russia.\r\n\r\nAfter illegally annexing the peninsula in 2014, the Kremlin spent around $3.7 billion to both physically and symbolically connect Crimea to Russia by bridge. Russian President Vladimir Putin personally led a convoy over the 12-mile overpass û EuropeÆs longest û to celebrate its opening in 2018.\r\n\r\nThe Kerch Bridge has been targeted several times since Russia invaded Ukraine last year. An explosion in October killed three people and collapsed part of the roadway and Ukrainian forces attacked the bridge last month.\r\n\r\nFridayÆs assault, however, appeared to be one of the biggest to date. In addition to the attacks on the Sig and the naval base, Friday morning saw Ukrainian aerial drones target an oil storage facility in Feodosia, a town on the Crimean PeninsulaÆs south coast. Ten unmanned aerial vehicles in total were downed over Crimea, according to RussiaÆs Defense Ministry\r\n\r\nUkrainian authorities have vowed to continue targeting the bridge and ships navigating Ukrainian territorial waters, even if they are controlled by Russia. The head of the Ukrainian Security Service, Vasyl Maliuk, called such attacks ôabsolutely logical and effective.ö\r\n\r\nMaliuk said that if the Russians wanted such incidents to stop, ôthey have the only option to do so û to leave the territorial waters of Ukraine and our land.ö\r\n\r\nUkraineÆs State Hydrological Service also warned ships against using several Russian ports due to the war.\r\n\r\nUkrainian agencies, especially the Security Service, have been notably vocal about the use of these drones in the Black Sea after months of reticence.\r\n\r\nTheir use is both a moral boost and battlefield advantage, allowing Kyiv to exploit a new, domestically engineered technology at sea while its forces are are struggling to take ground in the counteroffensive on land.",
+            "date": "2023-08-05T19:42:24.019Z",
+            "news_type": "3",
+            "user": 1,
+            "image": "images/Untitled.jpg"
+        }
+    },
+    {
+        "model": "core.news",
+        "pk": 3,
+        "fields": {
+            "title": "IDBank will issue dollar bonds",
+            "description":
