@@ -87,3 +87,12 @@ class MyNewsDelete(LoginRequiredMixin, DeleteView):
     def form_valid(self, form):
         messages.info(self.request, "News instance is deleted!")
         return super().form_valid(form)
+
+
+def search(request):
+    news = News.objects.all()
+    return render(request, "search_result.html", context={"news": news})
+
+def single_post(request):
+    news = News.objects.all()
+    return render(request, "single-post.html", context={"news": news})
