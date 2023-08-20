@@ -17,7 +17,7 @@
             <div class="info-item">
               <i class="bi bi-geo-alt"></i>
               <h3>Address</h3>
-              <address>A108 Adam Street, NY 535022, USA</address>
+              <address>2/2 Melik-Adamyan str, Yerevan, RA</address>
             </div>
           </div><!-- End Info Item -->
 
@@ -25,7 +25,7 @@
             <div class="info-item info-item-borders">
               <i class="bi bi-phone"></i>
               <h3>Phone Number</h3>
-              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+              <p><a href="tel:+155895548855">+374 91 11 11 11</a></p>
             </div>
           </div><!-- End Info Item -->
 
@@ -33,27 +33,52 @@
             <div class="info-item">
               <i class="bi bi-envelope"></i>
               <h3>Email</h3>
-              <p><a href="mailto:info@example.com">info@example.com</a></p>
+              <p><a href="mailto:info@example.com">info@agbu.am</a></p>
             </div>
           </div><!-- End Info Item -->
 
         </div>
 
         <div class="form mt-5">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form action="/" method="post" role="form" class="php-email-form">
+            {% csrf_token %}
             <div class="row">
               <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                <input 
+                  type="text" 
+                  name="full_name" 
+                  class="form-control" 
+                  id="name" 
+                  placeholder="Full Name" 
+                  required>
               </div>
               <div class="form-group col-md-6">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  name="email" 
+                  id="email" 
+                  placeholder="Your Email" 
+                  required>
               </div>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              <input 
+                type="text" 
+                class="form-control" 
+                name="subject" 
+                id="subject" 
+                placeholder="Subject" 
+                required>
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              <textarea 
+                class="form-control" 
+                name="message" 
+                rows="5" 
+                placeholder="Message" 
+                required>
+              </textarea>
             </div>
             <div class="my-3">
               <div class="loading">Loading</div>

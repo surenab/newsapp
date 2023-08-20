@@ -3,7 +3,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render
 from .models import *
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
-from .forms import NewsForm
+from .forms import NewsForm, MessageForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -87,3 +87,19 @@ class MyNewsDelete(LoginRequiredMixin, DeleteView):
     def form_valid(self, form):
         messages.info(self.request, "News instance is deleted!")
         return super().form_valid(form)
+
+
+def contact(request):
+    status = 200
+
+    if request.method == "POST":
+        print("POSTED DATA")
+        print(request.POST)
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            status = 201
+        else:
+            print("TELL them that sent data is not valid")
+    messageForm = MessageForm()
+    return render(request=request, template_name="contact.html", context= {"messageForm": messageForm}, status=status)

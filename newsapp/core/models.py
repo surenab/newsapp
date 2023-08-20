@@ -39,3 +39,10 @@ class Team(models.Model):
 
     def get_absolute_url(self):
         return reverse('post', kwargs={'post_id': self.pk})
+
+
+class Message(models.Model):
+    full_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
+    message = models.TextField(max_length=1000)

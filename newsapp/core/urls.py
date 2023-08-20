@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate, MyNewsDelete, profile
+from .views import home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate, MyNewsDelete, profile, contact
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -13,4 +13,7 @@ urlpatterns = [
     path("my-news/update/<int:pk>", MyNewsUpdate.as_view(), name="my_news_update"),
     path("my-news/delete/<int:pk>", MyNewsDelete.as_view(), name="my_news_delete"),
     path('profile', profile, name = "profile"),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('contact', contact, name = "contact"),
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
