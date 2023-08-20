@@ -62,7 +62,6 @@ class CreateNews(NewsBase, CreateView):
 class MyNews(NewsBase, FilterView):
     template_name = "core/news_list.html"
     filterset_class = NewsFilter
-    template_name = "core/news_list.html"
     paginate_by = 2
 
 
@@ -103,3 +102,9 @@ def contact(request):
             print("TELL them that sent data is not valid")
     messageForm = MessageForm()
     return render(request=request, template_name="contact.html", context= {"messageForm": messageForm}, status=status)
+
+
+class Filter(NewsBase, FilterView):
+    template_name = "core/all_news.html"
+    filterset_class = NewsFilter
+    paginate_by = 3

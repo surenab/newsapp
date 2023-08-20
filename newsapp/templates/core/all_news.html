@@ -1,0 +1,80 @@
+{% extends 'base_home.html' %} {% load static %}
+{% block bodycontent %}
+{% load crispy_forms_tags %}
+{% load pagination_tags %}
+
+<form class="filter-form" method="get">
+    <div class="filter-field">
+        {{ filter.form.date.label_tag }} {{ filter.form.date }}
+    </div>
+    <div class="filter-field">
+        {{ filter.form.news_type.label_tag }} {{ filter.form.news_type }}
+    </div>
+    <div class="filter-field">
+        {{ filter.form.user.label_tag }} {{ filter.form.user }}
+    </div>
+    <button type="submit" class="filter-submit">Apply Filters</button>
+</form>
+
+<section id="posts" class="posts">
+    <div class="container" data-aos="fade-up">
+        <div class="col-lg-8">
+            <div class="row g-5">
+              <div class="post-entry-1 lg">
+                {% for new in news %}
+                <div class="post-entry-1">
+                  
+                  <a href="single-post.html">
+                    {% if new.image %}
+                      <img src="{{new.image.url}}" alt="" class="img-details">
+                  </a>
+                  <div class="post-meta">
+                    <span class="date">{{new.get_news_type_display}}</span>
+                    <span class="mx-1">&bullet;</span> <span>{{new.date}}</span>
+                  </div>
+                  <h2><a href="single-post.html">{{new.title}}</a></h2>
+                  <span><a type="button" class="btn btn-primary" href="{% url 'my_news_details' new.id %}"><i
+                    class="far fa-eye"></i></a>
+                  <a type="button" class="btn btn-success" href="{% url 'my_news_update' new.id %}"><i
+                    class="fas fa-edit"></i></a>
+                  <a type="button" class="btn btn-danger" href="{% url 'my_news_delete' new.id %}"><i
+                    class="far fa-trash-alt"></i></a></span>
+                </div>
+                <hr>
+                {% else %}
+                  <h3>You have no posts yet.</h3>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if is_paginated %}
+  <nav aria-label="Page navigation example" class="d-flex justify-content-center pt-3">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li style="margin-right: 10px;"><a class="pagination-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}">Prev</a></li>
+      {% else %}
+        <li style="margin-right: 10px;" class="disabled"><span>Prev</span></li>
+      {% endif %}
+      
+      {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+            <li class="active"><span class="active-page">{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+            <li><a href="?{% url_replace request 'page' i %}" class="pagination-link">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      
+      {% if page_obj.has_next %}
+        <li style="margin-left: 10px;"><a href="?{% url_replace request 'page' page_obj.next_page_number %}" class="pagination-link">Next</a></li>
+      {% else %}
+        <li style="margin-right: 10px;" class="disabled"><span>Next</span></li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
+
+{% endblock %}
