@@ -91,7 +91,7 @@ class MyNewsDelete(LoginRequiredMixin, DeleteView):
 
 def search(request):
     news = News.objects.all()
-    return render(request, "search_result.html", context={"news": news})
+    return render(request, "search-result.html", context={"news": news})
 
 def single_post(request):
     news = News.objects.all()
@@ -117,3 +117,8 @@ class Filter(NewsBase, FilterView):
     template_name = "core/all_news.html"
     filterset_class = NewsFilter
     paginate_by = 3
+
+
+def category(request):
+    news = News.objects.all()
+    return render(request, "category.html", context={"news": news})
