@@ -88,6 +88,15 @@ class MyNewsDelete(LoginRequiredMixin, DeleteView):
         return super().form_valid(form)
 
 
+
+def search(request):
+    news = News.objects.all()
+    return render(request, "search_result.html", context={"news": news})
+
+def single_post(request):
+    news = News.objects.all()
+    return render(request, "single-post.html", context={"news": news})
+
 def contact(request):
     status = 200
 
