@@ -110,7 +110,7 @@ def contact(request):
         else:
             print("TELL them that sent data is not valid")
     messageForm = MessageForm()
-    return render(request=request, template_name="contact.html", context= {"messageForm": messageForm}, status=status)
+    return render(request, "contact.html", context= {"messageForm": messageForm}, status=status)
 
 
 class Filter(NewsBase, FilterView):

@@ -46,3 +46,6 @@ class Message(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=100)
     message = models.TextField(max_length=1000)
+
+    def __str__(self) -> str:
+        return self.full_name
