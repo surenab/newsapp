@@ -1,16 +1,16 @@
-from typing import Any
+from typing import Any, Dict
 from django.db.models.query import QuerySet
 from django.shortcuts import render
 from .models import *
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
-from .forms import NewsForm, MessageForm
+from .forms import NewsForm, MessageForm, NewsCommentForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django_filters.views import FilterView
 from .filters import NewsFilter
 from django_filters.views import FilterView
-from .models import News
+from .models import News, NewsComment
 
 
 
@@ -50,6 +50,22 @@ class NewsBase(Base):
         return super().form_valid(form)
 
 
+class CreateNewsComment(CreateView):
+    model = NewsComment
+    form_class = NewsCommentForm
+    success_url = reverse_lazy("my_news")
+    success_text = "Successfully created!"
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("my_news_details", kwargs = {"pk": self.request.POST.get("news")})
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        
+        messages.success(self.request, "News Comment instance is created.")
+        return super().form_valid(form)
+
+
 class CreateNews(NewsBase, CreateView):
     template_name = "create_news.html"
 
@@ -66,7 +82,18 @@ class MyNews(NewsBase, FilterView):
 
 
 class MyNewsDetail(NewsBase, DetailView):
-    pass
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        data = super().get_context_data(**kwargs)
+        data["comment_form"] = NewsCommentForm
+        data["comments"] = NewsComment.objects.filter(news=data["news"])
+        return data
+
+# class NewsDetail(NewsBase, DetailView):
+#     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+#         data = super().get_context_data(**kwargs)
+#         data["comment_form"] = NewsCommentForm
+#         data["comments"] = NewsComment.objects.filter(news=data["news"])
+#         return data
 
 
 class MyNewsUpdate(NewsBase, UpdateView):

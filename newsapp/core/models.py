@@ -49,3 +49,12 @@ class Message(models.Model):
 
     def __str__(self) -> str:
         return self.full_name
+
+
+class NewsComment(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    news = models.ForeignKey(News, on_delete=models.CASCADE)
+    text = models.TextField(max_length=1000)
+
+    def __str__(self) -> str:
+        return f"{self.owner.username} is commented {self.text}"
