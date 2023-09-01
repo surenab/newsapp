@@ -15,7 +15,9 @@
     </div>
     <button type="submit" class="filter-submit">Apply Filters</button>
 </form>
-
+<div>
+<a type="button" class="button-74" href="{% url 'create_news' %}">Create News</a>
+</div>
 <section id="posts" class="posts">
     <div class="container" data-aos="fade-up">
         <div class="col-lg-8">
@@ -24,7 +26,7 @@
                 {% for new in news %}
                 <div class="post-entry-1">
                   
-                  <a href="single-post.html">
+                  <a href="../../single-post">
                     {% if new.image %}
                       <img src="{{new.image.url}}" alt="" class="img-details">
                   </a>
@@ -32,7 +34,7 @@
                     <span class="date">{{new.get_news_type_display}}</span>
                     <span class="mx-1">&bullet;</span> <span>{{new.date}}</span>
                   </div>
-                  <h2><a href="single-post.html">{{new.title}}</a></h2>
+                  <h2><a href="../../single-post">{{new.title}}</a></h2>
                   <span><a type="button" class="btn btn-primary" href="{% url 'my_news_details' new.id %}"><i
                     class="far fa-eye"></i></a>
                   <a type="button" class="btn btn-success" href="{% url 'my_news_update' new.id %}"><i

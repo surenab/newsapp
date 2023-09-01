@@ -1,9 +1,8 @@
+{% extends 'base_home.html' %} 
+{% block bodycontent %}
 {% load static %}
 {% load crispy_forms_tags %}
-#userform .nav-tabs.nav-justified > .active > a:hover {
-  color: #968952;
-  background:rgba(20, 17, 2, 0.5);
-}
+
 
 <html lang="en">
   <head>
@@ -16,10 +15,6 @@
         <div class="container">
           <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
             <div id="userform">
-              <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li class="active"><a href="/"  role="tab" data-toggle="tab">Home Page</a></li>
-                <li class="active"><a href="../accounts/logout"  role="tab" data-toggle="tab">Logout</a></li>
-              </ul>
               <div class="tab-content">
                 <div class="tab-pane fade active in" id="signup">
                   <h2 class="text-uppercase text-center">Create News</h2>
@@ -39,3 +34,5 @@
     </div>
   </body>
 </html>
+
+{% endblock %}
