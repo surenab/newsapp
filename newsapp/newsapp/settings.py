@@ -159,3 +159,5 @@ MESSAGE_TAGS = {
     constants.WARNING: 'alert-warning',
     constants.DEBUG: 'alert-light',
 }
+
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
