@@ -1,5 +1,5 @@
 from django import forms
-from .models import News, Message
+from .models import News, Message, NewsComment
 
 
 class NewsForm(forms.ModelForm):
@@ -31,3 +31,11 @@ class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
         exclude = ()
+
+
+class NewsCommentForm(forms.ModelForm):
+    text = forms.Textarea()
+
+    class Meta:
+        model = NewsComment
+        fields = ["news", "text"]
