@@ -57,7 +57,7 @@
 
             {% for new in news|slice:":1" %}
             <div class="post-entry-1">
-              <a href="single_post"><img src="{{new.image.url}}" alt="" class="img-fluid" width="200" hoght="150"></a>
+              <a href="single_post"><img src="{{new.image.url}}" alt="" class="img-fluid fixed-size-image"></a>
               <div class="post-meta"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span>
                 <span class="mx-1">&bullet;</span>Viewes: {{new.view_count}}</span> </div>
               <h2><a href="single_post">{{new.title}}</a></h2>
