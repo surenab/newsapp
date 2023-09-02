@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from PIL import Image
+
+
 # Create your models here.
 User = get_user_model()
 
@@ -23,9 +26,19 @@ class News(models.Model):
     news_type = models.CharField(choices=NEWS_TYPES, default="4", max_length=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', default=None, null=True, blank=True)
+    view_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title}, {self.news_type}, {self.user},{self.date}"
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.image.path)
+
+        if img.height > 400 or img.width > 700:
+            output_size = (400, 700)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
 
 
 class Team(models.Model):
@@ -46,15 +59,18 @@ class Message(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=100)
     message = models.TextField(max_length=1000)
+    date = models.DateTimeField(auto_now_add=True, blank = True, null = True)
 
     def __str__(self) -> str:
-        return self.full_name
+        return f"{self.full_name}, {self.date}"
 
 
 class NewsComment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     news = models.ForeignKey(News, on_delete=models.CASCADE)
-    text = models.TextField(max_length=1000)
+    text = models.TextField(max_length=500)
+    date = models.DateTimeField(auto_now_add=True, blank = True, null = True)
 
     def __str__(self) -> str:
         return f"{self.owner.username} is commented {self.text}"
+    

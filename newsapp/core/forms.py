@@ -14,8 +14,11 @@ class NewsForm(forms.ModelForm):
         ("8", "Crime")
     )
 
-    news_type = forms.ChoiceField(choices=NEWS_TYPES)
+    title = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder': 'Title'}))
+    description = forms.CharField(label="", widget=forms.Textarea(attrs={'placeholder': 'News Description'}))
+    news_type = forms.ChoiceField(label="", choices=NEWS_TYPES, widget=forms.Select())
     image = forms.ImageField(label="")
+    
     class Meta:
         model = News
 
@@ -38,4 +41,4 @@ class NewsCommentForm(forms.ModelForm):
 
     class Meta:
         model = NewsComment
-        fields = ["news", "text"]
+        fields = ["text"]

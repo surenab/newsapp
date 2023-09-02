@@ -166,17 +166,19 @@
             <h3 class="footer-heading">Recent News</h3>
 
             <ul class="footer-links footer-blog-entry list-unstyled">
+              {% for new in news|slice:":3" %}
                 <li>
-                    <a href="../../single_post" class="d-flex align-items-center">
-                      <img src="{% static 'assets/img/Arayik.jpg' %}" alt="" class="img-fluid me-3">
+                    <a href="single_post" class="d-flex align-items-center">
+                      <img src="{{new.image.url}}" alt="" class="img-fluid me-3">
                       <div>
-                        <div class="post-meta d-block"><span class="date">Political</span> <span class="mx-1">&bullet;</span> <span>09.08.2023</span></div>
-                        <span>President sends urgent appeal to international community to take immediate action to prevent genocide of NKR people</span>
+                        <div class="post-meta d-block"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span></div>
+                        <span>{{new.title}}</span>
                       </div>
                     </a>
                 </li>
-              <li>
-                <a href="../../single_post" class="d-flex align-items-center">
+                {% endfor %}
+              <!-- <li>
+                <a href="single_post" class="d-flex align-items-center">
                   <img src="{% static 'assets/img/post-sq-2.jpg' %}" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
@@ -186,7 +188,7 @@
               </li>
 
               <li>
-                <a href="../../single_post" class="d-flex align-items-center">
+                <a href="single_post" class="d-flex align-items-center">
                   <img src="{% static 'assets/img/post-sq-3.jpg' %}" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
@@ -196,14 +198,14 @@
               </li>
 
               <li>
-                <a href="../../single_post" class="d-flex align-items-center">
+                <a href="single_post" class="d-flex align-items-center">
                   <img src="{% static 'assets/img/post-sq-4.jpg' %}" alt="" class="img-fluid me-3">
                   <div>
                     <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
                     <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
                   </div>
                 </a>
-              </li>
+              </li> -->
 
             </ul>
 

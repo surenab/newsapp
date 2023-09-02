@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate, MyNewsDelete, profile, search, single_post, contact, Filter, category, CreateNewsComment
+from .views import Home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate, MyNewsDelete, profile, search, single_post, Contact, Filter, category, CreateNewsComment, NewsDetails
 from django.conf.urls.static import static
 from django.conf import settings
 
 
 urlpatterns = [
-    path('', home, name = "home"),
+    path('', Home.as_view(), name = "home"),
     path('my-news/create-news', CreateNews.as_view(), name = "create_news"),
     path('about', about, name = "about"),
     path('my-news', MyNews.as_view(), name = "my_news"),
@@ -15,10 +15,11 @@ urlpatterns = [
     path('profile/', profile, name = "profile"),
     path("search/", search, name="search"),
     path("single-post/", single_post, name="single_post"),
-    path('contact/', contact, name = "contact"),
+    path('contact/', Contact.as_view(), name = "contact"),
     path('filter/', Filter.as_view(), name = "filter"),
     path('category/', category, name = "category"),
     path('my-news/create-comment', CreateNewsComment.as_view(), name = "create-comment"),
+    path("news/details/<int:pk>", NewsDetails.as_view(), name="news_details"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
