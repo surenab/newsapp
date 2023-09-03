@@ -583,6 +583,8 @@ section {
 
 .post-entry-1 img {
   margin-bottom: 30px;
+  width: 300px !important;
+  height: 200px !important;
 }
 
 .post-entry-1 h2 {
