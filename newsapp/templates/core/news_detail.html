@@ -3,12 +3,12 @@
 
 <section id="posts" class="posts">
     <div class="container" data-aos="fade-up">
-        <div class="post-meta">ID is:    {{news.id}}</div>
-        <div class="post-meta">Type is:    {{news.get_news_type_display}}</div>
-        <div class="post-meta">Date is:    {{news.date}}</div>
-        <div class="post-meta">Title is:    {{news.title}}</div>
-        <div class="post-meta">Image is:    <img src="{{news.image.url}}" alt="" class="img-fluid"></div>
-        <div class="post-meta">Description is:    {{news.description}}</div>
+        <div class="post-meta"></div>
+        <div class="post-meta">Type: {{news.get_news_type_display}}</div>
+        <div class="post-meta">Date: {{news.date}}</div>
+        <div class="post-meta">Title: {{news.title}}</div>
+        <div class="post-meta"><img src="{{news.image.url}}" alt="" class="img-fluid"></div>
+        <div class="post-meta">Description: {{news.description}}</div>
         <div>Comments</div>
         {% for comment in comments %}
             <div class="d-flex flex-start align-items-center">
