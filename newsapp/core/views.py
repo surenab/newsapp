@@ -12,6 +12,7 @@ from .filters import NewsFilter
 from django_filters.views import FilterView
 from .models import News, NewsComment
 from django.http import HttpResponse, HttpRequest
+from django.shortcuts import get_object_or_404
 
 
 
@@ -55,18 +56,16 @@ class NewsBase(Base):
 class CreateNewsComment(CreateView):
     model = NewsComment
     form_class = NewsCommentForm
-    # success_url = reverse_lazy("my_news")
-    success_text = "Successfully created!"
+    success_text = "Created!"
 
-    def get_success_url(self) -> str:
-        return reverse_lazy("news_detail", kwargs = {"pk": self.request.POST.get("news")})
+    def get_success_url(self):
+        return reverse_lazy("my_news_details", kwargs = {"pk": self.request.POST.get("news")})
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
         news_id = self.request.POST.get("news")
-        news = News.objects.get(id = news_id)
+        news = get_object_or_404(News, id = news_id)
         form.instance.news = news
-        
         messages.success(self.request, "News Comment instance is created.")
         return super().form_valid(form)
 
@@ -95,8 +94,13 @@ class MyNewsDetail(NewsBase, DetailView):
 
 class NewsDetails(DetailView):
     model = News
-    template_name = "news-detail.html"
     context_object_name = "news"
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['comment_form'] = NewsCommentForm
+        data['comments'] = NewsComment.objects.filter(news=data["news"])
+        return data
 
     def get(self, request: HttpRequest, *args, **kwargs):
         self.object = self.get_object()
@@ -105,11 +109,6 @@ class NewsDetails(DetailView):
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
 
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        data['comment_form'] = NewsCommentForm
-        data['comments'] = NewsComment.objects.filter(news=data["news"])
-        return data
 
 
 class MyNewsUpdate(NewsBase, UpdateView):

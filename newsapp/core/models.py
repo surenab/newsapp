@@ -69,7 +69,6 @@ class NewsComment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     news = models.ForeignKey(News, on_delete=models.CASCADE)
     text = models.TextField(max_length=500)
-    date = models.DateTimeField(auto_now_add=True, blank = True, null = True)
 
     def __str__(self) -> str:
         return f"{self.owner.username} is commented {self.text}"

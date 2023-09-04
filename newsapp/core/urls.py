@@ -18,8 +18,8 @@ urlpatterns = [
     path('contact/', Contact.as_view(), name = "contact"),
     path('filter/', Filter.as_view(), name = "filter"),
     path('category/', category, name = "category"),
-    path('my-news/create-comment', CreateNewsComment.as_view(), name = "create-comment"),
-    path("news/details/<int:pk>", NewsDetails.as_view(), name="news_details"),
+    path('create-comment', CreateNewsComment.as_view(), name = "create_comment"),
+    path("details/<int:pk>", NewsDetails.as_view(), name="news_details"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
