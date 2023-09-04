@@ -63,6 +63,9 @@ class CreateNewsComment(CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
+        news_id = self.request.POST.get("news")
+        news = News.objects.get(id = news_id)
+        form.instance.news = news
         
         messages.success(self.request, "News Comment instance is created.")
         return super().form_valid(form)
