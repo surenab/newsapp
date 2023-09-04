@@ -12,9 +12,16 @@ from django.db.models import Q, F
 #         model = News
 #         fields = ('date', 'news_type', 'user')
 
+def filter_not_empty(queryset, name, value):
+    lookup = '__'.join([name, 'isnull'])
+    return queryset.filter(**{lookup: False})
+
 
 class NewsFilter(FilterSet):
+    date = DateFilter(field_name="date", widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),method=filter_not_empty)
+    
     SORT_CHOICES = (
+
         ('newest', 'Newest News'),
         ('oldest', 'Oldest News'),
         ('most_viewed', 'Most Viewed News')
@@ -27,6 +34,8 @@ class NewsFilter(FilterSet):
         model = News
         fields = {
             'news_type': ['exact'],
+            'date':[],
+            'user':['exact']
         }
 
     def custom_search(self, queryset, name, value):
