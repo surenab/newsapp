@@ -149,9 +149,9 @@ section {
   overflow: hidden;
 }
 
-.section-header {
+/* .section-header {
   border-bottom: 2px solid var(--color-black);
-}
+} */
 
 .section-header h2 {
   font-size: 50px;
