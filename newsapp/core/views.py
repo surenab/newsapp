@@ -45,7 +45,7 @@ class NewsBase(Base):
     model = News
     context_object_name = "news"
     form_class = NewsForm
-    success_url = reverse_lazy("my_news")
+    success_url = reverse_lazy("all_news")
     success_text = ""
     
     def form_valid(self, form):
@@ -95,6 +95,7 @@ class MyNewsDetail(NewsBase, DetailView):
 class NewsDetails(DetailView):
     model = News
     context_object_name = "news"
+    template_name = "news-detail.html"
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)

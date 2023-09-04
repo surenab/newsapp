@@ -13,7 +13,7 @@
                  
                 {% for new in most_viewed_news %}
                 <div class="swiper-slide">
-                  <a href="single_post" class="img-bg d-flex align-items-end" style="background-image: url({{new.image.url}})">
+                  <a href="url 'news_details' new.id " class="img-bg d-flex align-items-end" style="background-image: url({{new.image.url}})">
                     <div class="img-bg-inner">
                       <h2>{{ new.title }}</h2>
                       <p>{{ new.description | truncatewords:17 }}...</p>
@@ -161,10 +161,10 @@
 
             {% for new in news|slice:":1" %}
             <div class="post-entry-1">
-              <a href="single_post"><img src="{{new.image.url}}" alt="" class="img-fluid fixed-size-image"></a>
+              <a href="url 'news_details' new.id "><img src="{{new.image.url}}" alt="" class="img-fluid fixed-size-image"></a>
               <div class="post-meta"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span>
                 <span class="mx-1">&bullet;</span>Viewes: {{new.view_count}}</span> </div>
-              <h2><a href="single_post">{{new.title}}</a></h2>
+              <h2><a href="url 'news_details' new.id">{{new.title}}</a></h2>
               <p class="mb-4 d-block">{{new.description}}</p>
 
 
@@ -179,7 +179,7 @@
                   <ul class="trending-post">
                     {% for new in most_viewed_news %}
                     <li>
-                      <a href="single_post">
+                      <a href="url 'news_details' new.id">
                         <span class="number">{{forloop.counter}}</span>
                         <h3>{{new.title}}</h3>
                         <span class="author">{{new.user}}r</span>
@@ -198,12 +198,12 @@
                 {% for new in news%}
                 <div class="col-lg-4 border-start custom-border">
                   <div class="post-entry-1-small">
-                    <a href="single_post"><img src="{{new.image.url}}" alt="" class="img-fluid"
+                    <a href="url 'news_details' new.id"><img src="{{new.image.url}}" alt="" class="img-fluid"
                         class="align-items-center"></a>
                     <div class="post-meta"><span class="date">{{new.get_news_type_display}}</span> <span
                         class="mx-1">&bullet;</span> <span>{{new.date}}</span><span
                         class="mx-1">&bullet;</span><span>Viewes: {{new.view_count}}</span></div>
-                    <h2><a href="single_post">{{new.title}}</a></h2>
+                    <h2><a href="url 'news_details' new.id">{{new.title}}</a></h2>
     
                   </div>
                 </div>
