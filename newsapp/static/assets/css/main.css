@@ -149,9 +149,9 @@ section {
   overflow: hidden;
 }
 
-/* .section-header {
+.section-header {
   border-bottom: 2px solid var(--color-black);
-} */
+}
 
 .section-header h2 {
   font-size: 50px;
@@ -1509,4 +1509,10 @@ section {
 .filter-submit:hover {
   background-color: #c2c3a0;
   color: #292a05;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items:inherit;
 }

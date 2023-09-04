@@ -3,102 +3,106 @@
 {% load crispy_forms_tags %}
 {% load pagination_tags %}
 
-<a type="button" class="button-74" href="{% url 'create_news' %}">Create News</a>
-<button onclick="myFunction()"><i class="bi bi-filter"></i></button>
+<div class="button-container">
 
-      <div id="myDIV">
-      <form class="filter-form" method="get">
-        <head>
-          <title>Filter Menu Panel Group with Bootstrap</title>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width" />
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-          <link rel="stylesheet" href="styles.css" />
-        </head>
-        <body>
-          <header class="header">
-            <div class="container">
-              <h1 class="page-header">Filter Panel Group</h1>
-            </div>
-          </header>
-                
-          
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-xs-6">
-                          
-                          <div class="filter-menu">
-                            <form>
-                              <div class="panel panel-default">
-                                <div class="panel-heading">
-                                  <a class="panel-title accordion-toggle visible-sm-block"  role="button" data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
-                                    Filter
-                                  </a>
-                                  <div class="panel-title hidden-sm">
-                                    Filter
-                                  </div><!-- /.panel-title -->
-                                  <div class="panel-body">
-                                    <button class="btn btn-default" type="submit">Apply Filters</button>
-                                    <a class="btn btn-sm btn-link pull-right visible-sm-inline" href="#">Clear Selections</a>
-                                    <a class="btn btn-sm btn-link pull-right hidden-sm" href="#">Reset</a>
-                                  </div><!-- /.panel-body -->
-                                </div><!-- /.panel-heading -->
-              
-                                <div class="panel-body">
-                                  <div class="panel-group" id="filter-menu" role="tablist" aria-multiselectable="true">
-                                    <div class="panel panel-default">
-                                      <div class="panel-heading" role="tab" id="headingTwo">
-                                        <a class="panel-title accordion-toggle collapsed" role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                          News_type
-                                        </a><!-- /.panel-title -->
-                                      </div><!-- /.panel-heading -->
-                                      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="panel-body">
-                                          <div class="checkbox"><label><input type="checkbox" name="topic[]" value="politics">{{ filter.form.news_type.label_tag }} {{ filter.form.news_type }}</label></div>
-                                          <!-- <div class="checkbox"><label><input type="checkbox" name="topic[]" value="religion">Religion</label></div>
-                                          <div class="checkbox"><label><input type="checkbox" name="topic[]" value="music">Music</label></div> -->
-                                        </div><!-- /.panel-body -->
-                                      </div><!-- /.panel-collapse -->
-                                    </div><!-- /.panel -->
-              
-                                    <div class="panel panel-default">
-                                      <div class="panel-heading" role="tab" id="headingThree">
-                                        <a class="panel-title accordion-toggle collapsed" role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                          User
-                                        </a><!-- /.panel-title -->
-                                      </div><!-- /.panel-heading -->
-                                      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                        <div class="panel-body">
-                                          <div class="checkbox"><label><input type="checkbox" name="format[]" value="">{{ filter.form.user.label_tag }} {{ filter.form.user }}</label></div>
-                                          
-                                        </div><!-- /.panel-body -->
-                                      </div><!-- /.panel-collapse -->
-                                    </div><!-- /.panel -->
-              
-                                    <div class="panel panel-default">
-                                      <div class="panel-heading" role="tab" id="headingFour">
-                                        <a class="panel-title accordion-toggle collapsed" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                          Date
-                                        </a><!-- /.panel-title -->
-                                      </div><!-- /.panel-heading -->
-                                      <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                        <div class="panel-body">
-                                          <div class="checkbox"><label><input type="checkbox" name="status[]" value="single">{{ filter.form.date.label_tag }} {{ filter.form.date }}</label></div>
-                    
-                                        </div><!-- /.panel-body -->
-                                      </div><!-- /.panel-collapse -->
-                                    </div><!-- /.panel -->
-                                  </div><!-- /.panel-group -->
-                                </div><!-- /.panel-body -->
-              
-                              </div><!-- /.panel -->
-                            </form>
-                          </div><!-- /.filter-menu -->
-                        </div>
-                        </div>
-                      </div>
-      </form> 
+  <button onclick="myFunction()"><i class="button-74">Filters</i></button>
+
+<div id="myDIV">
+<form class="filter-form" method="get">
+  <head>
+    <title>Filter Menu Panel Group</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+  </head>
+  <body>
+    <header class="header" style="width: 40%;">
+      <div class="container">
+        <h1 class="page-header" style="color: #fff;">Filter Panel Group</h1>
       </div>
+    </header>
+          
+    
+              <div class="container">
+                <div class="row">
+                  <div class="col-xs-4">
+                    
+                    <div class="filter-menu">
+                      <form>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <a class="panel-title accordion-toggle visible-sm-block"  role="button" data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
+                              Filter
+                            </a>
+                            <div class="panel-title hidden-sm">
+                              Filter
+                            </div><!-- /.panel-title -->
+                            <div class="panel-body">
+                              <button class="btn btn-default" type="submit">Apply</button>
+                              <button class="btn btn-sm btn-default pull-right visible-sm-inline" href="/">Clear</button>
+                              <button class="btn btn-sm btn-default pull-right hidden-sm" href="/">Reset</button>
+                            </div><!-- /.panel-body -->
+                          </div><!-- /.panel-heading -->
+        
+                          <div class="panel-body">
+                            <div class="panel-group" id="filter-menu" role="tablist" aria-multiselectable="true">
+                              <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                  <a class="panel-title accordion-toggle collapsed" role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    News_type
+                                  </a><!-- /.panel-title -->
+                                </div><!-- /.panel-heading -->
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                  <div class="panel-body">
+                                    <div class="checkbox"><label><input type="checkbox" name="topic[]" value="politics">{{ filter.form.news_type.label_tag }} {{ filter.form.news_type }}</label></div>
+                                    <!-- <div class="checkbox"><label><input type="checkbox" name="topic[]" value="religion">Religion</label></div>
+                                    <div class="checkbox"><label><input type="checkbox" name="topic[]" value="music">Music</label></div> -->
+                                  </div><!-- /.panel-body -->
+                                </div><!-- /.panel-collapse -->
+                              </div><!-- /.panel -->
+        
+                              <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                  <a class="panel-title accordion-toggle collapsed" role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    User
+                                  </a><!-- /.panel-title -->
+                                </div><!-- /.panel-heading -->
+                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                  <div class="panel-body">
+                                    <div class="checkbox"><label><input type="checkbox" name="format[]" value="">{{ filter.form.user.label_tag }} {{ filter.form.user }}</label></div>
+                                    
+                                  </div><!-- /.panel-body -->
+                                </div><!-- /.panel-collapse -->
+                              </div><!-- /.panel -->
+        
+                              <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingFour">
+                                  <a class="panel-title accordion-toggle collapsed" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Date
+                                  </a><!-- /.panel-title -->
+                                </div><!-- /.panel-heading -->
+                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                  <div class="panel-body">
+                                    <div class="checkbox"><label><input type="checkbox" name="status[]" value="single">{{ filter.form.date.label_tag }} {{ filter.form.date }}</label></div>
+              
+                                  </div><!-- /.panel-body -->
+                                </div><!-- /.panel-collapse -->
+                              </div><!-- /.panel -->
+                            </div><!-- /.panel-group -->
+                          </div><!-- /.panel-body -->
+        
+                        </div><!-- /.panel -->
+                      </form>
+                    </div><!-- /.filter-menu -->
+                  </div>
+                  </div>
+                </div>
+</form> 
+</div>
+
+  <a type="button" class="button-74" href="{% url 'create_news' %}">Create News</a>
+</div>
 
       
       <script>
@@ -112,10 +116,7 @@
       }
       </script>
           
-        </div>
-
-      </div><!-- /.container -->
-    </div><!-- /.primary -->
+     
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
