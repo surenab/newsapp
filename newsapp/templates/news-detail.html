@@ -27,12 +27,9 @@
                                     <div class="swiper sliderFeaturedPosts">
 
                                         <div class="swiper-wrapper">
-                                            {% if new.image %}
                                             <div class=" swiper-slide" class="img-bg-inner  d-flex align-items-end">
                                                 <img src="{{new.image.url}}" alt="" height="300px" width="450px">
                                             </div>
-                                            {%endif%}
-
 
                                         </div>
                                         <div class="custom-swiper-button-next">
@@ -61,7 +58,7 @@
                             </div>
                             <div class="flex-grow-1 ms-2 ms-sm-3">
                                 <div class="comment-meta d-flex align-items-baseline">
-                                    <h6 class="me-2">{{comment.owner.first_name}} {{comment.owner.last_name}}</h6>
+                                    <h6 class="me-2">{{comment.owner.username}}</h6>
                                     <span class="mx-1">&bullet;</span>
                                     <h6 class="me-2">{{comment.date}}</h6>
                                 </div>
