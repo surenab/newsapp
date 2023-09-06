@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import News, Team, Message, NewsComment
-from django.core.mail import send_mail, BadHeaderError
 
 
 class MessageAdmin(admin.ModelAdmin):

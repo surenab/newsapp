@@ -132,7 +132,6 @@
                 <div class="post-entry-1">
                   
                   <a href="{% url 'my_news_details' new.id %}">
-                    {% if new.image %}
                       <img src="{{new.image.url}}" alt="" class="img-details">
                   </a>
                   <div class="post-meta">
@@ -148,9 +147,6 @@
                     class="far fa-trash-alt"></i></a></span>
                 </div>
                 <hr>
-                {% else %}
-                  <h3>You have no posts yet.</h3>
-                {% endif %}
                 {% endfor %}
               </div>
             </div>

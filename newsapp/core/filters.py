@@ -4,14 +4,6 @@ from .models import News
 from django.db.models import Q, F
 
 
-# class NewsFilter(FilterSet):
-#     date = DateFilter(field_name="date", widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}))
-
-
-#     class Meta:
-#         model = News
-#         fields = ('date', 'news_type', 'user')
-
 def filter_not_empty(queryset, name, value):
     lookup = '__'.join([name, 'isnull'])
     return queryset.filter(**{lookup: False})

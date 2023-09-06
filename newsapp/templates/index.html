@@ -177,7 +177,7 @@
                 <div class="trending">
                   <h3>Trending News</h3>
                   <ul class="trending-post">
-                    {% for new in most_viewed_news %}
+                    {% for new in news %}
                     <li>
                       <a href="{% url 'news_details' new.id %}">
                         <span class="number">{{forloop.counter}}</span>
@@ -190,12 +190,12 @@
                 </div>
                
 
-              <!-- </div> End Trending Section -->
+              <!-- All news Section -->
             </div>
             <div class="col-lg-8">
 
               <div class="row g-5">
-                {% for new in news%}
+                {% for new in most_viewed_news %}
                 <div class="col-lg-4 border-start custom-border">
                   <div class="post-entry-1-small">
                     <a href="{% url 'news_details' new.id %}"><img src="{{new.image.url}}" alt="" class="img-fluid"
@@ -207,7 +207,7 @@
     
                   </div>
                 </div>
-                {%endfor%}
+                {% endfor %}
               </div>
     
             </div>
@@ -215,9 +215,9 @@
     
           </div>
     
-        </div> <!-- End .row -->
+        </div>
     
-      </section> <!-- End Post Grid Section -->
+      </section>
       <div>
 
 {% endblock %}
