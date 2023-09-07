@@ -74,15 +74,12 @@ class NewsComment(models.Model):
     def __str__(self) -> str:
         return f"{self.owner.username} is commented {self.text}"
     
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     image = models.ImageField(default='asets/img/albert.jpg', upload_to='images')
-#     tel = models.CharField(max_length=15, blank=True, null=True)
-#     address = models.CharField(max_length=200, blank=True, null=True)
-    
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='asets/img/albert.jpg', upload_to='images')
+    tel = models.CharField(max_length=15, blank=True, null=True)
+    address = models.CharField(max_length=200, blank=True, null=True)
+    birthday = models.DateField()
 
-#     def __str__(self):
-#         return f'{self.user.username} Profile'
-    
-
-# User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
+    def __str__(self):
+        return f'{self.user.username} Profile'
