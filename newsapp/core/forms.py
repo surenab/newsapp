@@ -1,5 +1,7 @@
 from django import forms
-from .models import News, Message, NewsComment
+from .models import News, Message, NewsComment, Profile
+from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth import get_user_model
 
 
 class NewsForm(forms.ModelForm):
@@ -42,3 +44,23 @@ class NewsCommentForm(forms.ModelForm):
     class Meta:
         model = NewsComment
         fields = ["text"]
+
+
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['image', 'tel', 'address', 'birthday']
+
+
+class SetPasswordForm(SetPasswordForm):
+
+    class Meta:
+        model = get_user_model
+        fields = ['new_password1', 'new_password2']
+
+
+# class PasswordResetForm(PasswordResetForm):
+
+#     def __init__(self, *args, **kwargs):
+#         super(PasswordResetForm, self).__init__(*args, **kwargs)

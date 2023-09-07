@@ -1,5 +1,7 @@
-{% extends 'base_home.html' %} {% load static %}
+{% extends 'base_home.html' %}
+{% load static %}
 {% block bodycontent %}
+{% load crispy_forms_tags %}
 <!-- <div class="background">
     <br>
     <div class="d-flex justify-content-center"></div>
@@ -17,7 +19,23 @@
           <div class="row align-items-center flex-row-reverse">
               <div class="col-lg-6">
                   <div class="about-text go-to">
-                      <h3 class="dark-color">About Me</h3>
+
+                    {% if msg %}
+                    <p class = "text-success">{{msg}}</p>
+                    {% endif %}
+                    <form method = "post" action = "{% url 'profile' %}">
+                        <table class = "table table-borderedS">
+                            {% csrf_token %}
+                            {{ form | crispy }}
+                            <tr>
+                                <td colspan="2">
+                                    <button type="submit">Save changes</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
+                      <!-- <h3 class="dark-color">About Me</h3>
                       <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
                       <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
                       <div class="row about-list">
@@ -55,7 +73,7 @@
                               <div class="media">
                                   <label>Freelance</label>
                                   <p>Available</p>
-                              </div>
+                              </div> -->
                           </div>
                       </div>
                   </div>
@@ -66,14 +84,6 @@
                   </div>
               </div>
           </div>
-
-          <div>
-            <a type="button" class="button-74" href="{% url 'update_profile' %}" style="padding: 8px;">Update Profile</a>
-            <a type="button" class="button-74" href="{% url 'change_password' %}" style="padding: 8px;">Change Password</a>
-            <a type="button" class="button-74" href="{% url 'my_news' %}" style="padding: 8px;">My News</a>
-          </div>
-
-          <div><br></div>
           <div class="counter">
               <div class="row">
                   <div class="col-6 col-lg-3">

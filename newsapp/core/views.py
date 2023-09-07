@@ -2,7 +2,7 @@ from typing import Any, Dict
 from django.shortcuts import render, redirect
 from .models import *
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
-from .forms import NewsForm, MessageForm, NewsCommentForm
+from .forms import NewsForm, MessageForm, NewsCommentForm, ProfileForm, SetPasswordForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,17 +10,89 @@ from django_filters.views import FilterView
 from .filters import NewsFilter
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import user_not_authenticated
+from django.contrib.auth import get_user_model
+from django.db.models.query_utils import Q
+# from django.template.loader import render_to_string
+# from django.core.mail import EmailMessage
+# from django.utils.encoding import force_bytes
+# from django.utils.http import urlsafe_base64_encode
+# from django.contrib.sites.shortcuts import get_current_site
+# from .token import account_activation_token
+
 
 
 
 # Create your views here.
-
-
+User = get_user_model()
 
 def profile(request):
     news = News.objects.all()
     return render(request=request, template_name="core/profile.html", context={"news": news})
 
+
+def update_profile(request):
+    msg = None
+    if request.method == "POST":
+        form = ProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            msg = "Changes have been saved"
+    
+    form = ProfileForm(instance=request.user)
+    return render(request=request, template_name="core/edit-profile.html", context={"form": form, "msg": msg})
+
+
+@login_required
+def change_password(request):
+    user = request.user
+    if request.method == "POST":
+        form = SetPasswordForm(user, request)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your password has been change!")
+            return redirect("{% url 'profile'%}")
+        else:
+
+            for error in list(form.errors.value()):
+                messages.error(request,error)
+
+    form = SetPasswordForm(user)
+    return render(request, 'core/password_change_form.html', {'form': form})
+
+
+# @user_not_authenticated
+# def parrword_reset_request(request):
+#     if request.method == "POST":
+#         form = PasswordResetForm(request.POST)
+#         if form.is_valid():
+#             user_email = form.cleaned_data["email"]
+#             associated_user = get_user_model().objects.filter(Q[email == user_email]).first()
+#             if associated_user:
+#                 subject = "Password Reset Request"
+#                 message = render_to_string("template_activate_account.html", 
+#                 {
+#                     'user': associated_user,
+#                     'domain': get_current_site(request).domain,
+#                     'uid': urlsafe_base64_encode(force_bytes(associated_user.pk)),
+#                     'token': account_activation_token.make_token(associated_user),
+#                     'protokol': 'https' if request.is_sequre() else 'http'
+#                 }
+#                 )
+#                 email = EmailMessage(subject, message, to=[associated_user.email])
+#                 if email.send():
+#                     messages.success(request, "Please confirm your email address to complete the password reset")
+#                 else:
+#                     message.error(request, "Promlem with sending email")
+
+#             return redirect("{% url 'home' %}")
+
+#     form = PasswordResetForm()
+#     return render(request=request, template_name = "core/password-reset.html", context={"form": form})
+
+def password_reset_confirm(request, uidb64, token):
+    return redirect("{% url 'login'%}")
 
 
 def about(request):

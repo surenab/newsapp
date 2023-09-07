@@ -81,6 +81,7 @@
           <li><a href="../../contact">Contact</a></li>
           {% if request.user.is_authenticated %}
           <li><a href="../../profile">My Profile</a></li>
+          <li><a href="{% url 'create_news' %}">Create News</a></li>
           <li><a href="../accounts/logout">Logout</a></li>
           {% else %}
           <li><a href="../../accounts/login">Log In</a></li>

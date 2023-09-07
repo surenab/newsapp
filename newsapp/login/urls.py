@@ -5,6 +5,6 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', include("django.contrib.auth.urls")),
+    path('', include("django.contrib.auth.urls"), name = "login"),
     path('register/', Register.as_view(), name = "register"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
