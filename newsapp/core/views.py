@@ -1,8 +1,8 @@
 from typing import Any, Dict
 from django.shortcuts import render, redirect
 from .models import *
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
-from .forms import NewsForm, MessageForm, NewsCommentForm, ProfileForm, SetPasswordForm
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, TemplateView
+from .forms import NewsForm, MessageForm, NewsCommentForm, SetPasswordForm, UserProfileForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -27,20 +27,44 @@ from django.db.models.query_utils import Q
 # Create your views here.
 User = get_user_model()
 
-def profile(request):
-    news = News.objects.all()
-    return render(request=request, template_name="core/profile.html", context={"news": news})
+# def profile(request):
+#     news = News.objects.all()
+#     return render(request=request, template_name="core/profile.html", context={"news": news})
+
+
+class Profile(TemplateView):
+    template_name = "core/profile.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.user.is_authenticated:
+            profile = get_object_or_404(UserProfile, user=self.request.user)
+            context['profile'] = profile
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            profile = self.request.user.profile
+            form = UserProfileForm(request.POST, request.FILES, instance=profile)
+            if form.is_valid():
+                form.save()
+                return redirect("{% url 'profile'%}")
+            return render(request, 'core/profile.html', {'form': form})
+        else:
+            return redirect("{% url 'login'%}")
 
 
 def update_profile(request):
     msg = None
     if request.method == "POST":
-        form = ProfileForm(request.POST, instance=request.user)
+        form = UserProfile(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             msg = "Changes have been saved"
     
-    form = ProfileForm(instance=request.user)
+    form = UserProfile(instance=request.user)
     return render(request=request, template_name="core/edit-profile.html", context={"form": form, "msg": msg})
 
 

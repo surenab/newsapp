@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from PIL import Image
 from django.contrib.auth.models import User
+# from django.contrib.admin.widgets import AdminDateWidget
 
 
 # Create your models here.
@@ -74,12 +75,29 @@ class NewsComment(models.Model):
     def __str__(self) -> str:
         return f"{self.owner.username} is commented {self.text}"
     
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='asets/img/albert.jpg', upload_to='images')
-    tel = models.CharField(max_length=15, blank=True, null=True)
-    address = models.CharField(max_length=200, blank=True, null=True)
-    birthday = models.DateField()
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     image = models.ImageField(default='asets/img/albert.jpg', upload_to='images')
+#     tel = models.CharField(max_length=15, blank=True, null=True)
+#     address = models.CharField(max_length=200, blank=True, null=True)
+#     birthday = models.DateField(widget=AdminDateWidget, blank=True, null=True)
+#     profession = models.CharField(max_length=200, blank=True, null=True)
+
+#     def __str__(self):
+#         return f'{self.user.username} Profile'
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="images", default=None, null=True, blank=True)
+    profession = models.CharField(max_length=80, default=None, blank=True, null=True)
+    tel = models.CharField(max_length=13, default=None, blank=True, null=True)
+    address = models.CharField(max_length=150, default=None, blank=True, null=True)
+    birthday = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return self.user.username
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+    User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])

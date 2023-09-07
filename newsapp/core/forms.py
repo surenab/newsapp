@@ -1,5 +1,5 @@
 from django import forms
-from .models import News, Message, NewsComment, Profile
+from .models import News, Message, NewsComment, UserProfile
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth import get_user_model
 
@@ -46,11 +46,11 @@ class NewsCommentForm(forms.ModelForm):
         fields = ["text"]
 
 
-class ProfileForm(forms.ModelForm):
+# class ProfileForm(forms.ModelForm):
 
-    class Meta:
-        model = Profile
-        fields = ['image', 'tel', 'address', 'birthday']
+#     class Meta:
+#         model = Profile
+#         fields = ['image', 'tel', 'address', 'birthday']
 
 
 class SetPasswordForm(SetPasswordForm):
@@ -64,3 +64,31 @@ class SetPasswordForm(SetPasswordForm):
 
 #     def __init__(self, *args, **kwargs):
 #         super(PasswordResetForm, self).__init__(*args, **kwargs)
+
+
+class UserProfileForm(forms.ModelForm):
+    
+    first_name = forms.CharField(max_length=20, required=True, label="First Name")
+    last_name = forms.CharField(max_length=30, required=True, label="Last Name")
+    image = forms.ImageField(required=False, widget=forms.FileInput(
+        attrs={'class': 'clearablefileinput'}), label='')
+
+    class Meta:
+        model = UserProfile
+        fields = ['first_name', 'last_name',  'image', 'profession', 'address', 'tel', 'birthday']
+
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].initial = self.instance.user.first_name
+        self.fields['last_name'].initial = self.instance.user.last_name
+
+    def save(self, commit=True):
+        self.instance.user.first_name = self.cleaned_data['first_name']
+        self.instance.user.last_name = self.cleaned_data['last_name']
+
+        user_profile = super(UserProfileForm, self).save(commit=commit)
+
+        if commit:
+            self.instance.user.save()
+
+        return user_profile

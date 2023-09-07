@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate, MyNewsDelete, profile, search, single_post, Contact, Filter, category, CreateNewsComment, NewsDetails, update_profile, change_password
+from .views import Home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate, MyNewsDelete, Profile, search, single_post, Contact, Filter, category, CreateNewsComment, NewsDetails, update_profile, change_password
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -12,7 +12,7 @@ urlpatterns = [
     path("my-news/details/<int:pk>", MyNewsDetail.as_view(), name="my_news_details"),
     path("my-news/update/<int:pk>", MyNewsUpdate.as_view(), name="my_news_update"),
     path("my-news/delete/<int:pk>", MyNewsDelete.as_view(), name="my_news_delete"),
-    path('profile/', profile, name = "profile"),
+    path('profile/', Profile.as_view(), name = "profile"),
     path('update-profile/', update_profile, name = "update_profile"),
     path('change-password/', change_password, name = "change_password"),
     path("search/", search, name="search"),
