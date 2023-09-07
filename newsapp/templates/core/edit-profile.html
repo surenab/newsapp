@@ -26,7 +26,7 @@
                     <form method = "post" action = "{% url 'profile' %}">
                         <table class = "table table-borderedS">
                             {% csrf_token %}
-                            {{form.as_table}}
+                            {{ form | crispy }}
                             <tr>
                                 <td colspan="2">
                                     <button type="submit">Save changes</button>
