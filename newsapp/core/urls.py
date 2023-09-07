@@ -22,6 +22,8 @@ urlpatterns = [
     path('category/', category, name = "category"),
     path('create-comment', CreateNewsComment.as_view(), name = "create_comment"),
     path("details/<int:pk>", NewsDetails.as_view(), name="news_details"),
+    # path("parrword-reset", parrword_reset_request, name = "parrword_reset"),
+    # path("eset/<uidb64>/<token>/", password_reset_confirm, name = "reset_confirm"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
