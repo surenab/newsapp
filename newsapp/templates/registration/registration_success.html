@@ -1,0 +1,17 @@
+{% extends 'base_home.html' %}
+{% block bodycontent %}
+{% load static %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href='{% static "css/register.css" %}'>
+<body>
+    <div class="container">
+        <div class="message">
+            <h2>Registration Successful!</h2>
+            <p>Thank you for registering on our website.</p>
+            <button type="submit" class="btn btn-larger btn-block">
+            <a href="{% url 'login' %}">Log In</a></button>
+        </div>
+
+    </div>
+</body>
+{% endblock %}
