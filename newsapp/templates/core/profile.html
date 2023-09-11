@@ -66,6 +66,12 @@
                       <img src="{{profile.image.url}}" title="" alt="Profile Picture" style="height: 280px; width: 250px; border-radius: 20px; margin-left: 90px;">
                   </div>
               </div>
+              {% else %}
+              <div class="col-lg-6">
+                <div class="about-avatar">
+                    <img src="{% static 'assets/img/pp.jpg' %}" title="" alt="Profile Picture" style="height: 280px; width: 250px; border-radius: 20px; margin-left: 90px;">
+                </div>
+            </div>
               {% endif %}
           </div>
 
