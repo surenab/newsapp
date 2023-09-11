@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from .forms import RegisterForm, ProfileForm, SetPasswordForm
+from .forms import RegisterForm, ProfileForm, SetPasswordForm, PasswordResetForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.views.generic import CreateView, TemplateView
-from django.db.models.query_utils import Q
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 # from django.contrib.auth.decorators import user_not_authenticated
@@ -16,7 +16,8 @@ from .models import Profile
 # from django.utils.encoding import force_bytes
 # from django.utils.http import urlsafe_base64_encode
 # from django.contrib.sites.shortcuts import get_current_site
-# from .token import account_activation_token
+# from django.contrib.auth.tokens import account_activation_token
+# from django.contrib.auth import get_user_model
 
 
 # Create your views here.
@@ -94,13 +95,12 @@ def change_password(request):
     return render(request, 'core/password_change_form.html', {'form': form})
 
 
-# @user_not_authenticated
-# def parrword_reset_request(request):
+# def password_reset_request(request):
 #     if request.method == "POST":
 #         form = PasswordResetForm(request.POST)
 #         if form.is_valid():
 #             user_email = form.cleaned_data["email"]
-#             associated_user = get_user_model().objects.filter(Q[email == user_email]).first()
+#             associated_user = get_user_model().objects.filter(email=user_email).first()
 #             if associated_user:
 #                 subject = "Password Reset Request"
 #                 message = render_to_string("template_activate_account.html", 
@@ -109,19 +109,20 @@ def change_password(request):
 #                     'domain': get_current_site(request).domain,
 #                     'uid': urlsafe_base64_encode(force_bytes(associated_user.pk)),
 #                     'token': account_activation_token.make_token(associated_user),
-#                     'protokol': 'https' if request.is_sequre() else 'http'
+#                     'protocol': 'https' if request.is_secure() else 'http'
 #                 }
 #                 )
 #                 email = EmailMessage(subject, message, to=[associated_user.email])
 #                 if email.send():
 #                     messages.success(request, "Please confirm your email address to complete the password reset")
 #                 else:
-#                     message.error(request, "Promlem with sending email")
+#                     messages.error(request, "Problem with sending email")
 
-#             return redirect("{% url 'home' %}")
+#             return redirect('home')
 
 #     form = PasswordResetForm()
-#     return render(request=request, template_name = "core/password-reset.html", context={"form": form})
+#     return render(request=request, template_name="core/password-reset.html", context={"form": form})
 
-def password_reset_confirm(request, uidb64, token):
-    return redirect("{% url 'login'%}")
+
+# def password_reset_confirm(request, uidb64, token):
+#     return redirect("{% url 'login'%}")
