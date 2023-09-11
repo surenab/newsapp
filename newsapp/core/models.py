@@ -73,3 +73,10 @@ class NewsComment(models.Model):
 
     def __str__(self) -> str:
         return f"{self.owner.username} is commented {self.text}"
+
+
+class TeamMember(models.Model):
+    full_name = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
+    description = models.TextField(max_length=1000)
+    image = models.ImageField(upload_to="Media", default=None, null=True, blank=True)
