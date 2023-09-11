@@ -19,7 +19,10 @@ User = get_user_model()
 
 def about(request):
     team = Team.objects.all()
-    return render(request=request, template_name="about.html", context={"team": team}) 
+    team_members = TeamMember.objects.all()
+    return render(request=request, template_name="about.html", context={"team": team,
+                                                                        "team_members": team_members,
+}) 
 
 
 class Base(LoginRequiredMixin):
