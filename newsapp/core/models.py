@@ -34,12 +34,12 @@ class News(models.Model):
     
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        img = Image.open(self.image.path)
+        image = Image.open(self.image.path)
 
-        if img.height > 400 or img.width > 700:
+        if image.height > 400 or image.width > 700:
             output_size = (400, 700)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+            image.thumbnail(output_size)
+            image.save(self.image.path)
 
 
 class Team(models.Model):
