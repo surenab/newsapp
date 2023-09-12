@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, Team, Message, NewsComment, TeamMember
+from .models import News, Team, Message, NewsComment
 
 
 class MessageAdmin(admin.ModelAdmin):
@@ -10,14 +10,8 @@ class MessageAdmin(admin.ModelAdmin):
         ]
         super().save_model(request, obj, form, change)
 
-
-class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ["full_name"]
-
-
 # Register your models here.
 admin.site.register(News)
 admin.site.register(Team)
 admin.site.register(NewsComment)
 admin.site.register(Message, MessageAdmin)
-admin.site.register(TeamMember, TeamMemberAdmin)

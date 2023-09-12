@@ -34,12 +34,12 @@ class News(models.Model):
     
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        image = Image.open(self.image.path)
+        img = Image.open(self.image.path)
 
-        if image.height > 400 or image.width > 700:
+        if img.height > 400 or img.width > 700:
             output_size = (400, 700)
-            image.thumbnail(output_size)
-            image.save(self.image.path)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
 
 
 class Team(models.Model):
@@ -73,10 +73,13 @@ class NewsComment(models.Model):
 
     def __str__(self) -> str:
         return f"{self.owner.username} is commented {self.text}"
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='asets/img/albert.jpg', upload_to='images')
+    tel = models.CharField(max_length=15, blank=True, null=True)
+    address = models.CharField(max_length=200, blank=True, null=True)
+    birthday = models.DateField()
 
-
-class TeamMember(models.Model):
-    full_name = models.CharField(max_length=50)
-    position = models.CharField(max_length=50)
-    description = models.TextField(max_length=1000)
-    image = models.ImageField(upload_to="Media", default=None, null=True, blank=True)
+    def __str__(self):
+        return f'{self.user.username} Profile'
