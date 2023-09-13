@@ -11,6 +11,8 @@ from .filters import NewsFilter
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
+from django.http import JsonResponse
+from django.db.models import Q
 
 
 # Create your views here.
@@ -25,7 +27,7 @@ def about(request):
 }) 
 
 
-class Base(LoginRequiredMixin):
+class Base(LoginRequiredMixin, CreateView):
     def get_queryset(self):
         queryset = super(Base, self).get_queryset()
         queryset = queryset.filter(user=self.request.user)
@@ -61,7 +63,7 @@ class CreateNewsComment(CreateView):
         return super().form_valid(form)
 
 
-class CreateNews(NewsBase, CreateView):
+class CreateNews(NewsBase):
     template_name = "create_news.html"
 
     def form_valid(self, form):
@@ -122,26 +124,21 @@ class MyNewsDelete(LoginRequiredMixin, DeleteView):
         return super().form_valid(form)
 
 
-
-def search(request):
-    news = News.objects.all()
-    return render(request, "search-result.html", context={"news": news})
-
 def single_post(request):
     news = News.objects.all()
     return render(request, "single-post.html", context={"news": news})
 
 
-class NewsFilters(FilterView):
-    model = News
-    context_object_name = "news"
-    filterset_class = NewsFilter
+# class NewsFilters(FilterView):
+#     model = News
+#     context_object_name = "news"
+#     filterset_class = NewsFilter
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        most_viewed_news = News.objects.order_by('-view_count')[:5]
-        context['most_viewed_news'] = most_viewed_news
-        return context
+#     def get_context_data(self, *args, **kwargs):
+#         context = super().get_context_data(*args, **kwargs)
+#         most_viewed_news = News.objects.order_by('-view_count')[:5]
+#         context['most_viewed_news'] = most_viewed_news
+#         return context
     
 class Filter(LoginRequiredMixin, FilterView):
     template_name = "core/all_news.html"
@@ -154,7 +151,21 @@ class Filter(LoginRequiredMixin, FilterView):
         return queryset
 
 
-class Home(NewsFilters):
+class Filters(FilterView):
+    model = News
+    context_object_name = "news"
+    filterset_class = NewsFilter
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        most_viewed_news = News.objects.order_by('-view_count')[:5]
+        newest_news=News.objects.order_by('-date')[:5]
+        context['most_viewed_news'] = most_viewed_news
+        context['newest_news'] = newest_news
+        return context
+
+
+class Home(Filters):
     template_name = "index.html"
     paginate_by = 8
 
@@ -174,8 +185,7 @@ class Home(NewsFilters):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filter'] = NewsFilter(
-            self.request.GET, queryset=self.get_queryset())
+        context['filter'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
 
@@ -186,3 +196,30 @@ def category(request):
 
 class Contact(Home):
     template_name = "contact.html"
+
+
+def search_result(request):
+    query = request.GET.get('search')
+    news_filter = NewsFilter(request.GET, queryset=News.objects.all())
+
+    context = {
+        'query': query,
+        'news_filter': news_filter,
+    }
+
+    if query:
+        news_filter_qs = news_filter.qs.filter(Q(title__icontains=query) | Q(description__icontains=query))
+        context['news_filter'] = news_filter_qs
+
+    return render(request, 'search-result.html', context)
+
+
+def search_suggestions(request):
+    search_query = request.GET.get('q', '')
+
+    news = News.objects.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query))
+
+    suggestions = [{'title': news.title, 'description': news.description}
+                   for news in news]
+
+    return JsonResponse(suggestions, safe=False)

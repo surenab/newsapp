@@ -103,13 +103,60 @@
 
         <!-- ======= Search Form ======= -->
         <div class="search-form-wrap js-search-form-wrap">
-          <form action="../../search" class="search-form">
+          <form action="{% url 'search_result' %}" method="get" class="search-form">
+            {% csrf_token %}
             <span class="icon bi-search"></span>
-            <input type="text" placeholder="Search" class="form-control">
-            <button class="btn js-search-close"><span class="bi-x"></span></button>
+            <input type="text" id="search-input" name="search" placeholder="Search" class="form-control">
+            <button type="submit" class="btn js-search-close"><span class="bi-x"></span></button>
           </form>
         </div><!-- End Search Form -->
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+          $(document).ready(function () {
+            const searchInput = $('#search-input');
+            const suggestionsContainer = $('#suggestions');
+            const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+      
+            searchInput.on('input', function () {
+              const query = searchInput.val();
+      
+              if (query.length > 2) {
+                $.ajax({
+                  url: '{% url "search_suggestions" %}',
+                  data: { q: query },
+                  dataType: 'json',
+                  headers: { "X-CSRFToken": csrfToken },
+                  success: function (data) {
+                    suggestionsContainer.empty();
+      
+                    for (const news of data) {
+                      suggestionsContainer.append(
+                        `<div>
+                          <strong>${news.title}</strong> - ${news.description}
+                        </div>`
+                      );
+                    }
+                  }
+                });
+              } else {
+                suggestionsContainer.empty();
+              }
+            });
+      
+            // Trigger search on Enter key press
+            searchInput.on('keydown', function (event) {
+              if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission
+                const query = searchInput.val();
+      
+                if (query.length > 2) {
+                  // Submit the form
+                  searchInput.closest('form').submit();
+                }
+              }
+            })
+          });
+        </script>
       </div>
 
     </div>

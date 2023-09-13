@@ -1,4 +1,4 @@
-from django_filters import FilterSet, DateFilter, NumberFilter, CharFilter, ChoiceFilter
+from django_filters import FilterSet, DateFilter, CharFilter, ChoiceFilter
 from django import forms
 from .models import News
 from django.db.models import Q, F
