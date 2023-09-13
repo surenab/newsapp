@@ -120,12 +120,6 @@ a:hover {
   transform: translate(2px, 2px);
 }
 
-@media (min-width: 768px) {
-  .button-74 {
-    min-width: 120px;
-    padding: 0 25px;
-    color:#fff;
-  }
 
 
 h1,

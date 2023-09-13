@@ -63,8 +63,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li class="dropdown"><a href="../../category"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
+              <li><a href="../../search">Search Result</a></li>
               <li><a href="../../?news_type=1">Political</a></li>
               <li><a href="../../?news_type=2">Business</a></li>
               <li><a href="../../?news_type=3">International</a></li>
@@ -79,9 +80,9 @@
           <li><a href="../../about">About</a></li>
           <li><a href="../../contact">Contact</a></li>
           {% if request.user.is_authenticated %}
-          <li><a href="../../profile">My Profile</a></li>
+          <li><a href="../../accounts/profile">My Profile</a></li>
           <li><a href="{% url 'create_news' %}">Create News</a></li>
-          <li><a href="../accounts/logout">Logout</a></li>
+          <li><a href="../../accounts/logout">Logout</a></li>
           {% else %}
           <li><a href="../../accounts/login">Log In</a></li>
           <li><a href="../../accounts/register">Register</a></li>
@@ -102,61 +103,12 @@
 
         <!-- ======= Search Form ======= -->
         <div class="search-form-wrap js-search-form-wrap">
-          <form action="{% url 'search_result' %}" method="get" class="search-form">
-            {% csrf_token %}
+          <form action="../../search" class="search-form">
             <span class="icon bi-search"></span>
-            <input type="text" id="search-input" name="search" placeholder="Search" class="form-control">
-            <button type="submit" class="btn js-search-close"><span class="bi-x"></span></button>
+            <input type="text" placeholder="Search" class="form-control">
+            <button class="btn js-search-close"><span class="bi-x"></span></button>
           </form>
         </div><!-- End Search Form -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          $(document).ready(function () {
-            const searchInput = $('#search-input');
-            const suggestionsContainer = $('#suggestions');
-            const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-      
-            searchInput.on('input', function () {
-              const query = searchInput.val();
-      
-              if (query.length > 2) {
-                $.ajax({
-                  url: '{% url "search_suggestions" %}',
-                  data: { q: query },
-                  dataType: 'json',
-                  headers: { "X-CSRFToken": csrfToken },
-                  success: function (data) {
-                    suggestionsContainer.empty();
-      
-                    for (const news of data) {
-                      suggestionsContainer.append(
-                        `<div>
-                          <strong>${news.title}</strong> - ${news.description}
-                        </div>`
-                      );
-                    }
-                  }
-                });
-              } else {
-                suggestionsContainer.empty();
-              }
-            });
-      
-            // Trigger search on Enter key press
-            searchInput.on('keydown', function (event) {
-              if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent form submission
-                const query = searchInput.val();
-      
-                if (query.length > 2) {
-                  // Submit the form
-                  searchInput.closest('form').submit();
-                }
-              }
-            })
-          });
-        </script>
-      
 
       </div>
 
@@ -194,7 +146,6 @@
             <h3 class="footer-heading">Navigation</h3>
             <ul class="footer-links list-unstyled">
               <li><a href="/"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> Categories</a></li>
               <li><a href="../../about"><i class="bi bi-chevron-right"></i> About us</a></li>
               <li><a href="../../contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
             </ul>
@@ -202,19 +153,19 @@
           <div class="col-6 col-lg-2">
             <h3 class="footer-heading">Categories</h3>
             <ul class="footer-links list-unstyled">
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> Political</a></li>
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> Business</a></li>
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> International</a></li>
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> National</a></li>
+              <li><a href="../../?news_type=1"><i class="bi bi-chevron-right"></i> Political</a></li>
+              <li><a href="../../?news_type=2"><i class="bi bi-chevron-right"></i> Business</a></li>
+              <li><a href="../../?news_type=3"><i class="bi bi-chevron-right"></i> International</a></li>
+              <li><a href="../../?news_type=4"><i class="bi bi-chevron-right"></i> National</a></li>
             </ul>
           </div>
           <div class="col-6 col-lg-2">
             <h3 class="footer-heading">Categories</h3>
             <ul class="footer-links list-unstyled">
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> Lifestyle</a></li>
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> Sport</a></li>
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> Cultural</a></li>
-              <li><a href="../../category"><i class="bi bi-chevron-right"></i> Crime</a></li>
+              <li><a href="../../?news_type=5"><i class="bi bi-chevron-right"></i> Lifestyle</a></li>
+              <li><a href="../../?news_type=6"><i class="bi bi-chevron-right"></i> Sport</a></li>
+              <li><a href="../../?news_type=7"><i class="bi bi-chevron-right"></i> Cultural</a></li>
+              <li><a href="../../?news_type=8"><i class="bi bi-chevron-right"></i> Crime</a></li>
             </ul>
           </div>
         </div>

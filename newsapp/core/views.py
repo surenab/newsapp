@@ -2,7 +2,7 @@ from typing import Any, Dict
 from django.shortcuts import render, redirect
 from .models import *
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
-from .forms import NewsForm, MessageForm, NewsCommentForm, ProfileForm, SetPasswordForm
+from .forms import NewsForm, MessageForm, NewsCommentForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,100 +10,22 @@ from django_filters.views import FilterView
 from .filters import NewsFilter
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.decorators import user_not_authenticated
 from django.contrib.auth import get_user_model
-from django.http import JsonResponse
-from django.db.models import Q
-from django_filters import FilterSet
-from itertools import chain
-# from django.template.loader import render_to_string
-# from django.core.mail import EmailMessage
-# from django.utils.encoding import force_bytes
-# from django.utils.http import urlsafe_base64_encode
-# from django.contrib.sites.shortcuts import get_current_site
-# from .token import account_activation_token
-
-
 
 
 # Create your views here.
 User = get_user_model()
 
-def profile(request):
-    news = News.objects.all()
-    return render(request=request, template_name="core/profile.html", context={"news": news})
-
-
-def update_profile(request):
-    msg = None
-    if request.method == "POST":
-        form = ProfileForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            msg = "Changes have been saved"
-    
-    form = ProfileForm(instance=request.user)
-    return render(request=request, template_name="core/edit-profile.html", context={"form": form, "msg": msg})
-
-
-@login_required
-def change_password(request):
-    user = request.user
-    if request.method == "POST":
-        form = SetPasswordForm(user, request)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Your password has been change!")
-            return redirect("{% url 'profile'%}")
-        else:
-
-            for error in list(form.errors.value()):
-                messages.error(request,error)
-
-    form = SetPasswordForm(user)
-    return render(request, 'core/password_change_form.html', {'form': form})
-
-
-# @user_not_authenticated
-# def parrword_reset_request(request):
-#     if request.method == "POST":
-#         form = PasswordResetForm(request.POST)
-#         if form.is_valid():
-#             user_email = form.cleaned_data["email"]
-#             associated_user = get_user_model().objects.filter(Q[email == user_email]).first()
-#             if associated_user:
-#                 subject = "Password Reset Request"
-#                 message = render_to_string("template_activate_account.html", 
-#                 {
-#                     'user': associated_user,
-#                     'domain': get_current_site(request).domain,
-#                     'uid': urlsafe_base64_encode(force_bytes(associated_user.pk)),
-#                     'token': account_activation_token.make_token(associated_user),
-#                     'protokol': 'https' if request.is_sequre() else 'http'
-#                 }
-#                 )
-#                 email = EmailMessage(subject, message, to=[associated_user.email])
-#                 if email.send():
-#                     messages.success(request, "Please confirm your email address to complete the password reset")
-#                 else:
-#                     message.error(request, "Promlem with sending email")
-
-#             return redirect("{% url 'home' %}")
-
-#     form = PasswordResetForm()
-#     return render(request=request, template_name = "core/password-reset.html", context={"form": form})
-
-def password_reset_confirm(request, uidb64, token):
-    return redirect("{% url 'login'%}")
-
 
 def about(request):
     team = Team.objects.all()
-    return render(request=request, template_name="about.html", context={"team": team}) 
+    team_members = TeamMember.objects.all()
+    return render(request=request, template_name="about.html", context={"team": team,
+                                                                        "team_members": team_members,
+}) 
 
 
-class Base(LoginRequiredMixin, CreateView):
+class Base(LoginRequiredMixin):
     def get_queryset(self):
         queryset = super(Base, self).get_queryset()
         queryset = queryset.filter(user=self.request.user)
@@ -139,7 +61,7 @@ class CreateNewsComment(CreateView):
         return super().form_valid(form)
 
 
-class CreateNews(NewsBase):
+class CreateNews(NewsBase, CreateView):
     template_name = "create_news.html"
 
     def form_valid(self, form):
@@ -200,10 +122,26 @@ class MyNewsDelete(LoginRequiredMixin, DeleteView):
         return super().form_valid(form)
 
 
+
+def search(request):
+    news = News.objects.all()
+    return render(request, "search-result.html", context={"news": news})
+
 def single_post(request):
     news = News.objects.all()
     return render(request, "single-post.html", context={"news": news})
 
+
+class NewsFilters(FilterView):
+    model = News
+    context_object_name = "news"
+    filterset_class = NewsFilter
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        most_viewed_news = News.objects.order_by('-view_count')[:5]
+        context['most_viewed_news'] = most_viewed_news
+        return context
     
 class Filter(LoginRequiredMixin, FilterView):
     template_name = "core/all_news.html"
@@ -215,33 +153,8 @@ class Filter(LoginRequiredMixin, FilterView):
         queryset = queryset.filter(user=self.request.user)
         return queryset
 
-class Filters(FilterView):
-    model = News
-    context_object_name = "news"
-    filterset_class = NewsFilter
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        most_viewed_news = News.objects.order_by('-view_count')[:5]
-        newest_news=News.objects.order_by('-date')[:5]
-        context['most_viewed_news'] = most_viewed_news
-        context['newest_news'] = newest_news
-        return context
-
-
-# class NewsFilters(FilterView):
-#     model = News
-#     context_object_name = "news"
-#     filterset_class = NewsFilter
-
-#     def get_context_data(self, *args, **kwargs):
-#         context = super().get_context_data(*args, **kwargs)
-#         most_viewed_news = News.objects.order_by('-view_count')[:5]
-#         context['most_viewed_news'] = most_viewed_news
-#         return context
-
-
-class Home(Filters):
+class Home(NewsFilters):
     template_name = "index.html"
     paginate_by = 8
 
@@ -261,7 +174,8 @@ class Home(Filters):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filter'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
+        context['filter'] = NewsFilter(
+            self.request.GET, queryset=self.get_queryset())
         return context
 
 
@@ -272,30 +186,3 @@ def category(request):
 
 class Contact(Home):
     template_name = "contact.html"
-
-
-def search_result(request):
-    query = request.GET.get('search')
-    news_filter = NewsFilter(request.GET, queryset=News.objects.all())
-
-    context = {
-        'query': query,
-        'news_filter': news_filter,
-    }
-
-    if query:
-        news_filter_qs = news_filter.qs.filter(Q(title__icontains=query) | Q(description__icontains=query))
-        context['news_filter'] = news_filter_qs
-
-    return render(request, 'search-result.html', context)
-
-
-def search_suggestions(request):
-    search_query = request.GET.get('q', '')
-
-    news = News.objects.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query))
-
-    suggestions = [{'title': news.title, 'description': news.description}
-                   for news in news]
-
-    return JsonResponse(suggestions, safe=False)
