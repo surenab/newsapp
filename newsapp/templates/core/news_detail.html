@@ -14,9 +14,9 @@
         {% for comment in comments %}
         <div class="card-body">
           <div class="d-flex flex-start align-items-center">
-            {% if comment.owner.profile.picture %}
+            {% if comment.owner.profile.image %}
             <img class="rounded-circle shadow-1-strong me-3" 
-            src="{{comment.owner.profile.picture.url}}" 
+            src="{{comment.owner.profile.image.url}}" 
             alt="avatar" width="60" height="60">
             {%else%}
             <img class="rounded-circle shadow-1-strong me-3" 
