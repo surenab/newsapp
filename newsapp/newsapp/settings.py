@@ -139,7 +139,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = reverse_lazy("home")
+LOGIN_REDIRECT_URL = reverse_lazy("profile")
 LOGOUT_REDIRECT_URL = reverse_lazy("home")
 
 
