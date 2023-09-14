@@ -216,27 +216,23 @@ def search_suggestions(request):
     return JsonResponse(suggestions, safe=False)
 
 
-
-
 def subscribe(request):
     if request.method == 'POST':
         form = SubscriberForm(request.POST)
         if form.is_valid():
             subscriber = form.save()
-            # You can send a welcome email here if desired
             send_mail(
                 'Welcome to Our Newsletter',
                 'Thank you for subscribing!',
-                'infopulse.newsapp@gmail.com',  # Replace with your email
+                'infopulse.newsapp@gmail.com',
                 [subscriber.email],
                 fail_silently=False,
             )
-            return redirect('subscribe_success')
+            messages.success(request, 'Thank you for subscribing to our newsletter. You will receive our latest updates in your inbox.')
+            return redirect('home')
     else:
         form = SubscriberForm()
     return render(request, 'subscribe.html', {'form': form})
 
 def subscribe_success(request):
-    return render(request, 'subscribe_success.html')
-
-
+    return render(request, 'home.html')

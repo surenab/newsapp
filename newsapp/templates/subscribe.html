@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subscribe to Our Newsletter</title>
-</head>
-<body>
-    <h1>Subscribe to Our Newsletter</h1>
-    <p>Stay up-to-date with our latest news and updates by subscribing to our newsletter.</p>
+{% extends 'base_home.html' %}
+{% load static %}
+{% block bodycontent %}
+{% load pagination_tags %}
+
     
-    <form method="post">
+<div><br></div>
+    <form method="post" class="card">
+        <h1>Subscribe to Our Newsletter</h1>
+        <p>Stay up-to-date with our latest news and updates by subscribing to our newsletter.</p>
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Subscribe</button>
+        <button type="submit" class="button-74">Subscribe</button>
+        <div><br></div>
     </form>
-</body>
-</html>
+
+<div><br></div>
+
+{% endblock %}
