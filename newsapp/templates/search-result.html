@@ -20,7 +20,7 @@
               </a>
               <div>
                     <div class="post-meta"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span></div>
-                    <h3><a href="single-post">{{new.title}}</a></h3>
+                    <h3><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h3>
                     <p>{{new.description}}</p>
                     <div class="d-flex align-items-center author">
                       <div class="photo"><img src="{{new.user.profile.image.url}}" alt="" class="img-fluid"></div>

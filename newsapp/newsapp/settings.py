@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-#ujzm4va9325=*98%(ze28nwwy+0j#)d3aig9(+a(h!_wp-zww
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'infopulsearmenia.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'infopulsearmenia.pythonanywhere.com', 'avagyani.pythonanywhere.com']
 
 
 # Application definition
@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login',
     'crispy_forms',
     'crispy_bootstrap4',
     'django_filters',
+    'login',
     'core',
 ]
 
@@ -140,7 +140,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = reverse_lazy("home")
+LOGIN_REDIRECT_URL = reverse_lazy("profile")
 LOGOUT_REDIRECT_URL = reverse_lazy("home")
 
 

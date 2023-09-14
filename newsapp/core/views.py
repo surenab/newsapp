@@ -40,7 +40,7 @@ class NewsBase(Base):
     model = News
     context_object_name = "news"
     form_class = NewsForm
-    success_url = reverse_lazy("all_news")
+    success_url = reverse_lazy("my_news")
     success_text = ""
     
     def form_valid(self, form):
@@ -53,8 +53,8 @@ class CreateNewsComment(CreateView):
     form_class = NewsCommentForm
     success_text = "Created!"
 
-    def get_success_url(self):
-        return reverse_lazy("my_news_details", kwargs = {"pk": self.request.POST.get("news")})
+    def get_success_url(self)-> str:
+        return reverse_lazy("news_details", kwargs = {"pk": self.request.POST.get("news")})
 
     def form_valid(self, form):
         form.instance.owner = self.request.user

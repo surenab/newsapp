@@ -12,9 +12,6 @@
   <head>
     <title>Filter Menu Panel Group</title>
     <meta charset="UTF-8" />
-    <!-- <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
   </head>
   <body>
     <header class="header" style="width: 40%;">
@@ -130,7 +127,7 @@
               {% for new in news %}
                   <div class="post-entry-1">
                     {% if new %}
-                    <a href="{% url 'my_news_details' new.id %}">
+                    <a href="{% url 'news_details' new.id %}">
                       <img src="{{new.image.url}}" alt="" class="img-details">
                     </a>
                     <div class="post-meta">
@@ -138,8 +135,8 @@
                         <span class="mx-1">&bullet;</span> 
                         <span>{{new.date}}</span>
                     </div>
-                    <h2><a href="{% url 'my_news_details' new.id %}">{{new.title}}</a></h2>
-                    <span><a type="button" class="btn btn-primary" href="{% url 'my_news_details' new.id %}"><i
+                    <h2><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
+                    <span><a type="button" class="btn btn-primary" href="{% url 'news_details' new.id %}"><i
                       class="far fa-eye"></i></a>
                     <a type="button" class="btn btn-primary" href="{% url 'my_news_update' new.id %}"><i
                       class="fas fa-edit"></i></a>
