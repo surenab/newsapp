@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, Team, Message, NewsComment, TeamMember
+from .models import News, Team, Message, NewsComment, TeamMember, Subscriber
 
 
 class MessageAdmin(admin.ModelAdmin):
@@ -21,3 +21,4 @@ admin.site.register(Team)
 admin.site.register(NewsComment)
 admin.site.register(Message, MessageAdmin)
 admin.site.register(TeamMember, TeamMemberAdmin)
+admin.site.register(Subscriber)

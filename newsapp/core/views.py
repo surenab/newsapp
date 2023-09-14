@@ -2,7 +2,7 @@ from typing import Any, Dict
 from django.shortcuts import render, redirect
 from .models import *
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
-from .forms import NewsForm, MessageForm, NewsCommentForm
+from .forms import NewsForm, MessageForm, NewsCommentForm, SubscriberForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,6 +13,8 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 from django.db.models import Q
+from django.core.mail import send_mail
+
 
 
 # Create your views here.
@@ -128,17 +130,6 @@ def single_post(request):
     news = News.objects.all()
     return render(request, "single-post.html", context={"news": news})
 
-
-# class NewsFilters(FilterView):
-#     model = News
-#     context_object_name = "news"
-#     filterset_class = NewsFilter
-
-#     def get_context_data(self, *args, **kwargs):
-#         context = super().get_context_data(*args, **kwargs)
-#         most_viewed_news = News.objects.order_by('-view_count')[:5]
-#         context['most_viewed_news'] = most_viewed_news
-#         return context
     
 class Filter(LoginRequiredMixin, FilterView):
     template_name = "core/all_news.html"
@@ -223,3 +214,29 @@ def search_suggestions(request):
                    for news in news]
 
     return JsonResponse(suggestions, safe=False)
+
+
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        form = SubscriberForm(request.POST)
+        if form.is_valid():
+            subscriber = form.save()
+            # You can send a welcome email here if desired
+            send_mail(
+                'Welcome to Our Newsletter',
+                'Thank you for subscribing!',
+                'infopulse.newsapp@gmail.com',  # Replace with your email
+                [subscriber.email],
+                fail_silently=False,
+            )
+            return redirect('subscribe_success')
+    else:
+        form = SubscriberForm()
+    return render(request, 'subscribe.html', {'form': form})
+
+def subscribe_success(request):
+    return render(request, 'subscribe_success.html')
+
+
