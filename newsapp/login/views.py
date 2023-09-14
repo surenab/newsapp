@@ -30,7 +30,8 @@ class Register(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect("home")
+        messages.success(self.request, "Registration was successful. You are now logged in. You can edit your profile information by clicking the 'Edit Profile' button.")
+        return redirect("profile")
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
