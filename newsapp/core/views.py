@@ -38,7 +38,7 @@ class NewsBase(Base):
     model = News
     context_object_name = "news"
     form_class = NewsForm
-    success_url = reverse_lazy("all_news")
+    success_url = reverse_lazy("my_news")
     success_text = ""
     
     def form_valid(self, form):
