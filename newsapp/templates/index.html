@@ -36,64 +36,58 @@
         </div>
       </div>
     </section><!-- End Hero Slider Section -->
-    
-   
-      
+
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
 
     <!-- ======= Post Grid Section ======= -->
     <section id="posts" class="posts">
       <div class="container" data-aos="fade-up">
         <div class="row g-5">
           <div class="col-lg-4">
-
             {% for new in most_viewed_news|slice:":1" %}
             <div class="post-entry-1">
               <a href="{% url 'news_details' new.id %} "><img src="{{new.image.url}}" alt="" class="img-fluid fixed-size-image"></a>
               <div class="post-meta"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span>
                 <span class="mx-1">&bullet;</span>Viewes: {{new.view_count}}</span> </div>
               <h2><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
-              <p class="mb-4 d-block">{{new.description}}</p>
-
-
+              <p class="mb-4 d-block">{{ new.description | truncatewords:25 }}...</p>
                 <div class="name">
                   <h3 class="m-0 p-0">{{new.user}}</h3>
                 </div>
             </div>
               {% endfor %}
-
-                <div class="trending">
-                  <h3>Trending News</h3>
-                  <ul class="trending-post">
-                    {% for new in most_viewed_news %}
-                    <li>
-                      <a href="{% url 'news_details' new.id %}">
-                        <span class="number">{{forloop.counter}}</span>
-                        <h3>{{new.title}}</h3>
-                        <span class="author">{{new.user}}r</span>
-                      </a>
-                    </li>
-                    {% endfor %}
-                  </ul>
-                </div>
-               
-
-              <!-- All news Section -->
+            <div class="trending">
+              <h3>Trending News</h3>
+                <ul class="trending-post">
+                {% for new in most_viewed_news %}
+                  <li>
+                    <a href="{% url 'news_details' new.id %}">
+                      <span class="number">{{forloop.counter}}</span>
+                      <h3>{{new.title}}</h3>
+                      <span class="author">{{new.user}}r</span>
+                    </a>
+                  </li>
+                {% endfor %}
+                </ul>
             </div>
+          </div>
             <div class="col-lg-8">
-
               <div class="row g-5">
                 {% for new in news %}
                 <div class="col-lg-4 border-start custom-border">
                   <div class="post-entry-1-small">
-                    <a href="{% url 'news_details' new.id %}"><img src="{{new.image.url}}" alt="" class="img-fluid"
-                        class="align-items-center"></a>
-                    <div class="post-meta"><span class="date">{{new.get_news_type_display}}</span> <span
-                        class="mx-1">&bullet;</span> <span>{{new.date}}</span><span
-                        class="mx-1">&bullet;</span><span>Viewes: {{new.view_count}}</span></div>
-                    <h2><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
+                    <a href="{% url 'news_details' new.id %}">
+                      <img src="{{new.image.url}}" alt="" class="img-fluid" class="align-items-center">
+                    </a>
+                    <div class="post-meta">
+                      <span class="date">{{new.get_news_type_display}}</span>
+                      <span class="mx-1">&bullet;</span>
+                      <span>{{new.date}}</span>
+                      <span class="mx-1">&bullet;</span>
+                      <span>Viewes: {{new.view_count}}</span>
+                    </div>
+                    <h2 style="font-size: 20px;;"><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
     
                   </div>
                 </div>
