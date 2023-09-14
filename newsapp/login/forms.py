@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
-from django.contrib.auth.forms import SetPasswordForm, PasswordResetForm
+from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth import get_user_model
 
 
@@ -55,7 +55,6 @@ class ProfileForm(forms.ModelForm):
         self.instance.user.first_name = self.cleaned_data['first_name']
         self.instance.user.last_name = self.cleaned_data['last_name']
 
-        # Save the UserProfile instance
         profile = super(ProfileForm, self).save(commit=commit)
 
         if commit:
@@ -69,9 +68,3 @@ class SetPasswordForm(SetPasswordForm):
     class Meta:
         model = get_user_model
         fields = ['new_password1', 'new_password2']
-
-
-# class PasswordResetForm(PasswordResetForm):
-
-#     def __init__(self, *args, **kwargs):
-#         super(PasswordResetForm, self).__init__(*args, **kwargs)

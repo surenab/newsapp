@@ -128,17 +128,6 @@ def single_post(request):
     news = News.objects.all()
     return render(request, "single-post.html", context={"news": news})
 
-
-# class NewsFilters(FilterView):
-#     model = News
-#     context_object_name = "news"
-#     filterset_class = NewsFilter
-
-#     def get_context_data(self, *args, **kwargs):
-#         context = super().get_context_data(*args, **kwargs)
-#         most_viewed_news = News.objects.order_by('-view_count')[:5]
-#         context['most_viewed_news'] = most_viewed_news
-#         return context
     
 class Filter(LoginRequiredMixin, FilterView):
     template_name = "core/all_news.html"
