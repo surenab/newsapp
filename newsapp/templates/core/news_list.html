@@ -7,6 +7,8 @@
 <section id="posts" class="posts">
     <div class="container" data-aos="fade-up">
         <div class="post-entry-1 lg">
+          <a type="button" class="button-74" href="{% url 'create_news' %}" style="padding: 8px;">Create News</a>
+          <div><br></div>
           {% for new in news %}
               <div class="post-entry-1">
                 {% if new %}
