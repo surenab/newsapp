@@ -1,5 +1,5 @@
 from django import forms
-from .models import News, Message, NewsComment
+from .models import News, Message, NewsComment, Subscriber
 
 
 class NewsForm(forms.ModelForm):
@@ -43,15 +43,6 @@ class NewsCommentForm(forms.ModelForm):
         model = NewsComment
         fields = ["text"]
 
-
-# subscriptions/forms.py
-# class SubscriberForm(forms.ModelForm):
-#     class Meta:
-#         model = SubscribedUsers
-#         fields = ['email']
-
-from django import forms
-from .models import Subscriber
 
 class SubscriberForm(forms.ModelForm):
     class Meta:

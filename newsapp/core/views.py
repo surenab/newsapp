@@ -158,7 +158,7 @@ class Filters(FilterView):
 
 class Home(Filters):
     template_name = "index.html"
-    paginate_by = 8
+    paginate_by = 9
 
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
