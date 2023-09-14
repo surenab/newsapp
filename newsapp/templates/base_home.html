@@ -218,7 +218,15 @@
           
         </div>
     </div>
-
+    <div class="flex flex-row justify-center space-x-3 py-4">
+      <form method="post" action="{% url 'subscribe' %}">
+        {% csrf_token %}
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    
+    </div>
     <div class="footer-legal">
       <div class="container">
 
@@ -229,6 +237,7 @@
             </div>
 
           </div>
+          
 
           <div class="col-md-6">
             <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
@@ -246,6 +255,7 @@
     </div>
 
   </footer>
+  
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

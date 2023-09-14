@@ -42,3 +42,18 @@ class NewsCommentForm(forms.ModelForm):
     class Meta:
         model = NewsComment
         fields = ["text"]
+
+
+# subscriptions/forms.py
+# class SubscriberForm(forms.ModelForm):
+#     class Meta:
+#         model = SubscribedUsers
+#         fields = ['email']
+
+from django import forms
+from .models import Subscriber
+
+class SubscriberForm(forms.ModelForm):
+    class Meta:
+        model = Subscriber
+        fields = ['email']

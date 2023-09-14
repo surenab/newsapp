@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from PIL import Image
 from django.contrib.auth.models import User
+import datetime
+
 
 
 # Create your models here.
@@ -80,3 +82,13 @@ class TeamMember(models.Model):
     position = models.CharField(max_length=50)
     description = models.TextField(max_length=1000)
     image = models.ImageField(upload_to="Media", default=None, null=True, blank=True)
+
+
+
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True)
+    subscribed_at = models.DateTimeField(default=datetime.datetime.now)
+
+    def __str__(self):
+        return self.email
+

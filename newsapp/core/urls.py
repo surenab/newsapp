@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import Home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate, MyNewsDelete, search_result, search_suggestions, single_post, Contact, Filter, category, CreateNewsComment, NewsDetails
+from .views import Home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate,MyNewsDelete,subscribe_success, search_result, search_suggestions, single_post, Contact, Filter, category, CreateNewsComment, NewsDetails, subscribe
 from django.conf.urls.static import static
+
 from django.conf import settings
 
 
@@ -20,6 +21,10 @@ urlpatterns = [
     path('category/', category, name = "category"),
     path('create-comment', CreateNewsComment.as_view(), name = "create_comment"),
     path("details/<int:pk>", NewsDetails.as_view(), name="news_details"),
+    path('subscribe/', subscribe, name='subscribe'),
+    path('subscribe/success/', subscribe_success, name='subscribe_success'),
+
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

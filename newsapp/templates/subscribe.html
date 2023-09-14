@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscribe to Our Newsletter</title>
+</head>
+<body>
+    <h1>Subscribe to Our Newsletter</h1>
+    <p>Stay up-to-date with our latest news and updates by subscribing to our newsletter.</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Subscribe</button>
+    </form>
+</body>
+</html>

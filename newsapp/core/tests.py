@@ -35,3 +35,4 @@ class NewsTestCase(TestCase):
     def tearDown(self) -> None:
         del self.user
         del self.first_news
+ 
