@@ -8,11 +8,15 @@
         <div class="post-meta">Type: {{news.get_news_type_display}}</div>
         <div class="post-meta">Date: {{news.date}}</div>
         <div class="post-meta">Title: {{news.title}}</div>
+        <div><br></div>
         <div class="post-meta"><img src="{{news.image.url}}" alt="" class="img-fluid"></div>
+        <div><br></div>
         <div class="post-meta">{{news.description}}</div>
+        <div><br></div>
         {% if comments %}
         <div>Comments</div>
         {% for comment in comments %}
+        <div><br></div>
         <div class="card-body">
           <div class="d-flex flex-start align-items-center">
             {% if comment.owner.profile.image %}
@@ -24,14 +28,15 @@
             src="{% static '/assets/img/pp.jpg'%}" 
             alt="avatar" width="60" height="60">
             {%endif%}
-          <div>
-            <h6 class="fw-bold text-primary mb-1">{{comment.owner.username}}</h6> 
+            <div>
+              <h6 class="fw-bold text-primary mb-1">{{comment.owner.username}}</h6>
+            </div>
           </div>
-        </div>
-        <div><br></div>
-          <div class="comment-body">
+          <div><br></div>
+          <div class="comment-body"  style="color: rgb(48, 39, 7);">
             {{comment.text}}
           </div>
+          <div><br></div>
         {% endfor %}
         {% endif %}
 
@@ -52,15 +57,14 @@
                           <div class="float-end mt-2 pt-1">
                             <button type="submit" class="button-74">Post comment</button>
                           </div>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
             </section>
-            
         </form>
         {%endif%}
+    </div>
     </div>
     
 </section> <!-- End Post Grid Section -->
