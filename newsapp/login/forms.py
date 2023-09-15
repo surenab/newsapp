@@ -44,7 +44,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['first_name', 'last_name', 'tel', 'address',  'image', 'birthday']
         widgets = {
-            'birthday': forms.SelectDateWidget(years=range(1970, 2016))
+            'birthday': forms.SelectDateWidget(years=range(1935, 2016))
         }
 
     def __init__(self, *args, **kwargs):
