@@ -16,8 +16,8 @@
                 <div class="swiper-slide">
                   <a href="{% url 'news_details' new.id %}" class="img-bg d-flex align-items-end" style="background-image: url({{new.image.url}})">
                     <div class="img-bg-inner">
-                      <h2>{{ new.title }}</h2>
-                      <p>{{ new.description | truncatewords:17 }}...</p>
+                      <h2 style="text-align: justify;">{{ new.title }}</h2>
+                      <p style="text-align: justify;">{{ new.description | truncatewords:17 }}...</p>
                     </div>
                   </a>
                 </div>
@@ -51,8 +51,8 @@
               <a href="{% url 'news_details' new.id %} "><img src="{{new.image.url}}" alt="" class="img-fluid fixed-size-image"></a>
               <div class="post-meta"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span>
                 <span class="mx-1">&bullet;</span>Viewes: {{new.view_count}}</span> </div>
-              <h2><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
-              <p class="mb-4 d-block">{{ new.description | truncatewords:25 }}...</p>
+              <h2 style="text-align: justify;"><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
+              <p class="mb-4 d-block" style="text-align: justify;">{{ new.description | truncatewords:25 }}...</p>
                 <div class="name">
                   <h3 class="m-0 p-0">{{new.user}}</h3>
                 </div>
@@ -65,7 +65,7 @@
                   <li>
                     <a href="{% url 'news_details' new.id %}">
                       <span class="number">{{forloop.counter}}</span>
-                      <h3>{{new.title}}</h3>
+                      <h3 style="text-align: justify;">{{new.title}}</h3>
                       <span class="author">{{new.user}}r</span>
                     </a>
                   </li>
@@ -88,7 +88,7 @@
                       <span class="mx-1">&bullet;</span>
                       <span>Viewes: {{new.view_count}}</span>
                     </div>
-                    <h2 style="font-size: 20px;;"><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
+                    <h2 style="font-size: 20px; text-align: justify;"><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
     
                   </div>
                 </div>
