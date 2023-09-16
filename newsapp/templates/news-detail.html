@@ -5,11 +5,12 @@
 <section id="posts" class="posts">
     <div class="container" data-aos="fade-up">
         <div class="post-meta"></div>
-        <div class="post-meta">Type: {{news.get_news_type_display}}</div>
-        <div class="post-meta">Date: {{news.date}}</div>
-        <div class="post-meta">Title: {{news.title}}</div>
-        <div class="post-meta"><img src="{{news.image.url}}" alt="" class="img-fluid"></div>
-        <div class="post-meta">{{news.description}}</div>
+
+        <div class="post-meta"><h6><b>{{news.title}}</b></h6></div>
+        <div class="post-meta"><img src="{{news.image.url}}" alt="" class="img-fluid"></div><br>
+        <div class="post-meta">&emsp; {{news.description}}</div>
+        <div class="post-meta">{{news.get_news_type_display}}</div>
+        <div class="post-meta">{{news.date}}</div>
         {% if comments %}
         <div>Comments</div>
 {% for comment in comments %}
