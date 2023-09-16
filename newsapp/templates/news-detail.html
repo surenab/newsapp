@@ -5,11 +5,11 @@
 <section id="posts" class="posts">
     <div class="container" data-aos="fade-up">
         <div class="post-meta"></div>
-        <div class="post-meta" style="text-align: justify;">Title: {{news.title}}</div>
+        <div class="post-meta" style="text-align: justify; font-weight: bold; font-size: larger;">{{news.title}}</div>
         <div><br></div>
         <div class="post-meta"><img src="{{news.image.url}}" alt="" class="img-fluid"></div>
         <div><br></div>
-        <div class="post-meta" style="text-align: justify;">{{news.description}}</div>
+        <div class="post-meta" style="text-align: justify; float: right;">{{news.description}}</div>
         <div><br></div>
         <div class="post-meta">Type: {{news.get_news_type_display}}</div>
         <div class="post-meta">Date: {{news.date}}</div>
