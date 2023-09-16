@@ -54,7 +54,7 @@
               <h2><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
               <p class="mb-4 d-block">{{ new.description | truncatewords:25 }}...</p>
                 <div class="name">
-                  <h3 class="m-0 p-0">{{new.user}}</h3>
+                  <h6 class="m-0 p-0">{{new.user}}</h6>
                 </div>
             </div>
               {% endfor %}
