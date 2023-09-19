@@ -4,20 +4,13 @@
 
 <main id="main">
   <section>
-    <div class="container" data-aos="fade-up">
-      <div class="row">
-        <div class="col-lg-12  mb-5">
-
-          <div class="container">
+        <div class="col-lg-100  mb-8">
             <div class="row justify-content-center">
-              <div class="col-md-8">
+              <div class="col-md-100">
                 <div class="card-group mb-0">
-                  <div class="card p-4">
+                  <div class="card p-8">
                     <div class="card-body">
-
                       <h4 class="page-title text-center">Terms and Conditions</h4>
-
-
                       <h4>By signing up, you agree to the following terms and conditions:</h4>
 
                       <ul id="terms-list">
@@ -58,29 +51,12 @@
                           or
                           inquiries.</li>
                       </ul>
-
-
-                      <script>
-                        const listItems = document.querySelectorAll('#terms-list li');
-                        listItems.forEach(item => {
-                          const content = item.innerHTML;
-                          const colonIndex = content.indexOf(':');
-                          if (colonIndex !== -1) {
-                            const boldPart = content.substring(0, colonIndex + 1);
-                            const remainingPart = content.substring(colonIndex + 1);
-                            item.innerHTML = `<span class="bold-blue">${boldPart}</span>${remainingPart}`;
-                          }
-                        });
-                      </script>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
   </section>
 </main>
 
