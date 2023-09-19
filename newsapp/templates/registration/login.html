@@ -15,7 +15,7 @@
                                     <div class="card p-8">
                                         <div class="card-body">
                                             <h3>Log In</h3>
-                                            <p class="text-muted">Log in to our account</p>
+                                            <div><br></div>
                                             <form method="POST" role="form">
                                                 {% csrf_token %}
                                                 <div class="input-group mb-5">
@@ -42,8 +42,7 @@
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-6 text-right">
-                                                        <p><a href="{% url 'password_reset' %}">Forgotten your
-                                                                password?</a></p>
+                                                        <p><a href="{% url 'password_reset' %}" style="color:aliceblue;">Reset Password</a></p>
                                                     </div>
                                                 </div>
                                             </form>
