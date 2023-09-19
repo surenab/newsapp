@@ -4,35 +4,39 @@
 {% load crispy_forms_tags %}
 
 
-<html lang="en">
+<!-- <html lang="en">
   <head>
     <link rel="stylesheet" href='{% static "css/register.css" %}'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  </head>
+  </head> -->
 
-  <body>
-    <div id="form">
-        <div class="container">
-          <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
-            <div id="userform">
-              <div class="tab-content">
-                <div class="tab-pane fade active in" id="signup">
-                  <h2 class="text-uppercase text-center">Create News</h2>
-                    <form id="signup" method = "post" enctype="multipart/form-data">
+  <!-- <body> -->
+    <div><br></div><div><br></div><div><br></div><div><br></div><div><br></div>
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+          <div class="col-lg-12 text-center mb-3 mt-3">
+              <p class="page-title">Create News</p>
+          </div>
+  
+          <div class="text-center">
+  
+              <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form.media}}
-                        {{form | crispy}}
-                        <button type="submit" class="btn btn-larger btn-block"/>
-                        Create News
-                        </button>
-                    </form>
-                </div>
+                        {{form.as_p }}
+                        <div class="col-lg-12 mt-5 mb-5">
+                          <button class="button-74" type="submit">
+                              Create News
+                          </button>
+                      </div>
+                  </form>
               </div>
-            </div>
           </div>
-        </div>
-    </div>
-  </body>
-</html>
+      
+      
+      
+      </div>
+      </div>
+      <div><br></div><div><br></div><div><br></div><div><br></div><div><br></div>
 
 {% endblock %}
