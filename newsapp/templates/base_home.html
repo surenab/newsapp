@@ -17,19 +17,6 @@
         crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/33cd771fbc.js" crossorigin="anonymous"></script>
 
-  <script>
-    const listItems = document.querySelectorAll('#terms-list li');
-    listItems.forEach(item => {
-      const content = item.innerHTML;
-      const colonIndex = content.indexOf(':');
-      if (colonIndex !== -1) {
-        const boldPart = content.substring(0, colonIndex + 1);
-        const remainingPart = content.substring(colonIndex + 1);
-        item.innerHTML = `<span class="bold-blue">${boldPart}</span>${remainingPart}`;
-      }
-    });
-  </script>
-
   <title>InfoPulse</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -53,6 +40,16 @@
   <!-- Template Main CSS Files -->
   <link href="{% static 'assets/css/variables.css' %}" rel="stylesheet">
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+   <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
 
 </head>
 
@@ -261,15 +258,7 @@
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{% static 'assets/js/main.js' %}"></script>
+ 
 
 </body>
 

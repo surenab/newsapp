@@ -16,8 +16,17 @@
   scroll-behavior: smooth;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   color: rgba(var(--color-primary-rgb), 1);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
 }
 
 a {
@@ -133,6 +142,8 @@ h6 {
 
 #main {
   margin-top: 90px;
+  flex: 1; 
+  overflow-y: auto; 
 }
 
 /*--------------------------------------------------------------
@@ -161,12 +172,12 @@ section {
 --------------------------------------------------------------*/
 .scroll-top {
   position: fixed;
-  visibility: hidden;
+  /* visibility: hidden; */
   opacity: 0;
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background: var(--color-primary);
+  background: #968952;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -1316,10 +1327,12 @@ section {
 # Footer
 --------------------------------------------------------------*/
 .footer {
+  margin-top: auto;
   overflow: hidden;
   background: #968952;
   font-size: 16px;
   color: #FFF;
+  bottom: 0;
 }
 
 .footer .footer-content {
