@@ -17,6 +17,19 @@
         crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/33cd771fbc.js" crossorigin="anonymous"></script>
 
+  <script>
+    const listItems = document.querySelectorAll('#terms-list li');
+    listItems.forEach(item => {
+      const content = item.innerHTML;
+      const colonIndex = content.indexOf(':');
+      if (colonIndex !== -1) {
+        const boldPart = content.substring(0, colonIndex + 1);
+        const remainingPart = content.substring(colonIndex + 1);
+        item.innerHTML = `<span class="bold-blue">${boldPart}</span>${remainingPart}`;
+      }
+    });
+  </script>
+
   <title>InfoPulse</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
