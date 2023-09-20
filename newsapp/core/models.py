@@ -82,6 +82,7 @@ class TeamMember(models.Model):
     position = models.CharField(max_length=50)
     description = models.TextField(max_length=1000)
     image = models.ImageField(upload_to="Media", default=None, null=True, blank=True)
+    linkedin=models.CharField(max_length=100,default=None, null=True, blank=True)
 
 
 
