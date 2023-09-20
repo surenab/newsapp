@@ -60,7 +60,6 @@ class CreateNewsComment(CreateView):
         news_id = self.request.POST.get("news")
         news = get_object_or_404(News, id = news_id)
         form.instance.news = news
-        # messages.success(self.request, "News Comment instance is created.")
         return super().form_valid(form)
 
 
