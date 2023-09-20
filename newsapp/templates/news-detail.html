@@ -1,6 +1,7 @@
 {% extends 'base_home.html' %}
 {% load static %}
 {% block bodycontent %}
+{% load crispy_forms_tags %}
 
 <section id="posts" class="posts">
     <div class="container" data-aos="fade-up">
@@ -42,57 +43,18 @@
         {% endif %}
 
         {% if request.user.is_authenticated %}
-        <form action="{% url 'create_comment' %}" method="POST">
-            {% csrf_token %}
-            <section style="background-color: #eee;">
-                <div class="container my-5 py-5">
-                  <div class="row d-flex justify-content-center">
-                    <div class="col-md-12 col-lg-10 col-xl-8">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="d-flex flex-start align-items-center">
-                          </div>
-                        </div>
-                        {{comment_form}}
-                        <input type="hidden" id="news" value="{{news.id}}" name="news" />
-                          <div class="float-end mt-2 pt-1">
-                            <button type="submit" class="button-74">Post comment</button>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </section>
-        </form>
-        {%endif%}
+      <form action="{% url 'create_comment' %}" method="POST">
+          {% csrf_token %}
+          <label for="{{ comment_form.text.id }}" style="display: none;">Text:</label>
+          {{ comment_form.text }}
+          <input type="hidden" value="{{ news.id }}" name="news" />
+          <div><br></div>
+          <button type="submit" class="button-74">Post comment</button>
+      </form>
+      {% endif %}
     </div>
     </div>
     
 </section> <!-- End Post Grid Section -->
-
-<script>
-  // Attach an event listener to the select element
-  document.getElementById('blogs_per_page').addEventListener('change', function () {
-      // Get the selected value
-      var selectedValue = this.value;
-
-      // Build the new URL with the updated query parameter
-      var newUrl = updateQueryStringParameter(window.location.pathname, 'blogs_per_page', selectedValue);
-
-      // Redirect to the new URL
-      window.location.href = newUrl + window.location.search + window.location.hash;
-  });
-
-  // Function to update query string parameter
-  function updateQueryStringParameter(uri, key, value) {
-      var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-      var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-      if (uri.match(re)) {
-          return uri.replace(re, '$1' + key + "=" + value + '$2');
-      } else {
-          return uri + separator + key + "=" + value;
-      }
-  }
-</script>
 
 {% endblock %}

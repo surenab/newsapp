@@ -30,6 +30,89 @@
     });
   </script>
 
+<script>
+  // Attach an event listener to the select element
+  document.getElementById('blogs_per_page').addEventListener('change', function () {
+      // Get the selected value
+      var selectedValue = this.value;
+
+      // Build the new URL with the updated query parameter
+      var newUrl = updateQueryStringParameter(window.location.pathname, 'blogs_per_page', selectedValue);
+
+      // Redirect to the new URL
+      window.location.href = newUrl + window.location.search + window.location.hash;
+  });
+
+  // Function to update query string parameter
+  function updateQueryStringParameter(uri, key, value) {
+      var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+      var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+      if (uri.match(re)) {
+          return uri.replace(re, '$1' + key + "=" + value + '$2');
+      } else {
+          return uri + separator + key + "=" + value;
+      }
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    const searchInput = $('#search-input');
+    const suggestionsContainer = $('#suggestions');
+    const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+
+    searchInput.on('input', function () {
+      const query = searchInput.val();
+
+      if (query.length > 2) {
+        $.ajax({
+          url: '{% url "search_suggestions" %}',
+          data: { q: query },
+          dataType: 'json',
+          headers: { "X-CSRFToken": csrfToken },
+          success: function (data) {
+            suggestionsContainer.empty();
+
+            for (const news of data) {
+              suggestionsContainer.append(
+                `<div>
+                  <strong>${news.title}</strong> - ${news.description}
+                </div>`
+              );
+            }
+          }
+        });
+      } else {
+        suggestionsContainer.empty();
+      }
+    });
+
+    // Trigger search on Enter key press
+    searchInput.on('keydown', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission
+        const query = searchInput.val();
+
+        if (query.length > 2) {
+          // Submit the form
+          searchInput.closest('form').submit();
+        }
+      }
+    })
+  });
+</script>
+
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+
   <title>InfoPulse</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -53,6 +136,8 @@
   <!-- Template Main CSS Files -->
   <link href="{% static 'assets/css/variables.css' %}" rel="stylesheet">
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  
 
 </head>
 
@@ -115,53 +200,7 @@
             <button type="submit" class="btn js-search-close"><span class="bi-x"></span></button>
           </form>
         </div><!-- End Search Form -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          $(document).ready(function () {
-            const searchInput = $('#search-input');
-            const suggestionsContainer = $('#suggestions');
-            const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-      
-            searchInput.on('input', function () {
-              const query = searchInput.val();
-      
-              if (query.length > 2) {
-                $.ajax({
-                  url: '{% url "search_suggestions" %}',
-                  data: { q: query },
-                  dataType: 'json',
-                  headers: { "X-CSRFToken": csrfToken },
-                  success: function (data) {
-                    suggestionsContainer.empty();
-      
-                    for (const news of data) {
-                      suggestionsContainer.append(
-                        `<div>
-                          <strong>${news.title}</strong> - ${news.description}
-                        </div>`
-                      );
-                    }
-                  }
-                });
-              } else {
-                suggestionsContainer.empty();
-              }
-            });
-      
-            // Trigger search on Enter key press
-            searchInput.on('keydown', function (event) {
-              if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent form submission
-                const query = searchInput.val();
-      
-                if (query.length > 2) {
-                  // Submit the form
-                  searchInput.closest('form').submit();
-                }
-              }
-            })
-          });
-        </script>
+       
       </div>
 
     </div>
@@ -262,14 +301,7 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{% static 'assets/js/main.js' %}"></script>
+  
 
 </body>
 
