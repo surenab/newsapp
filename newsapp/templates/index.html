@@ -65,7 +65,7 @@
                   <li>
                     <a href="{% url 'news_details' new.id %}">
                       <span class="number">{{forloop.counter}}</span>
-                      <h3>{{new.title}}</h3>
+                      <h3 style="text-align: justify;">{{new.title}}</h3>
                       <span class="author">Created by <i>{{user.first_name}} {{user.last_name}}</i></span>
                     </a>
                   </li>
@@ -88,7 +88,7 @@
                       <span class="mx-1">&bullet;</span>
                       <span>Viewes: {{new.view_count}}</span>
                     </div>
-                    <h2 style="font-size: 20px;;"><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
+                    <h2 style="font-size: 20px; text-align: justify;"><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
     
                   </div>
                 </div>

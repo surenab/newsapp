@@ -16,7 +16,7 @@ from .models import Profile
 
 class Register(CreateView):
     form_class = RegisterForm
-    success_url = reverse_lazy("login")
+    success_url = reverse_lazy("profile")
     template_name = "registration/register.html"
 
     def form_valid(self, form):

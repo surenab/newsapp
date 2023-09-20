@@ -54,10 +54,10 @@ body, html {
       background: #1c1e21 url(https://www.rea.ru/ru/org/cathedries/gppkaf/PublishingImages/news/News1.jpg);
       background-position: center center;
       background-repeat: none;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      background-size: cover;
-      -o-background-size: cover;
+      -webkit-background-size: auto;
+      -moz-background-size::auto;
+      background-size:auto;
+      -o-background-size: auto;
     min-height:100%;
   
   }

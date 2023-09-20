@@ -51,7 +51,6 @@ class NewsBase(Base):
 class CreateNewsComment(CreateView):
     model = NewsComment
     form_class = NewsCommentForm
-    success_text = "Created!"
 
     def get_success_url(self)-> str:
         return reverse_lazy("news_details", kwargs = {"pk": self.request.POST.get("news")})
@@ -61,7 +60,6 @@ class CreateNewsComment(CreateView):
         news_id = self.request.POST.get("news")
         news = get_object_or_404(News, id = news_id)
         form.instance.news = news
-        messages.success(self.request, "News Comment instance is created.")
         return super().form_valid(form)
 
 
@@ -158,7 +156,7 @@ class Filters(FilterView):
 
 class Home(Filters):
     template_name = "index.html"
-    paginate_by = 8
+    paginate_by = 9
 
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)

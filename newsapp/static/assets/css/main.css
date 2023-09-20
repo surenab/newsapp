@@ -1511,3 +1511,6 @@ section {
   align-items:inherit;
 }
 
+input {
+   border-radius: 30px;
+}

@@ -17,6 +17,102 @@
         crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/33cd771fbc.js" crossorigin="anonymous"></script>
 
+  <script>
+    const listItems = document.querySelectorAll('#terms-list li');
+    listItems.forEach(item => {
+      const content = item.innerHTML;
+      const colonIndex = content.indexOf(':');
+      if (colonIndex !== -1) {
+        const boldPart = content.substring(0, colonIndex + 1);
+        const remainingPart = content.substring(colonIndex + 1);
+        item.innerHTML = `<span class="bold-blue">${boldPart}</span>${remainingPart}`;
+      }
+    });
+  </script>
+
+<script>
+  // Attach an event listener to the select element
+  document.getElementById('blogs_per_page').addEventListener('change', function () {
+      // Get the selected value
+      var selectedValue = this.value;
+
+      // Build the new URL with the updated query parameter
+      var newUrl = updateQueryStringParameter(window.location.pathname, 'blogs_per_page', selectedValue);
+
+      // Redirect to the new URL
+      window.location.href = newUrl + window.location.search + window.location.hash;
+  });
+
+  // Function to update query string parameter
+  function updateQueryStringParameter(uri, key, value) {
+      var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+      var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+      if (uri.match(re)) {
+          return uri.replace(re, '$1' + key + "=" + value + '$2');
+      } else {
+          return uri + separator + key + "=" + value;
+      }
+  }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    const searchInput = $('#search-input');
+    const suggestionsContainer = $('#suggestions');
+    const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+
+    searchInput.on('input', function () {
+      const query = searchInput.val();
+
+      if (query.length > 2) {
+        $.ajax({
+          url: '{% url "search_suggestions" %}',
+          data: { q: query },
+          dataType: 'json',
+          headers: { "X-CSRFToken": csrfToken },
+          success: function (data) {
+            suggestionsContainer.empty();
+
+            for (const news of data) {
+              suggestionsContainer.append(
+                `<div>
+                  <strong>${news.title}</strong> - ${news.description}
+                </div>`
+              );
+            }
+          }
+        });
+      } else {
+        suggestionsContainer.empty();
+      }
+    });
+
+    // Trigger search on Enter key press
+    searchInput.on('keydown', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission
+        const query = searchInput.val();
+
+        if (query.length > 2) {
+          // Submit the form
+          searchInput.closest('form').submit();
+        }
+      }
+    })
+  });
+</script>
+
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+
   <title>InfoPulse</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -41,13 +137,8 @@
   <link href="{% static 'assets/css/variables.css' %}" rel="stylesheet">
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: ZenBlog
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-  * Author: BootstrapMade.com
-  * License: https:///bootstrapmade.com/license/
-  ======================================================== -->
+  
+
 </head>
 
 <body>
@@ -109,53 +200,7 @@
             <button type="submit" class="btn js-search-close"><span class="bi-x"></span></button>
           </form>
         </div><!-- End Search Form -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-          $(document).ready(function () {
-            const searchInput = $('#search-input');
-            const suggestionsContainer = $('#suggestions');
-            const csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-      
-            searchInput.on('input', function () {
-              const query = searchInput.val();
-      
-              if (query.length > 2) {
-                $.ajax({
-                  url: '{% url "search_suggestions" %}',
-                  data: { q: query },
-                  dataType: 'json',
-                  headers: { "X-CSRFToken": csrfToken },
-                  success: function (data) {
-                    suggestionsContainer.empty();
-      
-                    for (const news of data) {
-                      suggestionsContainer.append(
-                        `<div>
-                          <strong>${news.title}</strong> - ${news.description}
-                        </div>`
-                      );
-                    }
-                  }
-                });
-              } else {
-                suggestionsContainer.empty();
-              }
-            });
-      
-            // Trigger search on Enter key press
-            searchInput.on('keydown', function (event) {
-              if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent form submission
-                const query = searchInput.val();
-      
-                if (query.length > 2) {
-                  // Submit the form
-                  searchInput.closest('form').submit();
-                }
-              }
-            })
-          });
-        </script>
+       
       </div>
 
     </div>
@@ -183,7 +228,7 @@
         <div class="row">
           <div class="col-lg-4">
             <h3 class="footer-heading">About InfoPulse</h3>
-            <p>In 2023, fueled by a collective passion for truth and storytelling, we embarked on a remarkable journey - creating our very first project, an InfoPulse. As a cohesive team, we harnessed our diverse skills, unwavering determination, and a shared vision to establish a platform that would disseminate accurate and compelling news...</p>
+            <p style="text-align: justify;">In 2023, fueled by a collective passion for truth and storytelling, we embarked on a remarkable journey - creating our very first project, an InfoPulse. As a cohesive team, we harnessed our diverse skills, unwavering determination, and a shared vision to establish a platform that would disseminate accurate and compelling news...</p>
             <p><a href="../../about" class="footer-link-more">Learn More</a></p>
             <div class="flex flex-row justify-end space-x-3 py-4">
               <form method="post" action="{% url 'subscribe' %}">
@@ -211,8 +256,8 @@
               <li><a href="../../?news_type=4"><i class="bi bi-chevron-right"></i> National</a></li>
             </ul>
           </div>
-          <div class="col-6 col-lg-2">
-            <h3 class="footer-heading"></h3><br>    
+
+            <h3 class="footer-heading"><br></h3>
             <ul class="footer-links list-unstyled">
               <li><a href="../../?news_type=5"><i class="bi bi-chevron-right"></i> Lifestyle</a></li>
               <li><a href="../../?news_type=6"><i class="bi bi-chevron-right"></i> Sport</a></li>
@@ -256,14 +301,7 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{% static 'assets/js/main.js' %}"></script>
+  
 
 </body>
 

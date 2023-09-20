@@ -23,8 +23,6 @@ urlpatterns = [
     path("details/<int:pk>", NewsDetails.as_view(), name="news_details"),
     path('subscribe/', subscribe, name='subscribe'),
     path('subscribe/success/', subscribe_success, name='subscribe_success'),
-
-
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
