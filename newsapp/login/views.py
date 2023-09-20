@@ -58,15 +58,15 @@ class ProfileTemplate(TemplateView):
 
 
 def update_profile(request):
-    msg = None
     if request.method == "POST":
         form = ProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            msg = "Changes have been saved"
-    
-    form = ProfileForm(instance=request.user.profile)
-    return render(request=request, template_name="core/edit-profile.html", context={"form": form, "msg": msg})
+            messages.success(request, "Changes have been saved!")
+            return redirect("profile")
+    else:
+        form = ProfileForm(instance=request.user.profile)
+    return render(request=request, template_name="core/edit-profile.html", context={"form": form})
 
 
 
