@@ -54,7 +54,7 @@
               <h2><a href="{% url 'news_details' new.id %}">{{new.title}}</a></h2>
               <p class="mb-4 d-block">&emsp; {{ new.description | truncatewords:25 }}...</p>
                 <div class="name">
-                  <h6 class="m-0 p-0">Created by: {{user.first_name}} {{user.last_name}} </h6>
+                  <h6 class="m-0 p-0">Created by <i>{{user.first_name}} {{user.last_name}}</i> </h6>
                 </div>
             </div>
               {% endfor %}
@@ -66,7 +66,7 @@
                     <a href="{% url 'news_details' new.id %}">
                       <span class="number">{{forloop.counter}}</span>
                       <h3>{{new.title}}</h3>
-                      <span class="author">{{new.user}}r</span>
+                      <span class="author">Created by <i>{{user.first_name}} {{user.last_name}}</i></span>
                     </a>
                   </li>
                 {% endfor %}
@@ -116,9 +116,9 @@
             
             {% for i in page_obj.paginator.page_range %}
               {% if page_obj.number == i %}
-                  <li class="active"><span class="active-page">{{ i }} <span class="sr-only">(current)</span></span></li>
+                  <li class="active"><span class="active-page" style="margin-right: 10px;">{{ i }}<span class="sr-only">(current)</span></span></li>
               {% else %}
-                  <li><a href="?{% url_replace request 'page' i %}" class="pagination-link">{{ i }}</a></li>
+                  <li><a href="?{% url_replace request 'page' i %}" class="pagination-link">  {{ i }}  </a></li>
               {% endif %}
             {% endfor %}
             
