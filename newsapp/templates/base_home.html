@@ -102,6 +102,21 @@
     })
   });
 </script>
+<script>
+  function updateDateTime() {
+  const datetimeElement = document.getElementById('datetime');
+  const now = new Date();
+  const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+  const formattedDate = now.toLocaleDateString('en-US', options);
+  datetimeElement.textContent = formattedDate;
+  }
+
+  // Initial call to set the date and time
+  updateDateTime();
+
+  // Update the date and time every second
+  setInterval(updateDateTime, 1000);
+  </script>
 
 <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
@@ -179,6 +194,9 @@
           {% endif %}
         </ul>
         
+      </nav>
+      <nav id="navbar" class="navbar">
+        <div id="datetime" class = "date_time" style="font-size: 12px; color: #fff;"></div>
       </nav>
 
       <div class="position-relative">
