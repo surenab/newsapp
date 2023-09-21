@@ -19,10 +19,10 @@
             <div class="ps-md-5 mt-4 mt-md-0">
               <div class="post-meta mt-4">About us</div>
               <h2 class="mb-4 display-4">Company History</h2>
-
+              {% for i in info %}
               <p style="text-align: justify;">
-                In 2023, fueled by a collective passion for truth and storytelling, we embarked on a remarkable journey – creating our very first project, an InfoPulse. As a cohesive team, we harnessed our diverse skills, unwavering determination, and a shared vision to establish a platform that would disseminate accurate and compelling news. With every article, we celebrated the synergy of our collaboration, transforming challenges into opportunities. Our NewsBlog quickly gained traction, becoming a trusted source for a growing readership. This inaugural endeavor not only ignited our entrepreneurial spirit but also solidified the significance of teamwork in achieving meaningful goals. Rooted in the lessons learned and triumphs earned, our InfoPulse's legacy continues to inspire our business ventures.</p>
-              
+                {{i.about}}</p>
+              {% endfor %}
             </div>
           </div>
           <div class="d-md-flex post-entry-2 half mt-5">
@@ -32,8 +32,9 @@
             <div class="pe-md-5 mt-4 mt-md-0">
               <div class="post-meta mt-4">Mission &amp; Vision</div>
               <h2 class="mb-4 display-4">Mission &amp; Vision</h2>
-
-              <p style="text-align: justify;">Our mission is to empower and inspire individuals with accurate, insightful, and timely information, fostering a well-informed and connected global community. We envision becoming a leading and trusted source of news and stories, driving positive change and shaping a brighter future for our readers and society as a whole.</p>
+              {% for i in info %}
+              <p style="text-align: justify;">{{i.mission}}</p>
+              {% endfor %}
             </div>
           </div>
 
@@ -47,8 +48,10 @@
         <div class="row justify-content-between align-items-lg-center">
           <div class="col-lg-5 mb-4 mb-lg-0">
             <h2 class="display-4 mb-4">Latest News</h2>
-            <p style="text-align: justify;">Medical researchers have just unveiled a groundbreaking breakthrough in cancer treatment. A cutting-edge immunotherapy technique, developed after years of intensive research, is showing remarkable success in clinical trials. This development offers new hope for cancer patients worldwide, potentially revolutionizing the way we combat this devastating disease.</p>
-            <p style="text-align: justify;">Stay tuned for more details on this game-changing advancement in the fight against cancer. #MedicalBreakthrough #CancerTreatment #HealthcareInnovation 🌟</p>
+            {% for i in info %}
+            <p style="text-align: justify;">{{i.latest_news_text1}}</p>
+            <p style="text-align: justify;">{{i.latest_news_text2}}</p>
+            {% endfor %}
             <p><a href="/" class="more">View All News</a></p>
           </div>
           <div class="col-lg-6">
@@ -72,7 +75,9 @@
             <div class="row justify-content-center">
               <div class="col-lg-6">
                 <h2 class="display-4">Our Team</h2>
-                <p style="text-align: justify;">Teamwork is the fuel that allows common people to attain uncommon results</p>
+                {% for i in info %}
+                <p style="text-align: center;">{{i.about_team}}</p>
+                {% endfor %}
               </div>
             </div>
           </div>

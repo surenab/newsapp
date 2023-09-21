@@ -24,8 +24,10 @@ User = get_user_model()
 def about(request):
     team = Team.objects.all()
     team_members = TeamMember.objects.all()
+    info = Info.objects.all()
     return render(request=request, template_name="about.html", context={"team": team,
                                                                         "team_members": team_members,
+                                                                        "info": info,
 }) 
 
 
@@ -173,7 +175,9 @@ class Home(Filters):
         return redirect("{% url 'home'%}")
     
     def get_context_data(self, **kwargs):
+        info_instance = Info.objects.latest('pub_date')
         context = super().get_context_data(**kwargs)
+        context['info'] = info_instance
         context['filter'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
@@ -183,8 +187,15 @@ def category(request):
     return render(request, "category.html", context={"news": news})
 
 
-class Contact(Home):
+class ContacView(Home):
     template_name = "contact.html"
+    
+    def get_context_data(self, **kwargs):
+        contact_instances = Contact.objects.all()
+        
+        context = super().get_context_data(**kwargs)
+        context['contact'] = contact_instances
+        return context
 
 
 def search_result(request):
