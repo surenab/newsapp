@@ -167,15 +167,15 @@
             </ul>
           </li>
 
-          <li><a href="../../about">About</a></li>
-          <li><a href="../../contact">Contact</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
           {% if request.user.is_authenticated %}
-          <li><a href="../../accounts/profile">My Profile</a></li>
+          <li><a href="{% url 'profile' %}">My Profile</a></li>
           <li><a href="{% url 'create_news' %}">Create News</a></li>
-          <li><a href="../../accounts/logout">Logout</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
           {% else %}
-          <li><a href="../../accounts/login">Log In</a></li>
-          <li><a href="../../accounts/register">Register</a></li>
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
           {% endif %}
         </ul>
         
@@ -229,7 +229,7 @@
           <div class="col-lg-4">
             <h3 class="footer-heading">About InfoPulse</h3>
             <p style="text-align: justify;">In 2023, fueled by a collective passion for truth and storytelling, we embarked on a remarkable journey - creating our very first project, an InfoPulse. As a cohesive team, we harnessed our diverse skills, unwavering determination, and a shared vision to establish a platform that would disseminate accurate and compelling news...</p>
-            <p><a href="../../about" class="footer-link-more">Learn More</a></p>
+            <p><a href="{% url 'about' %}" class="footer-link-more">Learn More</a></p>
             <div class="flex flex-row justify-end space-x-3 py-4">
               <form method="post" action="{% url 'subscribe' %}">
                 {% csrf_token %}
@@ -243,8 +243,9 @@
             <h3 class="footer-heading">Navigation</h3>
             <ul class="footer-links list-unstyled">
               <li><a href="/"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="../../about"><i class="bi bi-chevron-right"></i> About us</a></li>
-              <li><a href="../../contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+              <li><a href="{% url 'about' %}"><i class="bi bi-chevron-right"></i> About us</a></li>
+              <li><a href="{% url 'contact' %}"><i class="bi bi-chevron-right"></i> Contact</a></li>
+              <li><a href="{% url 'profile' %}"><i class="bi bi-chevron-right"></i> My Profile</a></li>
             </ul>
           </div>
           <div class="col-6 col-lg-2">
