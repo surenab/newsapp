@@ -41,23 +41,23 @@
   <nav aria-label="Page navigation example" class="d-flex justify-content-center pt-3">
     <ul class="pagination">
       {% if page_obj.has_previous %}
-        <li style="margin-right: 10px;"><a class="pagination-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}">Prev</a></li>
+        <li style="margin-right: 14px;"><a class="pagination-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}">Prev</a></li>
       {% else %}
-        <li style="margin-right: 10px;" class="disabled"><span>Prev</span></li>
+        <li style="margin-right: 14px;" class="disabled"><span>Prev</span></li>
       {% endif %}
       
       {% for i in page_obj.paginator.page_range %}
         {% if page_obj.number == i %}
-            <li class="active"><span class="active-page">{{ i }} <span class="sr-only">(current)</span></span></li>
+            <li class="active"><span class="active-page" style="margin-right: 14px;">{{ i }} <span class="sr-only">(current)</span></span></li>
         {% else %}
-            <li><a href="?{% url_replace request 'page' i %}" class="pagination-link">{{ i }}</a></li>
+            <li><a href="?{% url_replace request 'page' i %}" class="pagination-link" style="margin-right: 14px;">{{ i }}</a></li>
         {% endif %}
       {% endfor %}
       
       {% if page_obj.has_next %}
-        <li style="margin-left: 10px;"><a href="?{% url_replace request 'page' page_obj.next_page_number %}" class="pagination-link">Next</a></li>
+        <li style="margin-left: 10px;"><a href="?{% url_replace request 'page' page_obj.next_page_number %}" class="pagination-link" style="margin-right: 14px;">Next</a></li>
       {% else %}
-        <li style="margin-right: 10px;" class="disabled"><span>Next</span></li>
+        <li style="margin-right: 14px;" class="disabled"><span>Next</span></li>
       {% endif %}
     </ul>
   </nav>
