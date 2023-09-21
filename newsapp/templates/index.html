@@ -3,7 +3,7 @@
 {% block bodycontent %}
 {% load pagination_tags %}
      
-
+<div id="datetime" class = "date_time"></div>
     <!-- ======= Hero Slider Section ======= -->
     <section id="hero-slider" class="hero-slider">
       <div class="container-md" data-aos="fade-in">
@@ -40,6 +40,8 @@
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
 
     <!-- ======= Post Grid Section ======= -->
     <section id="posts" class="posts">
@@ -130,6 +132,20 @@
           </ul>
         </nav>
       {% endif %}
+      <script>
+      function updateDateTime() {
+      const datetimeElement = document.getElementById('datetime');
+      const now = new Date();
+      const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+      const formattedDate = now.toLocaleDateString('en-US', options);
+      datetimeElement.textContent = formattedDate;
+      }
 
+      // Initial call to set the date and time
+      updateDateTime();
+
+      // Update the date and time every second
+      setInterval(updateDateTime, 1000);
+      </script>
 {% endblock %}
   
