@@ -302,9 +302,9 @@
     <div class="footer-content">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4">
-            <h3 class="footer-heading">About InfoPulse</h3>
-            <p style="text-align: justify;">In 2023, fueled by a collective passion for truth and storytelling, we embarked on a remarkable journey - creating our very first project, an InfoPulse. As a cohesive team, we harnessed our diverse skills, unwavering determination, and a shared vision to establish a platform that would disseminate accurate and compelling news...</p>
+          <div class="col-lg-6">
+            <h3 class="footer-heading">About {{info.app_name}}</h3>
+            <p style="text-align: justify;">{{info.about | truncatewords:20}}...</p>
             <p><a href="{% url 'about' %}" class="footer-link-more">Learn More</a></p>
             <div class="flex flex-row justify-end space-x-3 py-4">
               <form method="post" action="{% url 'subscribe' %}">
@@ -352,7 +352,7 @@
         <div class="row justify-content-between">
           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
             <div class="copyright">
-              © Copyright <strong><span>InfoPulse </span></strong>. All Rights Reserved.
+              © Copyright <strong><span>- {{info.yearpublished}} -</span></strong>.<strong><span>{{info.app_name}}</span></strong> - All Rights Reserved.
             </div>
 
           </div>

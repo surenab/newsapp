@@ -93,3 +93,27 @@ class Subscriber(models.Model):
     def __str__(self):
         return self.email
 
+
+class Info(models.Model):
+    app_name = models.CharField(max_length=9)
+    about = models.TextField(max_length=1000)
+    mission = models.TextField(max_length=1000)
+    latest_news_text1 = models.TextField(max_length=1000)
+    latest_news_text2 = models.TextField(max_length=1000)
+    about_team = models.TextField(max_length=1000)
+    pub_date = models.DateTimeField(auto_now_add= True)
+
+    def yearpublished(self):
+        return self.pub_date.strftime('%Y')
+    
+    def __str__(self) -> str:
+        return f"App - {self.app_name}"
+
+
+class Contact(models.Model):
+    address = models.CharField(max_length=50)
+    tel = models.CharField(max_length=13)
+    email = models.EmailField()
+
+    def __str__(self) -> str:
+        return f"Address - {self.address}, tel - {self.tel}, email - {self.email}"
