@@ -30,6 +30,10 @@ a:hover {
   text-decoration: none;
 }
 
+h4 a:hover {
+  color:#968952;
+}
+
 .button-74 {
   background-color: #968952;
   border: 1.5px solid #1c1e21;
@@ -1518,6 +1522,5 @@ input {
 .date_time {
   text-align:right;
   font-size: 40px;
-  font-weight: bold;
   color: #4a3c14;
 }
