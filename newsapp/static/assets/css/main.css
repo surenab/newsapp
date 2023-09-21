@@ -1524,3 +1524,8 @@ input {
   font-size: 12px;
   color: #fff;
 }
+
+.post-entry-1 a img {
+  width: 200px;
+  height: 150px;
+}
