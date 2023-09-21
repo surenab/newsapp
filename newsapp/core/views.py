@@ -218,19 +218,27 @@ def subscribe(request):
     if request.method == 'POST':
         form = SubscriberForm(request.POST)
         if form.is_valid():
-            subscriber = form.save()
-            send_mail(
-                'Welcome to Our Newsletter',
-                'Thank you for subscribing!',
-                'infopulse.newsapp@gmail.com',
-                [subscriber.email],
-                fail_silently=False,
-            )
-            messages.success(request, 'Thank you for subscribing to our newsletter. You will receive our latest updates in your inbox.')
+            try:
+                subscriber = form.save()
+                send_mail(
+                    'Welcome to Our Newsletter',
+                    'Thank you for subscribing!',
+                    'infopulse.newsapp@gmail.com',
+                    [subscriber.email],
+                    fail_silently=False,
+                )
+                messages.success(request, 'Thank you for subscribing to our newsletter. You will receive our latest updates in your inbox.')
+                return redirect('home')
+            except Exception as e:
+                messages.warning(request, 'An error occurred while sending the confirmation email. Please try again later.')
+                return redirect('home')
+        else:
+            messages.warning(request, 'Please provide a valid email address.')
             return redirect('home')
     else:
         form = SubscriberForm()
-    return render(request, 'subscribe.html', {'form': form})
+        return redirect('home')
+
 
 def subscribe_success(request):
-    return render(request, 'home.html')
+    return render(request, 'index.html')
