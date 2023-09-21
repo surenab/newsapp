@@ -72,6 +72,12 @@ class CreateNews(NewsBase):
         form.instance.user = self.request.user
         messages.success(self.request, "Your new post has been completed.")
         return super().form_valid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance 
+        return context
 
 
 class MyNews(NewsBase, FilterView):
@@ -79,13 +85,26 @@ class MyNews(NewsBase, FilterView):
     filterset_class = NewsFilter
     paginate_by = 2
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance 
+        return context
+
 
 class MyNewsDetail(NewsBase, DetailView):
+   
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         data = super().get_context_data(**kwargs)
         data["comment_form"] = NewsCommentForm
         data["comments"] = NewsComment.objects.filter(news=data["news"])
         return data
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance 
+        return context
 
 class NewsDetails(DetailView):
     model = News
@@ -94,9 +113,13 @@ class NewsDetails(DetailView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
+        comment_form = NewsCommentForm()
         data['comment_form'] = NewsCommentForm
         data['comments'] = NewsComment.objects.filter(news=data["news"])
+        info_instance = Info.objects.all()
+        data['info'] = info_instance
         return data
+    
 
     def get(self, request: HttpRequest, *args, **kwargs):
         self.object = self.get_object()
@@ -109,6 +132,12 @@ class NewsDetails(DetailView):
 
 class MyNewsUpdate(NewsBase, UpdateView):
     success_text = "News instance is updated!"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance
+        return context
 
 
 class MyNewsDelete(LoginRequiredMixin, DeleteView):
@@ -124,6 +153,12 @@ class MyNewsDelete(LoginRequiredMixin, DeleteView):
     def form_valid(self, form):
         messages.info(self.request, "News instance is deleted!")
         return super().form_valid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance
+        return context
 
 
 def single_post(request):
@@ -150,7 +185,7 @@ class Filters(FilterView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         most_viewed_news = News.objects.order_by('-view_count')[:5]
-        newest_news=News.objects.order_by('-date')[:5]
+        newest_news=News.objects.order_by('-date')
         context['most_viewed_news'] = most_viewed_news
         context['newest_news'] = newest_news
         return context
@@ -175,7 +210,7 @@ class Home(Filters):
         return redirect("{% url 'home'%}")
     
     def get_context_data(self, **kwargs):
-        info_instance = Info.objects.latest('pub_date')
+        info_instance = Info.objects.all()
         context = super().get_context_data(**kwargs)
         context['info'] = info_instance
         context['filter'] = NewsFilter(self.request.GET, queryset=self.get_queryset())

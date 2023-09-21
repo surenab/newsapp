@@ -10,6 +10,7 @@ from django.views.generic import CreateView, TemplateView
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from core.models import Info
 
 
 # Create your views here.
@@ -27,6 +28,8 @@ class Register(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance
         return context
 
 
@@ -39,6 +42,9 @@ class ProfileTemplate(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance
+
         if self.request.user.is_authenticated:
             profile = get_object_or_404(Profile, user__username=self.request.user)
             context['profile'] = profile
@@ -58,6 +64,7 @@ class ProfileTemplate(TemplateView):
 
 
 def update_profile(request):
+    info = Info.objects.all()
     if request.method == "POST":
         form = ProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
@@ -66,12 +73,13 @@ def update_profile(request):
             return redirect("profile")
     else:
         form = ProfileForm(instance=request.user.profile)
-    return render(request=request, template_name="core/edit-profile.html", context={"form": form})
+    return render(request=request, template_name="core/edit-profile.html", context={"form": form, "info": info,})
 
 
 
 @login_required
 def change_password(request):
+    info = Info.objects.all()
     user = request.user
     if request.method == "POST":
         form = SetPasswordForm(user, request)
@@ -85,4 +93,4 @@ def change_password(request):
                 messages.error(request,error)
 
     form = SetPasswordForm(user)
-    return render(request, 'core/password_change_form.html', {'form': form})
+    return render(request, 'core/password_change_form.html', {'form': form, "info": info,})

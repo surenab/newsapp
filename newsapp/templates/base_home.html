@@ -303,8 +303,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
-            <h3 class="footer-heading">About {{info.app_name}}</h3>
-            <p style="text-align: justify;">{{info.about | truncatewords:20}}...</p>
+            {% for i in info %}
+            <h3 class="footer-heading">About {{i.app_name}}</h3>
+            <p style="text-align: justify;">{{i.about | truncatewords:20}}...</p>
+            {% endfor %}
             <p><a href="{% url 'about' %}" class="footer-link-more">Learn More</a></p>
             <div class="flex flex-row justify-end space-x-3 py-4">
               <form method="post" action="{% url 'subscribe' %}">

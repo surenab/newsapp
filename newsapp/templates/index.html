@@ -45,7 +45,7 @@
       <div class="container" data-aos="fade-up">
         <div class="row g-5">
           <div class="col-lg-4">
-            {% for new in most_viewed_news|slice:":1" %}
+            {% for new in newest_news|slice:":1" %}
             <div class="post-entry-1">
               <a href="{% url 'news_details' new.id %} "><img src="{{new.image.url}}" alt="" class="img-fluid fixed-size-image"></a>
               <div class="post-meta"><span class="date">{{new.get_news_type_display}}</span> <span class="mx-1">&bullet;</span> <span>{{new.date}}</span>
