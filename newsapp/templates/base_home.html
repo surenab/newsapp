@@ -354,7 +354,9 @@
         <div class="row justify-content-between">
           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
             <div class="copyright">
-              © Copyright <strong><span>- {{info.yearpublished}} -</span></strong>.<strong><span>{{info.app_name}}</span></strong> - All Rights Reserved.
+              {% for i in info %}
+              © Copyright <strong><span>- {{i.yearpublished}} -</span></strong>.<strong><span>{{i.app_name}}</span></strong> - All Rights Reserved.
+              {% endfor %}
             </div>
 
           </div>

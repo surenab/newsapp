@@ -236,10 +236,12 @@ class ContacView(Home):
 def search_result(request):
     query = request.GET.get('search')
     news_filter = NewsFilter(request.GET, queryset=News.objects.all())
+    info = Info.objects.all()
 
     context = {
         'query': query,
         'news_filter': news_filter,
+        'info': info,
     }
 
     if query:

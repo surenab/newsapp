@@ -11,6 +11,8 @@
 <div><br></div>
 <div><br></div>
 <div><br></div>
+<div><br></div>
+<div><br></div>
     <section>
         <div class="container" data-aos="fade-up">
             <div class="row">
@@ -75,5 +77,23 @@
 <div><br></div>
 <div><br></div>
 <div><br></div>
+<div><br></div>
+<div><br></div>
+
+<script>
+    function updateDateTime() {
+    const datetimeElement = document.getElementById('datetime');
+    const now = new Date();
+    const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString('en-US', options);
+    datetimeElement.textContent = formattedDate;
+    }
+
+    // Initial call to set the date and time
+    updateDateTime();
+
+    // Update the date and time every second
+    setInterval(updateDateTime, 1000);
+    </script>
 
 {% endblock %}
