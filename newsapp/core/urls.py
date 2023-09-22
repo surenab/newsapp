@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import Home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate,MyNewsDelete,subscribe_success, search_result, search_suggestions, single_post, Contact, Filter, category, CreateNewsComment, NewsDetails, subscribe
+from .views import Home, CreateNews, about,get_streaming_video, MyNews, MyNewsDetail, MyNewsUpdate,MyNewsDelete,subscribe_success, search_result, search_suggestions, single_post, Contact, Filter, category, CreateNewsComment, NewsDetails, subscribe
 from django.conf.urls.static import static
+from . import views
 
 from django.conf import settings
 
@@ -23,6 +24,12 @@ urlpatterns = [
     path("details/<int:pk>", NewsDetails.as_view(), name="news_details"),
     path('subscribe/', subscribe, name='subscribe'),
     path('subscribe/success/', subscribe_success, name='subscribe_success'),
+    # path('video_hosting.urls', video_hosting.urls, name='video_hosting'),
+    # path('stream/<int:pk>/', get_streaming_video, name='stream'),
+    # path('<int:pk>/', views.get_video, name='video'),
+    # path('', views.get_list_video, name='home'),
+ 
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -62,7 +62,36 @@
             </div>
               {% endfor %}
             <div class="trending">
-              <h3>Trending News</h3>
+              <head>
+                <style>
+                    .container {
+                        text-align: center;
+                    }
+                    
+                    .form {
+                        width: 100%;
+                    }
+                </style>
+            </head>
+            
+            <body>
+            
+                <div class="container">
+                    <h1>Youtube video downloader</h1>
+            
+                    <p>{{msg}}</p>
+            
+                    <form action="" method="post" class="form">
+                        {% csrf_token %}
+            
+                        <label for="link">Enter URL: </label>
+                        <input type="text" id="link" name="link"><br><br>
+                        <input type="submit" value="Download">
+                    </form>
+                </div>
+            
+            </body>
+              <!-- <h3>Trending News</h3>
                 <ul class="trending-post">
                 {% for new in most_viewed_news %}
                   <li>
@@ -104,7 +133,7 @@
           </div>
     
         </div>
-    
+     -->
       </section>
       <div>
 
