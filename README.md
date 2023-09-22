@@ -12,7 +12,7 @@ Chapter 2: Crafting the User Experience
 Our first significant step was the creation of the "Profile Template." We wanted to offer our users a personalized experience, so we designed a user profile template where they could manage their preferences and settings.
 
     
-<img src=""C:\Users\Narine\OneDrive\Desktop\App\women_newsapp\newsapp\static\assets\img\apple-touch-icon.png"" alt="Small Image" style="width: 200px; height: auto;">
+<img src="<Снимок экрана 2023-09-22 110417.png>" alt="Small Image" style="width: 200px; height: auto;">
     
     
 
