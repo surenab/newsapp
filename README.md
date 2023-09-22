@@ -1,7 +1,21 @@
 # newsapp
+<style>
+    .image-frame {
+        border: 2px solid #333; /* Border color and thickness */
+        padding: 10px; /* Padding inside the frame */
+        width: 200px; /* Width of the frame */
+        height: auto; /* Maintain aspect ratio */
+        display: inline-block; /* Allow multiple frames to appear horizontally */
+    }
+</style>
+
 News App for Women Course
 Let's describe the process of creating our news website:
-![Alt text](apple-touch-icon-1.png)
+<!-- ![Alt text](apple-touch-icon-1.png) -->
+<div class="image-frame">
+    <img src=""C:\Users\Narine\OneDrive\Desktop\App\women_newsapp\newsapp\static\assets\img\apple-touch-icon.png"" alt="Large Image">
+</div>
+
 Chapter 1: Inception
 In the beginning, we embarked on the journey to create our news website. Armed with Python and the powerful Django framework, we laid the foundation for our digital publication platform.
 
