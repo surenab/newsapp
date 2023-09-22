@@ -109,4 +109,4 @@ class PasswordChangeView(SuccessMessageMixin, PasswordChangeView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('my_blogs')
+        return reverse_lazy('profile')
