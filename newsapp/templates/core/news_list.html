@@ -9,9 +9,9 @@
         <div class="post-entry-1 lg">
           <a type="button" class="button-74" href="{% url 'create_news' %}" style="padding: 8px;">Create News</a>
           <div><br></div>
+          {% if news %}
           {% for new in news %}
               <div class="post-entry-1">
-                {% if new %}
                 <a href="{% url 'news_details' new.id %}">
                   <img src="{{new.image.url}}" alt="" class="img-details">
                 </a>
@@ -29,10 +29,11 @@
                   class="far fa-trash-alt"></i></a></span>
               </div>
               <hr>
-              {% else %}
-              <h3>You have no posts yet.</h3>
-              {% endif %}
+              
           {% endfor %}
+          {% else %}
+          <h3>You have no posts yet.</h3>
+          {% endif %}
         </div>
     </div>
   </section> <!-- End Post Grid Section -->
