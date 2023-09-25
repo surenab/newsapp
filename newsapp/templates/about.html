@@ -83,19 +83,19 @@
           </div>
           {% for member in team_members %}
           <div class="col-lg-6 text-center mb-5">
-          
-            <img src="{{member.image.url}}" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4><a href="{{member.linkedin}}" target="_blank">{{member.full_name}}</a></h4>
-            <!-- <h4>{{member.full_name}} href={{member.linkedin}}</h4> -->
-            <span class="d-block mb-3 text-uppercase">{{member.position}} </span>
-            <p style="text-align: justify;">{{member.description}}</p>
-          
+            <div class="member-container">
+              <img src="{{member.image.url}}" alt="{{member.full_name}}" class="img-fluid rounded-circle w-50 mb-4" style="width: 100px; height: 280px;">
+              <h4><a href="{{member.linkedin}}" target="_blank">{{member.full_name}}</a></h4>
+              <span class="d-block mb-3 text-uppercase">{{member.position}}</span>
+              <p style="text-align: justify;" id="description-{{member.id}}">{{member.description}}</p>
+            </div>
           </div>
           {% endfor %}
-          
         </div>
       </div>
     </section>
+    
+    
 
     <script>
       function updateDateTime() {
@@ -112,6 +112,12 @@
       // Update the date and time every second
       setInterval(updateDateTime, 1000);
       </script>
+
+<script>
+const descriptionElement = document.getElementById('description-1');
+const descriptionText = descriptionElement.textContent;
+console.log(descriptionText);
+</script>
 
   {% endblock %}
   
