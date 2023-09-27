@@ -62,7 +62,7 @@ Meet the talented individuals who contributed to this project:
 
 If you have any questions or need assistance, feel free to reach out to us:
 
-- **GitHub:** [GitHub Repository](https://github.com/surenab/women_newsapp.git)
+- **GitHub:** [GitHub Repository](https://github.com/surenab/women_newsapp)
 - **PythonAnywhere:** [PythonAnywhere Site](infopulsearmenia.pythonanywhere.com)
 - **Email:** infopulse.newsapp@gmail.com
 
