@@ -6,7 +6,8 @@
 
 ## Introduction
 
-Django News Blog is a web-based news blogging platform where users can create, publish, and read news articles. It provides features like user registration, authentication, commenting, and subscription to keep users engaged and informed. ![Project Logo](apple-touch-icon-1.png)
+<img src="apple-touch-icon-1.png" alt="Large Image Icon" width="50" height="50">
+Django News Blog is a web-based news blogging platform where users can create, publish, and read news articles. It provides features like user registration, authentication, commenting, and subscription to keep users engaged and informed. 
 
 ## Features
 
@@ -62,6 +63,6 @@ Meet the talented individuals who contributed to this project:
 If you have any questions or need assistance, feel free to reach out to us:
 
 - **GitHub:** [GitHub Repository](https://github.com/surenab/women_newsapp.git)
-- **PythonAnywhere:** [Your PythonAnywhere Site](infopulsearmenia.pythonanywhere.com)
+- **PythonAnywhere:** [PythonAnywhere Site](infopulsearmenia.pythonanywhere.com)
 - **Email:** infopulse.newsapp@gmail.com
 
