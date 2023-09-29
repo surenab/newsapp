@@ -9,6 +9,10 @@
     <div><br></div>
     <div><br></div>
     <div><br></div>
+    <div><br></div>
+    <div><br></div>
+    <div><br></div>
+    <div><br></div>
       <div class="container">
           <div class="row align-items-center flex-row-reverse">
               <div class="col-lg-6">
@@ -80,8 +84,26 @@
     <div><br></div>
     <div><br></div>
     <div><br></div>
+    <div><br></div>
+    <div><br></div>
+    <div><br></div>
+    <div><br></div>
   </section>
 
+  <script>
+    function updateDateTime() {
+    const datetimeElement = document.getElementById('datetime');
+    const now = new Date();
+    const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString('en-US', options);
+    datetimeElement.textContent = formattedDate;
+    }
 
-<!-- </div> -->
+    // Initial call to set the date and time
+    updateDateTime();
+
+    // Update the date and time every second
+    setInterval(updateDateTime, 1000);
+    </script>
+
 {% endblock %}

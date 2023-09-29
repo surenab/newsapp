@@ -9,9 +9,9 @@
         <div class="post-entry-1 lg">
           <a type="button" class="button-74" href="{% url 'create_news' %}" style="padding: 8px;">Create News</a>
           <div><br></div>
+          {% if news %}
           {% for new in news %}
               <div class="post-entry-1">
-                {% if new %}
                 <a href="{% url 'news_details' new.id %}">
                   <img src="{{new.image.url}}" alt="" class="img-details">
                 </a>
@@ -29,10 +29,11 @@
                   class="far fa-trash-alt"></i></a></span>
               </div>
               <hr>
-              {% else %}
-              <h3>You have no posts yet.</h3>
-              {% endif %}
+              
           {% endfor %}
+          {% else %}
+          <h3>You have no posts yet.</h3>
+          {% endif %}
         </div>
     </div>
   </section> <!-- End Post Grid Section -->
@@ -41,51 +42,42 @@
   <nav aria-label="Page navigation example" class="d-flex justify-content-center pt-3">
     <ul class="pagination">
       {% if page_obj.has_previous %}
-        <li style="margin-right: 10px;"><a class="pagination-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}">Prev</a></li>
+        <li style="margin-right: 14px;"><a class="pagination-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}">Prev</a></li>
       {% else %}
-        <li style="margin-right: 10px;" class="disabled"><span>Prev</span></li>
+        <li style="margin-right: 14px;" class="disabled"><span>Prev</span></li>
       {% endif %}
       
       {% for i in page_obj.paginator.page_range %}
         {% if page_obj.number == i %}
-            <li class="active"><span class="active-page">{{ i }} <span class="sr-only">(current)</span></span></li>
+            <li class="active"><span class="active-page" style="margin-right: 14px;">{{ i }} <span class="sr-only">(current)</span></span></li>
         {% else %}
-            <li><a href="?{% url_replace request 'page' i %}" class="pagination-link">{{ i }}</a></li>
+            <li><a href="?{% url_replace request 'page' i %}" class="pagination-link" style="margin-right: 14px;">{{ i }}</a></li>
         {% endif %}
       {% endfor %}
       
       {% if page_obj.has_next %}
-        <li style="margin-left: 10px;"><a href="?{% url_replace request 'page' page_obj.next_page_number %}" class="pagination-link">Next</a></li>
+        <li style="margin-left: 10px;"><a href="?{% url_replace request 'page' page_obj.next_page_number %}" class="pagination-link" style="margin-right: 14px;">Next</a></li>
       {% else %}
-        <li style="margin-right: 10px;" class="disabled"><span>Next</span></li>
+        <li style="margin-right: 14px;" class="disabled"><span>Next</span></li>
       {% endif %}
     </ul>
   </nav>
 {% endif %}
 
 <script>
-  // Attach an event listener to the select element
-  document.getElementById('blogs_per_page').addEventListener('change', function () {
-      // Get the selected value
-      var selectedValue = this.value;
-
-      // Build the new URL with the updated query parameter
-      var newUrl = updateQueryStringParameter(window.location.pathname, 'blogs_per_page', selectedValue);
-
-      // Redirect to the new URL
-      window.location.href = newUrl + window.location.search + window.location.hash;
-  });
-
-  // Function to update query string parameter
-  function updateQueryStringParameter(uri, key, value) {
-      var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-      var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-      if (uri.match(re)) {
-          return uri.replace(re, '$1' + key + "=" + value + '$2');
-      } else {
-          return uri + separator + key + "=" + value;
-      }
+  function updateDateTime() {
+  const datetimeElement = document.getElementById('datetime');
+  const now = new Date();
+  const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+  const formattedDate = now.toLocaleDateString('en-US', options);
+  datetimeElement.textContent = formattedDate;
   }
-</script>
+
+  // Initial call to set the date and time
+  updateDateTime();
+
+  // Update the date and time every second
+  setInterval(updateDateTime, 1000);
+  </script>
 
 {% endblock %}

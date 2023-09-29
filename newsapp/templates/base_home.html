@@ -32,12 +32,12 @@
 
 <script>
   // Attach an event listener to the select element
-  document.getElementById('blogs_per_page').addEventListener('change', function () {
+  document.getElementById('news_per_page').addEventListener('change', function () {
       // Get the selected value
       var selectedValue = this.value;
 
       // Build the new URL with the updated query parameter
-      var newUrl = updateQueryStringParameter(window.location.pathname, 'blogs_per_page', selectedValue);
+      var newUrl = updateQueryStringParameter(window.location.pathname, 'news_per_page', selectedValue);
 
       // Redirect to the new URL
       window.location.href = newUrl + window.location.search + window.location.hash;
@@ -65,7 +65,7 @@
     searchInput.on('input', function () {
       const query = searchInput.val();
 
-      if (query.length > 2) {
+      if (query.length > 1) {
         $.ajax({
           url: '{% url "search_suggestions" %}',
           data: { q: query },
@@ -94,7 +94,7 @@
         event.preventDefault(); // Prevent form submission
         const query = searchInput.val();
 
-        if (query.length > 2) {
+        if (query.length > 1) {
           // Submit the form
           searchInput.closest('form').submit();
         }
@@ -102,6 +102,70 @@
     })
   });
 </script>
+<script>
+  function updateDateTime() {
+  const datetimeElement = document.getElementById('datetime');
+  const now = new Date();
+  const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+  const formattedDate = now.toLocaleDateString('en-US', options);
+  datetimeElement.textContent = formattedDate;
+  }
+
+  // Initial call to set the date and time
+  updateDateTime();
+
+  // Update the date and time every second
+  setInterval(updateDateTime, 1000);
+  </script>
+  <script>
+    // Attach an event listener to the select element
+    document.getElementById('blogs_per_page').addEventListener('change', function () {
+        // Get the selected value
+        var selectedValue = this.value;
+  
+        // Build the new URL with the updated query parameter
+        var newUrl = updateQueryStringParameter(window.location.pathname, 'blogs_per_page', selectedValue);
+  
+        // Redirect to the new URL
+        window.location.href = newUrl + window.location.search + window.location.hash;
+    });
+  
+    // Function to update query string parameter
+    function updateQueryStringParameter(uri, key, value) {
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        } else {
+            return uri + separator + key + "=" + value;
+        }
+    }
+  </script>
+  <script>
+    // Attach an event listener to the select element
+    document.getElementById('blogs_per_page').addEventListener('change', function () {
+        // Get the selected value
+        var selectedValue = this.value;
+ 
+        // Build the new URL with the updated query parameter
+        var newUrl = updateQueryStringParameter(window.location.pathname, 'blogs_per_page', selectedValue);
+ 
+        // Redirect to the new URL
+        window.location.href = newUrl + window.location.search + window.location.hash;
+    });
+ 
+    // Function to update query string parameter
+    function updateQueryStringParameter(uri, key, value) {
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        } else {
+            return uri + separator + key + "=" + value;
+        }
+    }
+  </script>
+
 
 <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
@@ -111,6 +175,9 @@
 
 <!-- Template Main JS File -->
 <script src="{% static 'assets/js/main.js' %}"></script>
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
   <title>InfoPulse</title>
@@ -177,9 +244,18 @@
           <li><a href="{% url 'login' %}">Log In</a></li>
           <li><a href="{% url 'register' %}">Register</a></li>
           {% endif %}
+          <li><a></a></li>
+          <li><a></a></li>
+          <li><a></a></li>
+          <li><a></a></li>
+          <li><a></a></li>
+          <li> <div id="datetime" class = "date_time" style="font-size: 14px; color: #fff; font-weight: bold;"></div></li>
         </ul>
         
       </nav>
+
+        <div id="datetime" class = "date_time" style="font-size: 12px; color: #fff;"></div>
+
 
       <div class="position-relative">
         <a href="https://www.facebook.com/newsamarm" class="fab fa-1x" style="color: #fff; padding: 6px;"  target="_blank"><span class="bi-facebook"></span></a>
@@ -226,9 +302,11 @@
     <div class="footer-content">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4">
-            <h3 class="footer-heading">About InfoPulse</h3>
-            <p style="text-align: justify;">In 2023, fueled by a collective passion for truth and storytelling, we embarked on a remarkable journey - creating our very first project, an InfoPulse. As a cohesive team, we harnessed our diverse skills, unwavering determination, and a shared vision to establish a platform that would disseminate accurate and compelling news...</p>
+          <div class="col-lg-6">
+            {% for i in info %}
+            <h3 class="footer-heading">About {{i.app_name}}</h3>
+            <p style="text-align: justify;">{{i.about | truncatewords:20}}...</p>
+            {% endfor %}
             <p><a href="{% url 'about' %}" class="footer-link-more">Learn More</a></p>
             <div class="flex flex-row justify-end space-x-3 py-4">
               <form method="post" action="{% url 'subscribe' %}">
@@ -276,7 +354,9 @@
         <div class="row justify-content-between">
           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
             <div class="copyright">
-              © Copyright <strong><span>InfoPulse</span></strong>. All Rights Reserved
+              {% for i in info %}
+              © Copyright <strong><span>- {{i.yearpublished}} -</span></strong>.<strong><span>{{i.app_name}}</span></strong> - All Rights Reserved.
+              {% endfor %}
             </div>
 
           </div>

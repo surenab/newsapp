@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, CreateNews, about,get_streaming_video, MyNews, MyNewsDetail, MyNewsUpdate,MyNewsDelete,subscribe_success, search_result, search_suggestions, single_post, Contact, Filter, category, CreateNewsComment, NewsDetails, subscribe
+from .views import Home, CreateNews, about, MyNews, MyNewsDetail, MyNewsUpdate,MyNewsDelete,subscribe_success, search_result, search_suggestions, single_post, ContacView, Filter, category, CreateNewsComment, NewsDetails, subscribe
 from django.conf.urls.static import static
 from . import views
 
@@ -17,7 +17,7 @@ urlpatterns = [
     path("search/", search_result, name="search_result"),
     path('search-suggestions/', search_suggestions, name='search_suggestions'),
     path("single-post/", single_post, name="single_post"),
-    path('contact/', Contact.as_view(), name = "contact"),
+    path('contact/', ContacView.as_view(), name = "contact"),
     path('filter/', Filter.as_view(), name = "filter"),
     path('category/', category, name = "category"),
     path('create-comment', CreateNewsComment.as_view(), name = "create_comment"),

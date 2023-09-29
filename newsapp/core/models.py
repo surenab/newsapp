@@ -95,19 +95,26 @@ class Subscriber(models.Model):
 
 
 
-from django.core.validators import FileExtensionValidator
-from django.db import models
+class Info(models.Model):
+    app_name = models.CharField(max_length=9)
+    about = models.TextField(max_length=1000)
+    mission = models.TextField(max_length=1000)
+    latest_news_text1 = models.TextField(max_length=1000)
+    latest_news_text2 = models.TextField(max_length=1000)
+    about_team = models.TextField(max_length=1000)
+    pub_date = models.DateTimeField(auto_now_add= True)
+
+    def yearpublished(self):
+        return self.pub_date.strftime('%Y')
+    
+    def __str__(self) -> str:
+        return f"App - {self.app_name}"
 
 
-class Video(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    image = models.ImageField(upload_to='image/')
-    file = models.FileField(
-        upload_to='video/',
-        validators=[FileExtensionValidator(allowed_extensions=['mp4'])]
-    )
-    create_at = models.DateTimeField(auto_now_add=True)
+class Contact(models.Model):
+    address = models.CharField(max_length=50)
+    tel = models.CharField(max_length=13)
+    email = models.EmailField()
 
-    def __str__(self):
-        return self.title
+    def __str__(self) -> str:
+        return f"Address - {self.address}, tel - {self.tel}, email - {self.email}"

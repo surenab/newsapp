@@ -26,7 +26,7 @@
             src="{{comment.owner.profile.image.url}}" 
             alt="avatar" width="60" height="60">
             {%else%}
-            <img class="avatar-img" 
+            <img class="rounded-circle shadow-1-strong me-3" 
             src="{% static '/assets/img/pp.jpg'%}" 
             alt="avatar" width="60" height="60">
             {%endif%}
@@ -56,5 +56,21 @@
     </div>
     
 </section> <!-- End Post Grid Section -->
+
+<script>
+  function updateDateTime() {
+  const datetimeElement = document.getElementById('datetime');
+  const now = new Date();
+  const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+  const formattedDate = now.toLocaleDateString('en-US', options);
+  datetimeElement.textContent = formattedDate;
+  }
+
+  // Initial call to set the date and time
+  updateDateTime();
+
+  // Update the date and time every second
+  setInterval(updateDateTime, 1000);
+  </script>
 
 {% endblock %}

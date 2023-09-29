@@ -51,29 +51,20 @@
     
 </section> <!-- End Post Grid Section -->
 
-script>
-   // Attach an event listener to the select element
-   document.getElementById('blogs_per_page').addEventListener('change', function () {
-       // Get the selected value
-       var selectedValue = this.value;
+<script>
+  function updateDateTime() {
+  const datetimeElement = document.getElementById('datetime');
+  const now = new Date();
+  const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+  const formattedDate = now.toLocaleDateString('en-US', options);
+  datetimeElement.textContent = formattedDate;
+  }
 
-       // Build the new URL with the updated query parameter
-       var newUrl = updateQueryStringParameter(window.location.pathname, 'blogs_per_page', selectedValue);
+  // Initial call to set the date and time
+  updateDateTime();
 
-       // Redirect to the new URL
-       window.location.href = newUrl + window.location.search + window.location.hash;
-   });
-
-   // Function to update query string parameter
-   function updateQueryStringParameter(uri, key, value) {
-       var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-       var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-       if (uri.match(re)) {
-           return uri.replace(re, '$1' + key + "=" + value + '$2');
-       } else {
-           return uri + separator + key + "=" + value;
-       }
-   }
- </script>
+  // Update the date and time every second
+  setInterval(updateDateTime, 1000);
+  </script>
 
 {%  endblock %}

@@ -1,6 +1,7 @@
 {% extends 'base_home.html' %} {% load static %}
 {% block bodycontent %}
-  <!-- ======= Header ======= -->
+<div><br></div>
+<div><br></div>
 
     <section id="contact" class="contact mb-5">
       <div><br></div>
@@ -18,7 +19,9 @@
             <div class="info-item">
               <i class="bi bi-geo-alt"></i>
               <h3>Address</h3>
-              <address>2/2 Melik-Adamyan str, Yerevan, RA</address>
+              {% for i in contact %}
+              <address>{{i.address}}</address>
+              {% endfor %}
             </div>
           </div><!-- End Info Item -->
 
@@ -26,7 +29,9 @@
             <div class="info-item info-item-borders">
               <i class="bi bi-phone"></i>
               <h3>Phone Number</h3>
-              <p><a href="tel:+155895548855">+374 91 11 11 11</a></p>
+              {% for i in contact %}
+              <p><a href="tel:+155895548855">{{i.tel}}</a></p>
+              {% endfor %}
             </div>
           </div><!-- End Info Item -->
 
@@ -34,7 +39,9 @@
             <div class="info-item">
               <i class="bi bi-envelope"></i>
               <h3>Email</h3>
-              <p><a href="mailto:info@example.com">infopulse.newsapp@gmail.com</a></p>
+              {% for i in contact %}
+              <p><a href="mailto:info@example.com">{{i.email}}</a></p>
+              {% endfor %}
             </div>
           </div><!-- End Info Item -->
 
@@ -93,6 +100,25 @@
       </div>
       <div><br></div>
     </section>
+
+    <div><br></div>
+    <div><br></div>
+
+    <script>
+      function updateDateTime() {
+      const datetimeElement = document.getElementById('datetime');
+      const now = new Date();
+      const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+      const formattedDate = now.toLocaleDateString('en-US', options);
+      datetimeElement.textContent = formattedDate;
+      }
+
+      // Initial call to set the date and time
+      updateDateTime();
+
+      // Update the date and time every second
+      setInterval(updateDateTime, 1000);
+      </script>
 
   {% endblock %}
   

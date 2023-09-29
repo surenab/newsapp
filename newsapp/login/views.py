@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from .forms import RegisterForm, ProfileForm, SetPasswordForm
+from .forms import RegisterForm, ProfileForm, PasswordChangeForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView, TemplateView
 from django.db.models import Q
-from django.contrib.auth.decorators import login_required
 from .models import Profile
+from core.models import Info
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import PasswordChangeView
 
 
 # Create your views here.
@@ -27,6 +29,8 @@ class Register(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance
         return context
 
 
@@ -39,6 +43,9 @@ class ProfileTemplate(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
+        info_instance = Info.objects.all()
+        context['info'] = info_instance
+
         if self.request.user.is_authenticated:
             profile = get_object_or_404(Profile, user__username=self.request.user)
             context['profile'] = profile
@@ -58,6 +65,7 @@ class ProfileTemplate(TemplateView):
 
 
 def update_profile(request):
+    info = Info.objects.all()
     if request.method == "POST":
         form = ProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
@@ -66,23 +74,18 @@ def update_profile(request):
             return redirect("profile")
     else:
         form = ProfileForm(instance=request.user.profile)
-    return render(request=request, template_name="core/edit-profile.html", context={"form": form})
+    return render(request=request, template_name="core/edit-profile.html", context={"form": form, "info": info,})
 
 
+class PasswordChangeView(SuccessMessageMixin, PasswordChangeView):
+    form_class = PasswordChangeForm
+    template_name = 'core/password_change_form.html'
+    success_message = 'Your password has been changed.'
 
-@login_required
-def change_password(request):
-    user = request.user
-    if request.method == "POST":
-        form = SetPasswordForm(user, request)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Your password has been change!")
-            return redirect("{% url 'profile'%}")
-        else:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Changing Password'
+        return context
 
-            for error in list(form.errors.value()):
-                messages.error(request,error)
-
-    form = SetPasswordForm(user)
-    return render(request, 'core/password_change_form.html', {'form': form})
+    def get_success_url(self):
+        return reverse_lazy('profile')
