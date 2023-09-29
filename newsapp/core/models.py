@@ -94,6 +94,7 @@ class Subscriber(models.Model):
         return self.email
 
 
+
 class Info(models.Model):
     app_name = models.CharField(max_length=9)
     about = models.TextField(max_length=1000)
