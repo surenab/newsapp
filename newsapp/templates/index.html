@@ -45,6 +45,19 @@
       <div class="container" data-aos="fade-up">
         <div class="row g-5">
           <div class="col-lg-4">
+            <div class="post-entry-1">
+              <a href="https://www.rate.am">
+                <img src="{% static 'assets/img/rates.jpeg' %}" alt="Rates" class="img-fluid fixed-size-image">
+              </a>
+              <h2><a href="https://www.rate.am">Rates of Armenian CB, to see more, click on this text</a></h2>
+              <div class="exchange-rates">
+                USD: <span id="usd-rate">{{ initial_exchange_rates.USD }}</span><br>
+                EUR: <span id="eur-rate">{{ initial_exchange_rates.EUR }}</span><br>
+                RUR: <span id="rur-rate">{{ initial_exchange_rates.RUR }}</span><br>
+                GBP: <span id="gbp-rate">{{ initial_exchange_rates.GBP }}</span>
+              </div>
+           </div>
+
             {% for new in newest_news|slice:":1" %}
             <div class="post-entry-1">
               <a href="{% url 'news_details' new.id %}">
@@ -146,5 +159,34 @@
       // Update the date and time every second
       setInterval(updateDateTime, 1000);
       </script>
+
+<script>
+  // Function to fetch and update exchange rates
+  function updateExchangeRates() {
+      // Replace this with code to fetch rates from your data source (e.g., API)
+      // You should fetch and update the rates periodically using AJAX requests
+
+      // Example: Fetch rates from an API (replace with actual API endpoint)
+      fetch('https://api.example.com/exchange-rates')
+          .then(response => response.json())
+          .then(data => {
+              // Update the HTML elements with the new rates
+              document.getElementById('usd-rate').textContent = data.USD;
+              document.getElementById('eur-rate').textContent = data.EUR;
+              document.getElementById('rur-rate').textContent = data.RUR;
+              document.getElementById('gbp-rate').textContent = data.GBP;
+          })
+          .catch(error => {
+              console.error('Error fetching exchange rates:', error);
+          });
+  }
+
+  // Call the updateExchangeRates function initially
+  updateExchangeRates();
+
+  // Set an interval to update rates periodically (e.g., every minute)
+  setInterval(updateExchangeRates, 60000);  // Update rates every 60 seconds
+</script>
+
 {% endblock %}
   

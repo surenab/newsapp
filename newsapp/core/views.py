@@ -15,6 +15,8 @@ from django.http import JsonResponse
 from django.db.models import Q
 from django.core.mail import send_mail
 from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
 
 
 # Create your views here.
@@ -211,9 +213,16 @@ class Home(Filters):
     
     def get_context_data(self, **kwargs):
         info_instance = Info.objects.all()
+        initial_exchange_rates = {
+        'USD': '123.45',
+        'EUR': '234.56',
+        'RUR': '3.45',
+        'GBP': '345.67',
+    }
         context = super().get_context_data(**kwargs)
         context['info'] = info_instance
         context['filter'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
+        context['initial_exchange_rates'] = initial_exchange_rates
         return context
 
 
