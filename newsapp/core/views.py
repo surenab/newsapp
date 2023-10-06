@@ -105,6 +105,12 @@ class MyNewsDetail(NewsBase, DetailView):
         info_instance = Info.objects.all()
         context['info'] = info_instance 
         return context
+    def get(self, request: HttpRequest, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.view_count += 1
+        self.object.save()
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
 
 class NewsDetails(DetailView):
     model = News
@@ -185,7 +191,7 @@ class Filters(FilterView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         most_viewed_news = News.objects.order_by('-view_count')[:5]
-        newest_news=News.objects.order_by('-date')
+        newest_news=News.objects.order_by('-date')[:5]
         context['most_viewed_news'] = most_viewed_news
         context['newest_news'] = newest_news
         return context
