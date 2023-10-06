@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import News, Team, Message, NewsComment, TeamMember, Subscriber, Info, Contact
 
 
+
 class MessageAdmin(admin.ModelAdmin):
     list_display = ["full_name", "email", "subject"]
     def save_model(self, request, obj, form, change):
@@ -24,3 +25,4 @@ admin.site.register(TeamMember, TeamMemberAdmin)
 admin.site.register(Subscriber)
 admin.site.register(Info)
 admin.site.register(Contact)
+
