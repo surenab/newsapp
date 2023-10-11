@@ -96,15 +96,11 @@ class MyNewsDetail(NewsBase, DetailView):
    
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         data = super().get_context_data(**kwargs)
+        info_instance = Info.objects.all()
+        data['info'] = info_instance 
         data["comment_form"] = NewsCommentForm
         data["comments"] = NewsComment.objects.filter(news=data["news"])
         return data
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        info_instance = Info.objects.all()
-        context['info'] = info_instance 
-        return context
     
     def get(self, request: HttpRequest, *args, **kwargs):
          self.object = self.get_object()

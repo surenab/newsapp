@@ -16,30 +16,30 @@
         <div class="post-meta">Date: {{news.date}}</div>
         <div><br></div>
         {% if comments %}
-        <div style="color:rgb(77, 60, 17); font-size: 17px;">Comments</div>
-        {% for comment in comments %}
-        <div><br></div>
-        <div class="card-body">
-          <div class="d-flex flex-start align-items-center">
-            {% if comment.owner.profile.image %}
-            <img class="rounded-circle shadow-1-strong me-3" 
-            src="{{comment.owner.profile.image.url}}" 
-            alt="avatar" width="60" height="60">
-            {%else%}
-            <img class="rounded-circle shadow-1-strong me-3" 
-            src="{% static '/assets/img/pp.jpg'%}" 
-            alt="avatar" width="60" height="60">
-            {%endif%}
-            <div>
-              <h6 class="fw-bold text-primary mb-1">{{comment.owner.first_name}} {{comment.owner.last_name}}</h6>
-            </div>
-          </div>
-          <div><br></div>
-          <div class="comment-body"  style="color: rgb(48, 39, 7);">
-            {{comment.text}}
-          </div>
-          <div><br></div>
-        {% endfor %}
+          <div style="color:rgb(77, 60, 17); font-size: 17px;">Comments</div>
+            {% for comment in comments %}
+             <div><br></div>
+             <div class="card-body">
+              <div class="d-flex flex-start align-items-center">
+                {% if comment.owner.profile.image %}
+                <img class="rounded-circle shadow-1-strong me-3" 
+                src="{{comment.owner.profile.image.url}}" 
+                alt="avatar" width="60" height="60">
+                {%else%}
+                <img class="rounded-circle shadow-1-strong me-3" 
+                src="{% static '/assets/img/pp.jpg' %}" 
+                alt="avatar" width="60" height="60">
+                {%endif%}
+                <div>
+                  <h6 class="fw-bold text-primary mb-1">{{comment.owner.first_name}} {{comment.owner.last_name}}</h6>
+                </div>
+              </div>
+              <div><br></div>
+              <div class="comment-body"  style="color: rgb(48, 39, 7);">
+                {{comment.text}}
+              </div>
+              <div><br></div>
+            {% endfor %}
         {% endif %}
 
         {% if request.user.is_authenticated %}
