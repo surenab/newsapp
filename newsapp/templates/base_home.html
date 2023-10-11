@@ -323,9 +323,7 @@
               <li><a href="/"><i class="bi bi-chevron-right"></i> Home</a></li>
               <li><a href="{% url 'about' %}"><i class="bi bi-chevron-right"></i> About us</a></li>
               <li><a href="{% url 'contact' %}"><i class="bi bi-chevron-right"></i> Contact</a></li>
-              {% if request.user.is_authenticated %}
               <li><a href="{% url 'profile' %}"><i class="bi bi-chevron-right"></i> My Profile</a></li>
-              {% endif %}
             </ul>
           </div>
           <div class="col-6 col-lg-2">
