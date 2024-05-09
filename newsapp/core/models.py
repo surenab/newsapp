@@ -4,6 +4,7 @@ from django.urls import reverse
 from PIL import Image
 from django.contrib.auth.models import User
 import datetime
+from django.utils import timezone
 
 
 
@@ -104,7 +105,8 @@ class Info(models.Model):
     pub_date = models.DateTimeField(auto_now_add= True)
 
     def yearpublished(self):
-        return self.pub_date.strftime('%Y')
+        current_year = timezone.now().year
+        return current_year
     
     def __str__(self) -> str:
         return f"App - {self.app_name}"
